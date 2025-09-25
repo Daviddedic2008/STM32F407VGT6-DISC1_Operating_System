@@ -1,0 +1,39 @@
+
+# Consider dependencies only in project.
+set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
+
+# The set of languages for which implicit dependencies are needed:
+set(CMAKE_DEPENDS_LANGUAGES
+  "ASM"
+  )
+# The set of files for implicit dependencies of each language:
+set(CMAKE_DEPENDS_CHECK_ASM
+  "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/asmRoutines.S" "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Debug/CMakeFiles/opsys.dir/Sources/asmRoutines.S.obj"
+  "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Startup/startup_stm32f407vgtx.s" "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Debug/CMakeFiles/opsys.dir/Startup/startup_stm32f407vgtx.s.obj"
+  )
+set(CMAKE_ASM_COMPILER_ID "GNU")
+
+# The include file search paths:
+set(CMAKE_ASM_TARGET_INCLUDE_PATH
+  )
+
+# The set of dependency files which are needed:
+set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/flashManager.c" "CMakeFiles/opsys.dir/Sources/flashManager.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/flashManager.c.obj.d"
+  "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/font.c" "CMakeFiles/opsys.dir/Sources/font.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/font.c.obj.d"
+  "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/main.c" "CMakeFiles/opsys.dir/Sources/main.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/main.c.obj.d"
+  "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/screenDriver.c" "CMakeFiles/opsys.dir/Sources/screenDriver.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/screenDriver.c.obj.d"
+  "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/syscalls.c" "CMakeFiles/opsys.dir/Sources/syscalls.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/syscalls.c.obj.d"
+  "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/sysmem.c" "CMakeFiles/opsys.dir/Sources/sysmem.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/sysmem.c.obj.d"
+  )
+
+# Targets to which this target links which contain Fortran sources.
+set(CMAKE_Fortran_TARGET_LINKED_INFO_FILES
+  )
+
+# Targets to which this target links which contain Fortran sources.
+set(CMAKE_Fortran_TARGET_FORWARD_LINKED_INFO_FILES
+  )
+
+# Fortran module output directory.
+set(CMAKE_Fortran_TARGET_MODULE_DIR "")
