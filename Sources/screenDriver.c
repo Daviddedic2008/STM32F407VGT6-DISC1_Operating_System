@@ -11,23 +11,107 @@ unsigned char row = 0; unsigned char col = 0;
 #define COMMAND 1
 #define DATA 0
 
-	void WRITE_LCD_BUS(const unsigned char data, const unsigned char command){
+#define PULSE_DELAY() __asm__("nop"); __asm__("nop"); __asm__("nop") // guarantee 15ns pulse time to lock write signal(2 may be enough idk?)
+
+void delay_ms(uint32_t ms) {
+    uint32_t cycles = ms * (SystemCoreClock / 1000);
+    while (cycles--) {
+        __asm__("nop");
+    }
+}
+
+// Pin Defs:
+/*
+ * GPIOA_0 register select(RS) selects is it command or data
+ * GPIOA_1 write pulse(WR) pulse to lock data
+ * GPIOA 2 chip select(CS) enables data read when low
+ * GPIOA_3 reset pin(RS) resets
+ */
+
+void WRITE_LCD_BUS(const unsigned char data, const unsigned char command){
 	// LCD_RS bit set for command, clear for data
 	if(command == COMMAND){
-		SET_PIN(GPIOA_ODR, 0);
+		CLEAR_PIN(GPIOA_ODR, 0);
 	}
 	else{
-		CLEAR_PIN(GPIOA_ODR, 0);
+		SET_PIN(GPIOA_ODR, 0);
 	}
 	// write byte on GPIOC
 	WRITE_BYTE_PORT_LO(GPIOC_ODR, data);
 	// LCD_WR set and clear to send byte
 	CLEAR_PIN(GPIOA_ODR, 1);
+	PULSE_DELAY();
 	SET_PIN(GPIOA_ODR, 1);
 }
 
 inline void LCD_INIT(){
-	// fill later twin
+	CLEAR_PIN(GPIOA_ODR, 3); // reset low
+	delay(10);
+	SET_PIN(GPIOA_ODR, 3);
+	delay(120);
+	CLEAR_PIN(GPIOA_ODR, 2);
+
+	WRITE_LCD_BUS(0xEF, COMMAND);
+	WRITE_LCD_BUS(0x03, DATA); WRITE_LCD_BUS(0x80, DATA); WRITE_LCD_BUS(0x02, DATA);
+
+	WRITE_LCD_BUS(0xCF, COMMAND);
+	WRITE_LCD_BUS(0x00, DATA); WRITE_LCD_BUS(0xC1, DATA); WRITE_LCD_BUS(0x30, DATA);
+
+	WRITE_LCD_BUS(0xED, COMMAND);
+	WRITE_LCD_BUS(0x64, DATA); WRITE_LCD_BUS(0x03, DATA); WRITE_LCD_BUS(0x12, DATA); WRITE_LCD_BUS(0x81, DATA);
+
+	WRITE_LCD_BUS(0xCB, COMMAND);
+	WRITE_LCD_BUS(0x39, DATA); WRITE_LCD_BUS(0x2C, DATA); WRITE_LCD_BUS(0x00, DATA);
+	WRITE_LCD_BUS(0x34, DATA); WRITE_LCD_BUS(0x02, DATA);
+
+	WRITE_LCD_BUS(0xF7, COMMAND);
+	WRITE_LCD_BUS(0x20, DATA);
+
+	WRITE_LCD_BUS(0xEA, COMMAND);
+	WRITE_LCD_BUS(0x00, DATA); WRITE_LCD_BUS(0x00, DATA);
+
+	WRITE_LCD_BUS(0xC0, COMMAND);
+	WRITE_LCD_BUS(0x23, DATA);
+
+	WRITE_LCD_BUS(0xC1, COMMAND);
+	WRITE_LCD_BUS(0x10, DATA);
+
+	WRITE_LCD_BUS(0xC5, COMMAND);
+	WRITE_LCD_BUS(0x3E, DATA); WRITE_LCD_BUS(0x28, DATA);
+
+	WRITE_LCD_BUS(0xC7, COMMAND);
+	WRITE_LCD_BUS(0x86, DATA);
+
+	WRITE_LCD_BUS(0x36, COMMAND);
+	WRITE_LCD_BUS(0x48, DATA);  // MX, BGR
+
+	WRITE_LCD_BUS(0x3A, COMMAND);
+	WRITE_LCD_BUS(0x55, DATA);  // 16-bit/pixel
+
+	WRITE_LCD_BUS(0xB1, COMMAND);
+	WRITE_LCD_BUS(0x00, DATA); WRITE_LCD_BUS(0x18, DATA);
+
+	WRITE_LCD_BUS(0xB6, COMMAND);
+	WRITE_LCD_BUS(0x08, DATA); WRITE_LCD_BUS(0x82, DATA); WRITE_LCD_BUS(0x27, DATA);
+
+	WRITE_LCD_BUS(0xF2, COMMAND);
+	WRITE_LCD_BUS(0x00, DATA);
+
+	WRITE_LCD_BUS(0x26, COMMAND);
+	WRITE_LCD_BUS(0x01, DATA);
+
+	WRITE_LCD_BUS(0xE0, COMMAND);
+	uint8_t gamma_pos[] = {0x0F,0x31,0x2B,0x0C,0x0E,0x08,0x4E,0xF1,0x37,0x07,0x10,0x03,0x0E,0x09,0x00};
+	for (int i = 0; i < 15; i++) WRITE_LCD_BUS(gamma_pos[i], DATA);
+
+	WRITE_LCD_BUS(0xE1, COMMAND);
+	uint8_t gamma_neg[] = {0x00,0x0E,0x14,0x03,0x11,0x07,0x31,0xC1,0x48,0x08,0x0F,0x0C,0x31,0x36,0x0F};
+	for (int i = 0; i < 15; i++) WRITE_LCD_BUS(gamma_neg[i], DATA);
+
+	WRITE_LCD_BUS(0x11, COMMAND);  // Sleep Out
+	delay_ms(120);
+
+	WRITE_LCD_BUS(0x29, COMMAND);  // Display ON
 }
 
 void clearLCD(){

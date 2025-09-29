@@ -4,6 +4,8 @@
 #define MCUH
 #include <stdint.h>
 
+#define SystemCoreClock 168000000
+
 // GPIOA
 #define GPIOA_MODER 0x40020000
 #define GPIOA_IDR   0x40020010
