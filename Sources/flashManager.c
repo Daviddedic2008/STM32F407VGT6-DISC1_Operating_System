@@ -80,5 +80,5 @@ typedef struct {
 } flashPkg;
 
 inline void addFlashPkg(const uint32_t size, const uint8_t sector){
-
+;
 }

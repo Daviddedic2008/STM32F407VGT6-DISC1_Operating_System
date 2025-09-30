@@ -24,10 +24,36 @@
 
 // using an FPU for this OS
 #include "screenDriver.h"
+#include "mcuHeader.h"
+
+void speakerCycle(){
+	tgl = !tgl;
+	if(tgl){
+		SET_PIN(GPIOD_ODR, 0);
+		continue;
+	}
+	CLEAR_PIN(GPIOD_ODR, 0);
+}
+
+void pinout(){
+	for(int i = 0; i < 8; i++){
+			SET_OUTPUT_PIN(GPIOA_MODER, i);
+		}
+		unsigned char tgl = 0;
+		SET_OUTPUT_PIN(GPIOB_MODER, 0);
+		SET_OUTPUT_PIN(GPIOB_MODER, 1);
+		SET_OUTPUT_PIN(GPIOC_MODER, 4);
+		SET_OUTPUT_PIN(GPIOC_MODER, 5);
+}
 
 int main(void)
 {
-    /* Loop forever */
-	putChar('a');
+	pinout();
+	SET_OUTPUT_PIN(GPIOD_MODER, 0);
+	// main loop for OS
+	while(1){
+		speakerCycle();
+		delay_ms(1);
+	}
 	for(;;);
 }

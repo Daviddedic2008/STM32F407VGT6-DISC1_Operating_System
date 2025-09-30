@@ -22,34 +22,35 @@ void delay_ms(uint32_t ms) {
 
 // Pin Defs:
 /*
- * GPIOA_0 register select(RS) selects is it command or data
- * GPIOA_1 write pulse(WR) pulse to lock data
- * GPIOA 2 chip select(CS) enables data read when low
- * GPIOA_3 reset pin(RS) resets
+ * GPIOB_1 register select(RS) selects is it command or data
+ * GPIOB_0 write pulse(WR) pulse to lock data
+ * GPIOC_5 chip select(CS) enables data read when low
+ * GPIOC_4 reset pin(RST) resets
+ * GPIOA is data bus(8bit)
  */
 
 void WRITE_LCD_BUS(const unsigned char data, const unsigned char command){
 	// LCD_RS bit set for command, clear for data
 	if(command == COMMAND){
-		CLEAR_PIN(GPIOA_ODR, 0);
+		CLEAR_PIN(GPIOB_ODR, 1);
 	}
 	else{
-		SET_PIN(GPIOA_ODR, 0);
+		SET_PIN(GPIOB_ODR, 1);
 	}
 	// write byte on GPIOC
-	WRITE_BYTE_PORT_LO(GPIOC_ODR, data);
+	WRITE_BYTE_PORT_LO(GPIOA_ODR, data);
 	// LCD_WR set and clear to send byte
-	CLEAR_PIN(GPIOA_ODR, 1);
+	CLEAR_PIN(GPIOB_ODR, 0);
 	PULSE_DELAY();
-	SET_PIN(GPIOA_ODR, 1);
+	SET_PIN(GPIOB_ODR, 0);
 }
 
 inline void LCD_INIT(){
-	CLEAR_PIN(GPIOA_ODR, 3); // reset low
+	CLEAR_PIN(GPIOC_ODR, 4); // reset low
 	delay(10);
-	SET_PIN(GPIOA_ODR, 3);
+	SET_PIN(GPIOC_ODR, 4);
 	delay(120);
-	CLEAR_PIN(GPIOA_ODR, 2);
+	CLEAR_PIN(GPIOC_ODR, 5); // chip select
 
 	WRITE_LCD_BUS(0xEF, COMMAND);
 	WRITE_LCD_BUS(0x03, DATA); WRITE_LCD_BUS(0x80, DATA); WRITE_LCD_BUS(0x02, DATA);
@@ -154,7 +155,7 @@ void dispc(const unsigned int x, const unsigned int y, const char c){
 	WRITE_LCD_BUS(0x2c, COMMAND);
 	for(unsigned char r = 0; r < 8; r++){
 		for(unsigned char offset = 0; offset < 8; offset++){
-			WRITE_LCD_BUS((font8x8_basic[(unsigned char)c][r] & (1 << offset)) && 1, DATA); // write pixel of char
+			WRITE_LCD_BUS(((font8x8_basic[(unsigned char)c][r] & (1 << offset))) ? 0xFFFF : 0x0, DATA); // write pixel of char
 		}
 	}
 }

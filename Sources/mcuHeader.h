@@ -62,10 +62,10 @@
 #define RCC_APB2ENR      0x40023844
 #define NVIC_ISER0       0xE000E100
 
-#define SET_PIN(port, pin) (*(volatile uint32_t*)port) |= (1 << 5) // lil macro
-#define CLEAR_PIN(port, pin) (*(volatile uint32_t*)port) &= ~(1 << 5) // lil macro
-#define SET_OUTPUT_PORT(port_moder) (*(volatile uint32_t*)port_moder) &= ~(0x3 << (5 * 2)); /* clear the 2 bits */ (*(volatile uint32_t*)port_moder) |= (0x1 << (5 * 2));
-#define SET_INPUT_PORT(port_moder) (*(volatile uint32_t*)port_moder) &= ~(0x3 << (5 * 2)) /* clear the 2 bits */
+#define SET_PIN(port, pin) (*(volatile uint32_t*)port) |= (1 << pin) // lil macro
+#define CLEAR_PIN(port, pin) (*(volatile uint32_t*)port) &= ~(1 << pin) // lil macro
+#define SET_OUTPUT_PIN(port_moder, pin) (*(volatile uint32_t*)port_moder) &= ~(0x3 << (pin * 2)); /* clear the 2 bits */ (*(volatile uint32_t*)port_moder) |= (0x1 << (pin * 2))
+#define SET_INPUT_PIN(port_moder, pin) (*(volatile uint32_t*)port_moder) &= ~(0x3 << (pin * 2)) /* clear the 2 bits */
 #define READ_PIN(port, pin) (*(volatile uint32_t*)port) & (1 << pin)
 #define WRITE_BYTE_PORT_LO(port, byte) (*(volatile uint8_t*)port) = byte
 #define WRITE_BYTE_PORT_HI(port, byte) (*(volatile uint8_t*)port+1) = byte
