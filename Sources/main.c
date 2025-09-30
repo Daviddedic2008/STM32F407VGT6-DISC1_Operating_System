@@ -23,8 +23,8 @@
 #endif
 
 // using an FPU for this OS
-#include "screenDriver.h"
-#include "mcuHeader.h"
+#include "lcd/screenDriver.h"
+#include "general/mcuHeader.h"
 
 void speakerCycle(){
 	tgl = !tgl;
