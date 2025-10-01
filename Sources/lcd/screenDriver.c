@@ -11,7 +11,11 @@ unsigned char row = 0; unsigned char col = 0;
 #define COMMAND 1
 #define DATA 0
 
-#define PULSE_DELAY() __asm__("nop"); __asm__("nop") // guarantee 15ns pulse time to lock write signal(2 may be enough idk?)
+// 1 is NOT enough, but it all depends how the lcd is feeling
+// 2 is NOT enough for deterministic screen shenanigans :).
+// 3 is BARELY enough, the clock speed and wr lock time barely lign up, slight artifacting
+// 4 is def enough but just use 3 its fine
+#define PULSE_DELAY() __asm__("nop") // guarantee 15ns pulse time to lock write signal(2 may be enough idk?)
 
 // Pin Defs:
 /*
@@ -130,6 +134,10 @@ void clearLCD(){
 	}
 }
 
+void moveCursor(const uint8_t x, const uint8_t y){
+	col = x; row = y;
+}
+
 void dispc(const unsigned int x, const unsigned int y, const char c){
 	const unsigned int x2 = x + 7;
 	const unsigned int y2 = y + 7;
@@ -164,14 +172,30 @@ void putChar(const char c){
 	if(c == '\n'){
 		goto inc;
 	}
-	pulse_speaker();
+	if(c == '\b' && (col + row) != 0){
+		col--;
+		if(col == -1){
+			col = 29;
+			row -=1;
+		}
+		textCoordChar(' ', col, row);
+		return;
+	}
+	//pulse_speaker();
 	textCoordChar(c, col, row);
 	col++;
-	if(col != 40){return;}
+	if(col != 30){return;}
 	inc:;
-	if(row < 29){
+	if(row < 39){
 		col = 0;
 		row += 1;
+	}
+}
+
+void putString(const char* str, const uint16_t length){
+	char c = str[0];
+	for(uint16_t idx = 0; idx < length; idx++, c = str[idx]){
+		putChar(c);
 	}
 }
 

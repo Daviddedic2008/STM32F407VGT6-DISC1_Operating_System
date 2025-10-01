@@ -1,4 +1,5 @@
-/*
+
+/*semi-custom linker script, i changed some stuff so it may look a tad weird
 ******************************************************************************
 **
 ** @file        : LinkerScript.ld
@@ -47,7 +48,7 @@ MEMORY
 {
   CCMRAM    (xrw)    : ORIGIN = 0x10000000,   LENGTH = 64K
   RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 128K
-  FLASH    (rx)    : ORIGIN = 0x8004000,   LENGTH = 960K /*reserve sectors 0, 10, 11*/
+  FLASH    (rx)    : ORIGIN = 0x8004000,   LENGTH = 960K /*reserve sectors 0, 10, 11 for OS, should be enough i think*/
 }
 
 /* Sections */

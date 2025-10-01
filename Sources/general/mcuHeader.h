@@ -117,5 +117,7 @@ void SystemInit(void); // clocky stuff
 void delay_ms(uint32_t ms);
 
 void pulse_speaker();
+
+void pinout();
 #endif
 

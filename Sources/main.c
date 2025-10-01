@@ -37,29 +37,6 @@ void speakerCycle(){
 	CLEAR_PIN(GPIOD_ODR, 0);
 }
 
-void pinout(){
-	// enable clocks/peripherals for each port
-	RCC_AHB1ENR |= (1 << 0);  // GPIOA
-	RCC_AHB1ENR |= (1 << 1);  // GPIOB
-	RCC_AHB1ENR |= (1 << 2);  // GPIOC
-	RCC_AHB1ENR |= (1 << 3);  // GPIOD
-	RCC_AHB1ENR |= (1 << 4);  // GPIOE
-	RCC_AHB1ENR |= (1 << 5);  // GPIOF
-	RCC_AHB1ENR |= (1 << 6);  // GPIOG
-	for(int i = 0; i < 8; i++){
-		SET_OUTPUT_PIN(GPIOA_MODER, i);
-		SET_PUSH_PULL(GPIOA_OTYPER, i);
-	}
-	SET_OUTPUT_PIN(GPIOB_MODER, 0);
-	SET_PUSH_PULL(GPIOB_OTYPER, 0);
-	SET_OUTPUT_PIN(GPIOB_MODER, 1);
-	SET_PUSH_PULL(GPIOB_OTYPER, 1);
-	SET_OUTPUT_PIN(GPIOC_MODER, 4);
-	SET_PUSH_PULL(GPIOC_OTYPER, 4);
-	SET_OUTPUT_PIN(GPIOC_MODER, 5);
-	SET_PUSH_PULL(GPIOC_OTYPER, 5);
-}
-
 int main(void)
 {
 	SystemInit();
@@ -69,30 +46,23 @@ int main(void)
 	// main loop for OS
 	LCD_INIT();
 	clearLCD();
-	putChar('1');
-	delay_ms(40);
-	putChar('2');
-	delay_ms(40);
-	putChar('3');
-	delay_ms(40);
-	putChar('4');
-	delay_ms(40);
-	putChar('5');
-	delay_ms(40);
-	putChar('\n');
-	delay_ms(40);
-	putChar('D');
-	delay_ms(40);
-	putChar('a');
-	delay_ms(40);
-	putChar('v');
-	delay_ms(40);
-	putChar('i');
-	delay_ms(40);
-	putChar('d');
+
+	//putString("Hello! This is an OS for the\nSTM32F407VGT6-DISC1.\n\n\nIt is completely BARE METAL,  no libraries or external\n headers ;)\n\n\nIt contains:a screen driver(for elegoo 2.8in tft lcd),ps-2 keyboard driver,and a system for storing/writing/running programs :)", 250);
+
+	// test
+	/*unsigned int charCycle = 0;
 	while(1){
 		//speakerCycle();
-		delay_ms(1);
-	}
+		for(int i = 0; i < 1200; i++){
+				putChar(charCycle % 127);
+		}
+		moveCursor(0,0);
+		charCycle++;
+	}*/
+	putChar('a');
+	putChar('b');
+	putChar('\b');
+	putChar('a');
+	putChar('_');
 	for(;;);
 }

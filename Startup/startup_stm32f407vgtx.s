@@ -22,6 +22,8 @@
  ******************************************************************************
  */
 
+ // PRETTY MUCH STOCK STARTUP FILE, MIGHT MODIFY LATER AS NEEDED. SLIGHT MODS NEEDED
+
 .syntax unified
 .cpu cortex-m4
 .fpu softvfp
