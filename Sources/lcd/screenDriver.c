@@ -1,5 +1,5 @@
 #include "screenDriver.h"
-#include "./general/mcuHeader.h"
+#include "../general/mcuHeader.h"
 #include "font.h"
 
 unsigned char row = 0; unsigned char col = 0;
@@ -11,14 +11,7 @@ unsigned char row = 0; unsigned char col = 0;
 #define COMMAND 1
 #define DATA 0
 
-#define PULSE_DELAY() __asm__("nop"); __asm__("nop"); __asm__("nop") // guarantee 15ns pulse time to lock write signal(2 may be enough idk?)
-
-void delay_ms(uint32_t ms) {
-    uint32_t cycles = ms * (SystemCoreClock / 1000);
-    while (cycles--) {
-        __asm__("nop");
-    }
-}
+#define PULSE_DELAY() __asm__("nop"); __asm__("nop") // guarantee 15ns pulse time to lock write signal(2 may be enough idk?)
 
 // Pin Defs:
 /*
@@ -47,9 +40,9 @@ void WRITE_LCD_BUS(const unsigned char data, const unsigned char command){
 
 inline void LCD_INIT(){
 	CLEAR_PIN(GPIOC_ODR, 4); // reset low
-	delay(10);
+	delay_ms(10);
 	SET_PIN(GPIOC_ODR, 4);
-	delay(120);
+	delay_ms(120);
 	CLEAR_PIN(GPIOC_ODR, 5); // chip select
 
 	WRITE_LCD_BUS(0xEF, COMMAND);
@@ -138,24 +131,27 @@ void clearLCD(){
 }
 
 void dispc(const unsigned int x, const unsigned int y, const char c){
-	const unsigned int x2 = x + 8;
-	const unsigned int y2 = y + 8;
+	const unsigned int x2 = x + 7;
+	const unsigned int y2 = y + 7;
 	WRITE_LCD_BUS(0x2a, COMMAND);
-	WRITE_LCD_BUS(x & (0xFF), DATA);
-	WRITE_LCD_BUS(x & (0xFF << 8), DATA);
-	WRITE_LCD_BUS(x2 & (0xFF), DATA);
-	WRITE_LCD_BUS(x2 & (0xFF << 8), DATA);
+	WRITE_LCD_BUS(x >> 8, DATA);
+	WRITE_LCD_BUS(x & 0xFF, DATA);
+	WRITE_LCD_BUS(x2 >> 8, DATA);
+	WRITE_LCD_BUS(x2 & 0xFF, DATA);
 
 	WRITE_LCD_BUS(0x2b, COMMAND);
-	WRITE_LCD_BUS(y & (0xFF), DATA);
-	WRITE_LCD_BUS(y & (0xFF << 8), DATA);
-	WRITE_LCD_BUS(y2 & (0xFF), DATA);
-	WRITE_LCD_BUS(y2 & (0xFF << 8), DATA);
+	WRITE_LCD_BUS(y >> 8, DATA);
+	WRITE_LCD_BUS(y & 0xFF, DATA);
+	WRITE_LCD_BUS(y2 >> 8, DATA);
+	WRITE_LCD_BUS(y2 & 0xFF, DATA);
 
 	WRITE_LCD_BUS(0x2c, COMMAND);
 	for(unsigned char r = 0; r < 8; r++){
 		for(unsigned char offset = 0; offset < 8; offset++){
-			WRITE_LCD_BUS(((font8x8_basic[(unsigned char)c][r] & (1 << offset))) ? 0xFFFF : 0x0, DATA); // write pixel of char
+			if(font8x8_basic[(unsigned char)c][r] & (1 << offset)){
+				WRITE_LCD_BUS(0xFF, DATA); WRITE_LCD_BUS(0xFF, DATA); continue;
+			}
+			WRITE_LCD_BUS(0x0, DATA); WRITE_LCD_BUS(0x0, DATA);
 		}
 	}
 }
@@ -168,6 +164,7 @@ void putChar(const char c){
 	if(c == '\n'){
 		goto inc;
 	}
+	pulse_speaker();
 	textCoordChar(c, col, row);
 	col++;
 	if(col != 40){return;}

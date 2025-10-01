@@ -15,7 +15,7 @@
 
 #ifndef SOURCES_PS_2INTERFACE_H_
 #define SOURCES_PS_2INTERFACE_H_
-#include "./general/mcuHeader.h"
+#include "../general/mcuHeader.h"
 #define KBRD_CLK_PIN 6 // port b 6
 #define KBRD_DATA_PIN 7 // port b 7... 67!!
 #define ENABLE_FALLING_EDGE(line) do {*((volatile uint32_t*)EXTI_IMR) |= (1 << line); *((volatile uint32_t*)EXTI_FTSR) |= (1 << line); *((volatile uint32_t*)EXTI_RTSR) &= ~(1 << line); } while(0)

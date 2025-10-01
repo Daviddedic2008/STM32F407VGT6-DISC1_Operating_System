@@ -4,7 +4,7 @@
 #define MCUH
 #include <stdint.h>
 
-#define SystemCoreClock 168000000
+extern uint32_t SystemCoreClock;
 
 // GPIOA
 #define GPIOA_MODER 0x40020000
@@ -41,6 +41,17 @@
 #define GPIOG_IDR   0x40021810
 #define GPIOG_ODR   0x40021814
 
+// otyper for config push pull inputs(actively drives high instead of draining current slowly)
+#define GPIOA_OTYPER  0x40020004
+#define GPIOB_OTYPER  0x40020404
+#define GPIOC_OTYPER  0x40020804
+#define GPIOD_OTYPER  0x40020C04
+#define GPIOE_OTYPER  0x40021004
+#define GPIOF_OTYPER  0x40021404
+#define GPIOG_OTYPER  0x40021804
+#define GPIOH_OTYPER  0x40021C04
+#define GPIOI_OTYPER  0x40022004
+
 // exti line stuff
 
 #define EXTI_BASE        0x40013C00
@@ -59,8 +70,10 @@
 #define SYSCFG_EXTICR3   (SYSCFG_BASE + 0x10)  // EXTI8–EXTI11
 #define SYSCFG_EXTICR4   (SYSCFG_BASE + 0x14)  // EXTI12–EXTI15
 
-#define RCC_APB2ENR      0x40023844
 #define NVIC_ISER0       0xE000E100
+
+#define RCC_BASE        0x40023800
+#define RCC_AHB1ENR     (*(volatile uint32_t *)(RCC_BASE + 0x30))
 
 #define SET_PIN(port, pin) (*(volatile uint32_t*)port) |= (1 << pin) // lil macro
 #define CLEAR_PIN(port, pin) (*(volatile uint32_t*)port) &= ~(1 << pin) // lil macro
@@ -70,6 +83,11 @@
 #define WRITE_BYTE_PORT_LO(port, byte) (*(volatile uint8_t*)port) = byte
 #define WRITE_BYTE_PORT_HI(port, byte) (*(volatile uint8_t*)port+1) = byte
 #define WRITE_UINT16_PORT(port, uint) (*(volatile uint32_t*)port) & uint
+
+// set pin to push-pull (clear bit)
+#define SET_PUSH_PULL(reg_addr, pin) (*(volatile unsigned int*)(reg_addr) &= ~(1 << (pin)))
+// set pin to open-drain (set bit)
+#define SET_OPEN_DRAIN(reg_addr, pin) (*(volatile unsigned int*)(reg_addr) |= (1 << (pin)))
 
 // CONSTS BASED ON CORTEX
 #define FLASHEND 0x80FFFFF
@@ -85,5 +103,19 @@
 // CONSTS BASED ON OS ITSELF
 #define USEDFLASH 0x0 // unsure for now
 
+#define RCC_CR           (*(volatile uint32_t *)(RCC_BASE + 0x00))
+#define RCC_PLLCFGR      (*(volatile uint32_t *)(RCC_BASE + 0x04))
+#define RCC_CFGR         (*(volatile uint32_t *)(RCC_BASE + 0x08))
+#define RCC_APB1ENR      (*(volatile uint32_t *)(RCC_BASE + 0x40))
+#define RCC_APB2ENR      (*(volatile uint32_t *)(RCC_BASE + 0x44))
+
+#define FLASH_ACR        (*(volatile uint32_t *)0x40023C00)
+
+
+void SystemInit(void); // clocky stuff
+
+void delay_ms(uint32_t ms);
+
+void pulse_speaker();
 #endif
 

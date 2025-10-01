@@ -26,33 +26,72 @@
 #include "lcd/screenDriver.h"
 #include "general/mcuHeader.h"
 
+unsigned char tgl;
+
 void speakerCycle(){
 	tgl = !tgl;
 	if(tgl){
 		SET_PIN(GPIOD_ODR, 0);
-		continue;
+		return;
 	}
 	CLEAR_PIN(GPIOD_ODR, 0);
 }
 
 void pinout(){
+	// enable clocks/peripherals for each port
+	RCC_AHB1ENR |= (1 << 0);  // GPIOA
+	RCC_AHB1ENR |= (1 << 1);  // GPIOB
+	RCC_AHB1ENR |= (1 << 2);  // GPIOC
+	RCC_AHB1ENR |= (1 << 3);  // GPIOD
+	RCC_AHB1ENR |= (1 << 4);  // GPIOE
+	RCC_AHB1ENR |= (1 << 5);  // GPIOF
+	RCC_AHB1ENR |= (1 << 6);  // GPIOG
 	for(int i = 0; i < 8; i++){
-			SET_OUTPUT_PIN(GPIOA_MODER, i);
-		}
-		unsigned char tgl = 0;
-		SET_OUTPUT_PIN(GPIOB_MODER, 0);
-		SET_OUTPUT_PIN(GPIOB_MODER, 1);
-		SET_OUTPUT_PIN(GPIOC_MODER, 4);
-		SET_OUTPUT_PIN(GPIOC_MODER, 5);
+		SET_OUTPUT_PIN(GPIOA_MODER, i);
+		SET_PUSH_PULL(GPIOA_OTYPER, i);
+	}
+	SET_OUTPUT_PIN(GPIOB_MODER, 0);
+	SET_PUSH_PULL(GPIOB_OTYPER, 0);
+	SET_OUTPUT_PIN(GPIOB_MODER, 1);
+	SET_PUSH_PULL(GPIOB_OTYPER, 1);
+	SET_OUTPUT_PIN(GPIOC_MODER, 4);
+	SET_PUSH_PULL(GPIOC_OTYPER, 4);
+	SET_OUTPUT_PIN(GPIOC_MODER, 5);
+	SET_PUSH_PULL(GPIOC_OTYPER, 5);
 }
 
 int main(void)
 {
+	SystemInit();
 	pinout();
 	SET_OUTPUT_PIN(GPIOD_MODER, 0);
+	tgl = 0;
 	// main loop for OS
+	LCD_INIT();
+	clearLCD();
+	putChar('1');
+	delay_ms(40);
+	putChar('2');
+	delay_ms(40);
+	putChar('3');
+	delay_ms(40);
+	putChar('4');
+	delay_ms(40);
+	putChar('5');
+	delay_ms(40);
+	putChar('\n');
+	delay_ms(40);
+	putChar('D');
+	delay_ms(40);
+	putChar('a');
+	delay_ms(40);
+	putChar('v');
+	delay_ms(40);
+	putChar('i');
+	delay_ms(40);
+	putChar('d');
 	while(1){
-		speakerCycle();
+		//speakerCycle();
 		delay_ms(1);
 	}
 	for(;;);

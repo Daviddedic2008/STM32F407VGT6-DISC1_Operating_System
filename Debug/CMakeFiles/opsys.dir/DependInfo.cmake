@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_ASM
-  "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/asmRoutines.S" "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Debug/CMakeFiles/opsys.dir/Sources/asmRoutines.S.obj"
+  "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/flash/asmRoutines.S" "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Debug/CMakeFiles/opsys.dir/Sources/flash/asmRoutines.S.obj"
   "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Startup/startup_stm32f407vgtx.s" "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Debug/CMakeFiles/opsys.dir/Startup/startup_stm32f407vgtx.s.obj"
   )
 set(CMAKE_ASM_COMPILER_ID "GNU")
@@ -19,10 +19,11 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/flashManager.c" "CMakeFiles/opsys.dir/Sources/flashManager.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/flashManager.c.obj.d"
-  "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/font.c" "CMakeFiles/opsys.dir/Sources/font.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/font.c.obj.d"
+  "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/flash/flashManager.c" "CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj.d"
+  "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/general/mcuHeader.c" "CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.obj.d"
+  "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/lcd/font.c" "CMakeFiles/opsys.dir/Sources/lcd/font.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/lcd/font.c.obj.d"
+  "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/lcd/screenDriver.c" "CMakeFiles/opsys.dir/Sources/lcd/screenDriver.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/lcd/screenDriver.c.obj.d"
   "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/main.c" "CMakeFiles/opsys.dir/Sources/main.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/main.c.obj.d"
-  "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/screenDriver.c" "CMakeFiles/opsys.dir/Sources/screenDriver.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/screenDriver.c.obj.d"
   "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/syscalls.c" "CMakeFiles/opsys.dir/Sources/syscalls.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/syscalls.c.obj.d"
   "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/sysmem.c" "CMakeFiles/opsys.dir/Sources/sysmem.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/sysmem.c.obj.d"
   )

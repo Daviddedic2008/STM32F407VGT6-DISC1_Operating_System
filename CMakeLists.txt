@@ -50,10 +50,11 @@ set (PROJECT_SOURCES
 	# LIST SOURCE FILES HERE
 	Startup/startup_stm32f407vgtx.s
 	Sources/main.c
-	Sources/screenDriver.c
-	Sources/font.c
-	Sources/flashManager.c
-	Sources/asmRoutines.S
+	Sources/lcd/screenDriver.c
+	Sources/lcd/font.c
+	Sources/general/mcuHeader.c
+	Sources/flash/flashManager.c
+	Sources/flash/asmRoutines.S
 	Sources/syscalls.c
 	Sources/sysmem.c
 

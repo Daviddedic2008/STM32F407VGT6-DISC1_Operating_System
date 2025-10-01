@@ -8,9 +8,12 @@
 #ifndef SOURCES_SCREENDRIVER_H_
 #define SOURCES_SCREENDRIVER_H_
 #include "font.h"
+#include <stdint.h>
 // screen dependent do later
 void putChar(const char c);
 void LCD_INIT();
-void delay_ms(uint32_t ms);
+void clearLCD();
+
+
 #endif /* SOURCES_SCREENDRIVER_H_ */
 

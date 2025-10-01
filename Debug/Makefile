@@ -129,61 +129,109 @@ opsys/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/build
 .PHONY : opsys/fast
 
-Sources/asmRoutines.obj: Sources/asmRoutines.S.obj
-.PHONY : Sources/asmRoutines.obj
+Sources/flash/asmRoutines.obj: Sources/flash/asmRoutines.S.obj
+.PHONY : Sources/flash/asmRoutines.obj
 
 # target to build an object file
-Sources/asmRoutines.S.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/asmRoutines.S.obj
-.PHONY : Sources/asmRoutines.S.obj
+Sources/flash/asmRoutines.S.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/flash/asmRoutines.S.obj
+.PHONY : Sources/flash/asmRoutines.S.obj
 
-Sources/flashManager.obj: Sources/flashManager.c.obj
-.PHONY : Sources/flashManager.obj
+Sources/flash/flashManager.obj: Sources/flash/flashManager.c.obj
+.PHONY : Sources/flash/flashManager.obj
 
 # target to build an object file
-Sources/flashManager.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/flashManager.c.obj
-.PHONY : Sources/flashManager.c.obj
+Sources/flash/flashManager.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
+.PHONY : Sources/flash/flashManager.c.obj
 
-Sources/flashManager.i: Sources/flashManager.c.i
-.PHONY : Sources/flashManager.i
+Sources/flash/flashManager.i: Sources/flash/flashManager.c.i
+.PHONY : Sources/flash/flashManager.i
 
 # target to preprocess a source file
-Sources/flashManager.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/flashManager.c.i
-.PHONY : Sources/flashManager.c.i
+Sources/flash/flashManager.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/flash/flashManager.c.i
+.PHONY : Sources/flash/flashManager.c.i
 
-Sources/flashManager.s: Sources/flashManager.c.s
-.PHONY : Sources/flashManager.s
+Sources/flash/flashManager.s: Sources/flash/flashManager.c.s
+.PHONY : Sources/flash/flashManager.s
 
 # target to generate assembly for a file
-Sources/flashManager.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/flashManager.c.s
-.PHONY : Sources/flashManager.c.s
+Sources/flash/flashManager.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/flash/flashManager.c.s
+.PHONY : Sources/flash/flashManager.c.s
 
-Sources/font.obj: Sources/font.c.obj
-.PHONY : Sources/font.obj
+Sources/general/mcuHeader.obj: Sources/general/mcuHeader.c.obj
+.PHONY : Sources/general/mcuHeader.obj
 
 # target to build an object file
-Sources/font.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/font.c.obj
-.PHONY : Sources/font.c.obj
+Sources/general/mcuHeader.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.obj
+.PHONY : Sources/general/mcuHeader.c.obj
 
-Sources/font.i: Sources/font.c.i
-.PHONY : Sources/font.i
+Sources/general/mcuHeader.i: Sources/general/mcuHeader.c.i
+.PHONY : Sources/general/mcuHeader.i
 
 # target to preprocess a source file
-Sources/font.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/font.c.i
-.PHONY : Sources/font.c.i
+Sources/general/mcuHeader.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.i
+.PHONY : Sources/general/mcuHeader.c.i
 
-Sources/font.s: Sources/font.c.s
-.PHONY : Sources/font.s
+Sources/general/mcuHeader.s: Sources/general/mcuHeader.c.s
+.PHONY : Sources/general/mcuHeader.s
 
 # target to generate assembly for a file
-Sources/font.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/font.c.s
-.PHONY : Sources/font.c.s
+Sources/general/mcuHeader.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.s
+.PHONY : Sources/general/mcuHeader.c.s
+
+Sources/lcd/font.obj: Sources/lcd/font.c.obj
+.PHONY : Sources/lcd/font.obj
+
+# target to build an object file
+Sources/lcd/font.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/lcd/font.c.obj
+.PHONY : Sources/lcd/font.c.obj
+
+Sources/lcd/font.i: Sources/lcd/font.c.i
+.PHONY : Sources/lcd/font.i
+
+# target to preprocess a source file
+Sources/lcd/font.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/lcd/font.c.i
+.PHONY : Sources/lcd/font.c.i
+
+Sources/lcd/font.s: Sources/lcd/font.c.s
+.PHONY : Sources/lcd/font.s
+
+# target to generate assembly for a file
+Sources/lcd/font.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/lcd/font.c.s
+.PHONY : Sources/lcd/font.c.s
+
+Sources/lcd/screenDriver.obj: Sources/lcd/screenDriver.c.obj
+.PHONY : Sources/lcd/screenDriver.obj
+
+# target to build an object file
+Sources/lcd/screenDriver.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/lcd/screenDriver.c.obj
+.PHONY : Sources/lcd/screenDriver.c.obj
+
+Sources/lcd/screenDriver.i: Sources/lcd/screenDriver.c.i
+.PHONY : Sources/lcd/screenDriver.i
+
+# target to preprocess a source file
+Sources/lcd/screenDriver.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/lcd/screenDriver.c.i
+.PHONY : Sources/lcd/screenDriver.c.i
+
+Sources/lcd/screenDriver.s: Sources/lcd/screenDriver.c.s
+.PHONY : Sources/lcd/screenDriver.s
+
+# target to generate assembly for a file
+Sources/lcd/screenDriver.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/lcd/screenDriver.c.s
+.PHONY : Sources/lcd/screenDriver.c.s
 
 Sources/main.obj: Sources/main.c.obj
 .PHONY : Sources/main.obj
@@ -208,30 +256,6 @@ Sources/main.s: Sources/main.c.s
 Sources/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/main.c.s
 .PHONY : Sources/main.c.s
-
-Sources/screenDriver.obj: Sources/screenDriver.c.obj
-.PHONY : Sources/screenDriver.obj
-
-# target to build an object file
-Sources/screenDriver.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/screenDriver.c.obj
-.PHONY : Sources/screenDriver.c.obj
-
-Sources/screenDriver.i: Sources/screenDriver.c.i
-.PHONY : Sources/screenDriver.i
-
-# target to preprocess a source file
-Sources/screenDriver.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/screenDriver.c.i
-.PHONY : Sources/screenDriver.c.i
-
-Sources/screenDriver.s: Sources/screenDriver.c.s
-.PHONY : Sources/screenDriver.s
-
-# target to generate assembly for a file
-Sources/screenDriver.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/screenDriver.c.s
-.PHONY : Sources/screenDriver.c.s
 
 Sources/syscalls.obj: Sources/syscalls.c.obj
 .PHONY : Sources/syscalls.obj
@@ -298,19 +322,22 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... opsys"
-	@echo "... Sources/asmRoutines.obj"
-	@echo "... Sources/flashManager.obj"
-	@echo "... Sources/flashManager.i"
-	@echo "... Sources/flashManager.s"
-	@echo "... Sources/font.obj"
-	@echo "... Sources/font.i"
-	@echo "... Sources/font.s"
+	@echo "... Sources/flash/asmRoutines.obj"
+	@echo "... Sources/flash/flashManager.obj"
+	@echo "... Sources/flash/flashManager.i"
+	@echo "... Sources/flash/flashManager.s"
+	@echo "... Sources/general/mcuHeader.obj"
+	@echo "... Sources/general/mcuHeader.i"
+	@echo "... Sources/general/mcuHeader.s"
+	@echo "... Sources/lcd/font.obj"
+	@echo "... Sources/lcd/font.i"
+	@echo "... Sources/lcd/font.s"
+	@echo "... Sources/lcd/screenDriver.obj"
+	@echo "... Sources/lcd/screenDriver.i"
+	@echo "... Sources/lcd/screenDriver.s"
 	@echo "... Sources/main.obj"
 	@echo "... Sources/main.i"
 	@echo "... Sources/main.s"
-	@echo "... Sources/screenDriver.obj"
-	@echo "... Sources/screenDriver.i"
-	@echo "... Sources/screenDriver.s"
 	@echo "... Sources/syscalls.obj"
 	@echo "... Sources/syscalls.i"
 	@echo "... Sources/syscalls.s"
