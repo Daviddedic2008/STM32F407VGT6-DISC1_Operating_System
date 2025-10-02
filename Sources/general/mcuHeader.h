@@ -118,6 +118,8 @@ void delay_ms(uint32_t ms);
 
 void pulse_speaker();
 
+void playTone(const uint32_t hz, const uint32_t duration_ms);
+
 void pinout();
 #endif
 
