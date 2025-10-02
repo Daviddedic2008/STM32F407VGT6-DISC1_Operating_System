@@ -58,7 +58,6 @@ int main(void)
 		}
 		moveCursor(0,0);
 		charCycle++;
-		delay_ms(100);
 	}
 	for(;;);
 }
