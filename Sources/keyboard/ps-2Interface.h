@@ -24,4 +24,6 @@
 #define CLEAR_EXTI_FLAG(line) EXTI_PR = 1 << line
 #define READ_PS2_DATA() ((GPIOB_IDR /*temp port g, change later*/ >> KBRD_DATA_PIN) & 1)
 #define CHECK_CLK() (EXTI_PR & (1 << KBRD_CLK_PIN)) // check if clock pin is a falling edge
+
+char attemptRecieve();
 #endif /* SOURCES_PS_2INTERFACE_H_ */

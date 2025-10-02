@@ -50,19 +50,15 @@ int main(void)
 	//putString("Hello! This is an OS for the\nSTM32F407VGT6-DISC1.\n\n\nIt is completely BARE METAL,  no libraries or external\n headers ;)\n\n\nIt contains:a screen driver(for elegoo 2.8in tft lcd),ps-2 keyboard driver,and a system for storing/writing/running programs :)", 250);
 
 	// test
-	/*unsigned int charCycle = 0;
+	unsigned int charCycle = 0;
 	while(1){
 		//speakerCycle();
 		for(int i = 0; i < 1200; i++){
-				putChar(charCycle % 127);
+				putChar(49 + charCycle % 50);
 		}
 		moveCursor(0,0);
 		charCycle++;
-	}*/
-	putChar('a');
-	putChar('b');
-	putChar('\b');
-	putChar('a');
-	putChar('_');
+		delay_ms(100);
+	}
 	for(;;);
 }

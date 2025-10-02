@@ -38,7 +38,7 @@ void WRITE_LCD_BUS(const unsigned char data, const unsigned char command){
 	WRITE_BYTE_PORT_LO(GPIOA_ODR, data);
 	// LCD_WR set and clear to send byte
 	CLEAR_PIN(GPIOB_ODR, 0);
-	PULSE_DELAY();
+	//PULSE_DELAY();
 	SET_PIN(GPIOB_ODR, 0);
 }
 
