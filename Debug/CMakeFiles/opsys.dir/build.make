@@ -168,10 +168,38 @@ CMakeFiles/opsys.dir/Sources/flash/asmRoutines.S.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling ASM source to assembly CMakeFiles/opsys.dir/Sources/flash/asmRoutines.S.s"
 	C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/arm-none-eabi-gcc.exe $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/flash/asmRoutines.S -o CMakeFiles/opsys.dir/Sources/flash/asmRoutines.S.s
 
+CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj: CMakeFiles/opsys.dir/flags.make
+CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj: C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/programs/bootScreen.c
+CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj: CMakeFiles/opsys.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj"
+	C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj -MF CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj.d -o CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj -c C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/programs/bootScreen.c
+
+CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.i"
+	C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/programs/bootScreen.c > CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.i
+
+CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.s"
+	C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/programs/bootScreen.c -o CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.s
+
+CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj: CMakeFiles/opsys.dir/flags.make
+CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj: C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/programs/terminal.c
+CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj: CMakeFiles/opsys.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj"
+	C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj -MF CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj.d -o CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj -c C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/programs/terminal.c
+
+CMakeFiles/opsys.dir/Sources/programs/terminal.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/opsys.dir/Sources/programs/terminal.c.i"
+	C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/programs/terminal.c > CMakeFiles/opsys.dir/Sources/programs/terminal.c.i
+
+CMakeFiles/opsys.dir/Sources/programs/terminal.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/opsys.dir/Sources/programs/terminal.c.s"
+	C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/programs/terminal.c -o CMakeFiles/opsys.dir/Sources/programs/terminal.c.s
+
 CMakeFiles/opsys.dir/Sources/syscalls.c.obj: CMakeFiles/opsys.dir/flags.make
 CMakeFiles/opsys.dir/Sources/syscalls.c.obj: C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/syscalls.c
 CMakeFiles/opsys.dir/Sources/syscalls.c.obj: CMakeFiles/opsys.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/opsys.dir/Sources/syscalls.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/opsys.dir/Sources/syscalls.c.obj"
 	C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/opsys.dir/Sources/syscalls.c.obj -MF CMakeFiles/opsys.dir/Sources/syscalls.c.obj.d -o CMakeFiles/opsys.dir/Sources/syscalls.c.obj -c C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/syscalls.c
 
 CMakeFiles/opsys.dir/Sources/syscalls.c.i: cmake_force
@@ -185,7 +213,7 @@ CMakeFiles/opsys.dir/Sources/syscalls.c.s: cmake_force
 CMakeFiles/opsys.dir/Sources/sysmem.c.obj: CMakeFiles/opsys.dir/flags.make
 CMakeFiles/opsys.dir/Sources/sysmem.c.obj: C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/sysmem.c
 CMakeFiles/opsys.dir/Sources/sysmem.c.obj: CMakeFiles/opsys.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/opsys.dir/Sources/sysmem.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/opsys.dir/Sources/sysmem.c.obj"
 	C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/opsys.dir/Sources/sysmem.c.obj -MF CMakeFiles/opsys.dir/Sources/sysmem.c.obj.d -o CMakeFiles/opsys.dir/Sources/sysmem.c.obj -c C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/sysmem.c
 
 CMakeFiles/opsys.dir/Sources/sysmem.c.i: cmake_force
@@ -205,6 +233,8 @@ opsys_OBJECTS = \
 "CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.obj" \
 "CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj" \
 "CMakeFiles/opsys.dir/Sources/flash/asmRoutines.S.obj" \
+"CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj" \
+"CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj" \
 "CMakeFiles/opsys.dir/Sources/syscalls.c.obj" \
 "CMakeFiles/opsys.dir/Sources/sysmem.c.obj"
 
@@ -218,10 +248,12 @@ opsys.elf: CMakeFiles/opsys.dir/Sources/lcd/font.c.obj
 opsys.elf: CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.obj
 opsys.elf: CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
 opsys.elf: CMakeFiles/opsys.dir/Sources/flash/asmRoutines.S.obj
+opsys.elf: CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj
+opsys.elf: CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj
 opsys.elf: CMakeFiles/opsys.dir/Sources/syscalls.c.obj
 opsys.elf: CMakeFiles/opsys.dir/Sources/sysmem.c.obj
 opsys.elf: CMakeFiles/opsys.dir/build.make
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking C executable opsys.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking C executable opsys.elf"
 	C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/arm-none-eabi-gcc.exe -mcpu=Cortex-M4 -std=gnu11 -mfpu=fpv4-sp-d16  --specs=nano.specs -mthumb -Wall -Werror -g -T../STM32F407VGTX_FLASH.ld --specs=nosys.specs -Wl,-Map=test.map -Wl,--gc-sections -static -Wl,--start-group -lc -lm -Wl,--end-group $(opsys_OBJECTS) $(opsys_EXTERNAL_OBJECTS) -o opsys.elf
 	arm-none-eabi-size C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Debug/opsys.elf
 

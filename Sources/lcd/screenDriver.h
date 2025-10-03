@@ -15,6 +15,9 @@ void putString(const char* str, const uint16_t length);
 void LCD_INIT();
 void clearLCD();
 void moveCursor(const uint8_t x, const uint8_t y);
+void changeColor(const uint16_t c);
+void changeBackdrop(const uint16_t c);
+void highlightCursor();
 
 
 #endif /* SOURCES_SCREENDRIVER_H_ */

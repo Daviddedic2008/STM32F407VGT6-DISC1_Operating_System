@@ -257,6 +257,54 @@ Sources/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/main.c.s
 .PHONY : Sources/main.c.s
 
+Sources/programs/bootScreen.obj: Sources/programs/bootScreen.c.obj
+.PHONY : Sources/programs/bootScreen.obj
+
+# target to build an object file
+Sources/programs/bootScreen.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj
+.PHONY : Sources/programs/bootScreen.c.obj
+
+Sources/programs/bootScreen.i: Sources/programs/bootScreen.c.i
+.PHONY : Sources/programs/bootScreen.i
+
+# target to preprocess a source file
+Sources/programs/bootScreen.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.i
+.PHONY : Sources/programs/bootScreen.c.i
+
+Sources/programs/bootScreen.s: Sources/programs/bootScreen.c.s
+.PHONY : Sources/programs/bootScreen.s
+
+# target to generate assembly for a file
+Sources/programs/bootScreen.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.s
+.PHONY : Sources/programs/bootScreen.c.s
+
+Sources/programs/terminal.obj: Sources/programs/terminal.c.obj
+.PHONY : Sources/programs/terminal.obj
+
+# target to build an object file
+Sources/programs/terminal.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj
+.PHONY : Sources/programs/terminal.c.obj
+
+Sources/programs/terminal.i: Sources/programs/terminal.c.i
+.PHONY : Sources/programs/terminal.i
+
+# target to preprocess a source file
+Sources/programs/terminal.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/programs/terminal.c.i
+.PHONY : Sources/programs/terminal.c.i
+
+Sources/programs/terminal.s: Sources/programs/terminal.c.s
+.PHONY : Sources/programs/terminal.s
+
+# target to generate assembly for a file
+Sources/programs/terminal.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/programs/terminal.c.s
+.PHONY : Sources/programs/terminal.c.s
+
 Sources/syscalls.obj: Sources/syscalls.c.obj
 .PHONY : Sources/syscalls.obj
 
@@ -338,6 +386,12 @@ help:
 	@echo "... Sources/main.obj"
 	@echo "... Sources/main.i"
 	@echo "... Sources/main.s"
+	@echo "... Sources/programs/bootScreen.obj"
+	@echo "... Sources/programs/bootScreen.i"
+	@echo "... Sources/programs/bootScreen.s"
+	@echo "... Sources/programs/terminal.obj"
+	@echo "... Sources/programs/terminal.i"
+	@echo "... Sources/programs/terminal.s"
 	@echo "... Sources/syscalls.obj"
 	@echo "... Sources/syscalls.i"
 	@echo "... Sources/syscalls.s"

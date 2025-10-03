@@ -26,7 +26,10 @@ unsigned char row = 0; unsigned char col = 0;
  * GPIOA is data bus(8bit)
  */
 
-void WRITE_LCD_BUS(const unsigned char data, const unsigned char command){
+uint16_t color;
+uint16_t backdrop = 0;
+
+static inline void WRITE_LCD_BUS(const unsigned char data, const unsigned char command){
 	// LCD_RS bit set for command, clear for data
 	if(command == COMMAND){
 		CLEAR_PIN(GPIOB_ODR, 1);
@@ -42,7 +45,19 @@ void WRITE_LCD_BUS(const unsigned char data, const unsigned char command){
 	SET_PIN(GPIOB_ODR, 0);
 }
 
-inline void LCD_INIT(){
+void changeColor(const uint16_t c){
+	color = c;
+}
+
+void changeBackdrop(const uint16_t c){
+	backdrop = c;
+}
+
+void highlightCursor(){
+	putChar('_');
+}
+
+void LCD_INIT(){
 	CLEAR_PIN(GPIOC_ODR, 4); // reset low
 	delay_ms(10);
 	SET_PIN(GPIOC_ODR, 4);
@@ -128,8 +143,7 @@ void clearLCD(){
 	WRITE_LCD_BUS(0x2c, COMMAND);
 	for(unsigned int x = 0; x < 320; x++){
 		for(unsigned char y = 0; y < 240; y++){
-			WRITE_LCD_BUS(0, DATA);
-			WRITE_LCD_BUS(0, DATA);
+			WRITE_LCD_BUS(backdrop >> 8, DATA); WRITE_LCD_BUS(backdrop & 0xFF, DATA);
 		}
 	}
 }
@@ -157,9 +171,9 @@ void dispc(const unsigned int x, const unsigned int y, const char c){
 	for(unsigned char r = 0; r < 8; r++){
 		for(unsigned char offset = 0; offset < 8; offset++){
 			if(font8x8_basic[(unsigned char)c][r] & (1 << offset)){
-				WRITE_LCD_BUS(0xFF, DATA); WRITE_LCD_BUS(0xFF, DATA); continue;
+				WRITE_LCD_BUS(color >> 8, DATA); WRITE_LCD_BUS(color & 0xFF, DATA); continue;
 			}
-			WRITE_LCD_BUS(0x0, DATA); WRITE_LCD_BUS(0x0, DATA);
+			WRITE_LCD_BUS(backdrop >> 8, DATA); WRITE_LCD_BUS(backdrop & 0xFF, DATA);
 		}
 	}
 }

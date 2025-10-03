@@ -6,5 +6,7 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/flash/asmRoutines.S
+
 C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Startup/startup_stm32f407vgtx.s
 
