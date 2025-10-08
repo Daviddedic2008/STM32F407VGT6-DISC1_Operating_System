@@ -4,6 +4,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj.d"
   "CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.obj"
   "CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.obj.d"
+  "CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj"
+  "CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj.d"
   "CMakeFiles/opsys.dir/Sources/lcd/font.c.obj"
   "CMakeFiles/opsys.dir/Sources/lcd/font.c.obj.d"
   "CMakeFiles/opsys.dir/Sources/lcd/screenDriver.c.obj"

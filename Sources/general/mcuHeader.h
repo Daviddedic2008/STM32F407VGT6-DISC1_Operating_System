@@ -94,14 +94,13 @@ extern uint32_t SystemCoreClock;
 #define SRAMEND 2001FFFF
 #define SRAMSTART 0x20000000
 #define FLASHUSED (*(volatile uint32_t*)0x08000000)
+#define NUMPKG (*(volatile uint32_t*)0x08000004)
+#define PKGSTART (*(volatile uint32_t*)0x08000008) // alignment stuff i have enough flash to spare a few bytes
 
 // FLASH STUFF
 #define FLASH_KEYR (*(volatile uint32_t*)0x40023C04)
 #define FLASH_SR (*(volatile uint32_t*)0x40023C0C)
 #define FLASH_CR (*(volatile uint32_t*)0x40023C10)
-
-// CONSTS BASED ON OS ITSELF
-#define USEDFLASH 0x0 // unsure for now
 
 #define RCC_CR           (*(volatile uint32_t *)(RCC_BASE + 0x00))
 #define RCC_PLLCFGR      (*(volatile uint32_t *)(RCC_BASE + 0x04))

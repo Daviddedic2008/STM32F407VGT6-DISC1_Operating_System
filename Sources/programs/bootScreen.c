@@ -6,10 +6,12 @@
  */
 #include "bootScreen.h"
 #include "../lcd/screenDriver.h"
+#include "../keyboard/ps-2Interface.h"
+#include "terminal.h"
 
 void startupScreen(){
 	changeColor(0xF000);
-	changeBackdrop(0x2000);
+	changeBackdrop(0xA00A);
 	clearLCD();
 	const char* l1 = "\n\n\n___  ____                \n|  \\/  (_)               \n| .  . |_  ___ _ __ ___  \n| |\\/| | |/ __| '__/ _ \\ \n| |  | | | (__| | | (_) |\n\\_|  |_/_|\\___|_|  \\___/ \n                          \n                          \n _____                   \n|  _  |                  \n| | | | ___              \n| | | |/ __|             \n\\ \\_/ /\\__ \\             \n \\___/ |___/             \n                          \n                         ";
 	putString(l1, 530-120);
@@ -32,4 +34,8 @@ void startupScreen(){
 	playTone(4000, 100);
 	changeColor(0xFFFF);
 	putString("\n\n\n\n   Press any key to start!    ", 34);
+	while(attemptRecieve() == -1){
+		;
+	}
+	//beginTerminal();
 }

@@ -5,7 +5,7 @@
 #define SETSECTOR(sector) FLASH_CR &= ~(0xF << 3); /*clear sector bits 3-6*/ FLASH_CR |= (sector << 3)
 #define SETSECTORERASE() FLASH_CR |= 2 //
 #define BUFFERSECTOR 11
-#define LOCKFLASH() FLASH_CR |= (1 << 31);
+#define LOCKFLASH() FLASH_CR |= (1 << 31)
 
 #define START_FLASH 0x08000000
 
@@ -37,9 +37,14 @@ const uint32_t flash_sector_offset[] = {
     0xE0000   // Sector 11 - 128 KB
 };
 
-inline void unlockFlash(const unsigned char sector){
+inline void unlockFlash(){
 	FLASH_KEYR = 0x45670123;
 	FLASH_KEYR = 0xCDEF89AB; // idk what this is for tbh
+}
+
+inline void prepareSector(const unsigned char sector){
+	// clears sector and sets it to the write domain
+	// must be done before each write
 	SETSECTORERASE();
 	SETSECTOR(sector);
 	while (FLASH_SR & (1 << 16)); // wait for flash controller to erase sector
@@ -51,7 +56,7 @@ inline void writeWordToFlash(const uint32_t addr, const uint32_t val){
 	// now flash is open
 	(*(volatile uint32_t*)addr) = val;
 	while (FLASH_SR & (1 << 16)); // wait for flash controller to write data
-	FLASH_CR &= ~1; // set programming bit(allow write to flash)
+	FLASH_CR &= ~1; // clear programming bit(disallow write to flash)
 }
 
 inline void writeDataToFlash(const uint32_t addr, const uint32_t* val, const uint32_t wrSz){
@@ -75,10 +80,32 @@ inline void writeDataToSector(const uint32_t addr, const uint8_t sector, const u
 	writeDataToFlash(addr + flash_sector_offset[sector], val, wrSz);
 }
 
+#pragma pack(4) // default pack
 typedef struct {
-	uint32_t addr, sz;
+	char name; // for aligned access
+	uint32_t addr;
+	uint32_t sz;
 } flashPkg;
+#pragma pop
 
-inline void addFlashPkg(const uint32_t size, const uint8_t sector){
-;
+inline void addFlashPkg(const uint32_t size, const uint8_t sector, const char name){
+	const uint32_t flashUsed = *(volatile uint32_t*)(FLASHUSED);
+	const uint32_t pkgsAllocated = *(volatile uint32_t*)(NUMPKG);
+	const uint32_t startAddr = flash_sector_offset[10] + flashUsed;
+	uint32_t* buf = writeFlashToRamBuffer(FLASHUSED, 2 + pkgsAllocated * sizeof(flashPkg));
+	// clear sector to increment numPkg and flashUsed
+	prepareSector(0); // clear it wohoo
+	// set flash used and numpkg
+	writeWordToFlash(FLASHUSED, flashUsed + size);
+	writeWordToFlash(NUMPKG, pkgsAllocated + 1);
+	writeDataToFlash(FLASHUSED + 2, buf + 2, pkgsAllocated * sizeof(flashPkg));
+	// all written :)
+	// write new one
+	const flashPkg add = {name, startAddr, size};
+	writeDataToFlash(FLASHUSED + 2 + pkgsAllocated * sizeof(flashPkg), &add, sizeof(flashPkg));
+	// should all be written
+}
+
+inline flashPkg retrievePkg(const char name){
+	const flashPkg* pkgs = (volatile flashPkg*)
 }

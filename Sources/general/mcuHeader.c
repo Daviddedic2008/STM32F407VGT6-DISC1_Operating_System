@@ -103,3 +103,6 @@ void playTone(const uint32_t hz, const uint32_t duration_ms){
 	}
 }
 
+void SYSRESET(){
+	*(volatile uint32_t*)FLASHUSED = 0;
+}

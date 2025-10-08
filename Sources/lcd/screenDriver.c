@@ -53,8 +53,8 @@ void changeBackdrop(const uint16_t c){
 	backdrop = c;
 }
 
-void highlightCursor(){
-	putChar('_');
+unsigned char getRow(){
+	return row;
 }
 
 void LCD_INIT(){

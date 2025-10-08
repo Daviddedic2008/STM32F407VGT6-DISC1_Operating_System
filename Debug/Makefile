@@ -185,6 +185,30 @@ Sources/general/mcuHeader.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.s
 .PHONY : Sources/general/mcuHeader.c.s
 
+Sources/keyboard/ps-2Interface.obj: Sources/keyboard/ps-2Interface.c.obj
+.PHONY : Sources/keyboard/ps-2Interface.obj
+
+# target to build an object file
+Sources/keyboard/ps-2Interface.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
+.PHONY : Sources/keyboard/ps-2Interface.c.obj
+
+Sources/keyboard/ps-2Interface.i: Sources/keyboard/ps-2Interface.c.i
+.PHONY : Sources/keyboard/ps-2Interface.i
+
+# target to preprocess a source file
+Sources/keyboard/ps-2Interface.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.i
+.PHONY : Sources/keyboard/ps-2Interface.c.i
+
+Sources/keyboard/ps-2Interface.s: Sources/keyboard/ps-2Interface.c.s
+.PHONY : Sources/keyboard/ps-2Interface.s
+
+# target to generate assembly for a file
+Sources/keyboard/ps-2Interface.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.s
+.PHONY : Sources/keyboard/ps-2Interface.c.s
+
 Sources/lcd/font.obj: Sources/lcd/font.c.obj
 .PHONY : Sources/lcd/font.obj
 
@@ -377,6 +401,9 @@ help:
 	@echo "... Sources/general/mcuHeader.obj"
 	@echo "... Sources/general/mcuHeader.i"
 	@echo "... Sources/general/mcuHeader.s"
+	@echo "... Sources/keyboard/ps-2Interface.obj"
+	@echo "... Sources/keyboard/ps-2Interface.i"
+	@echo "... Sources/keyboard/ps-2Interface.s"
 	@echo "... Sources/lcd/font.obj"
 	@echo "... Sources/lcd/font.i"
 	@echo "... Sources/lcd/font.s"
