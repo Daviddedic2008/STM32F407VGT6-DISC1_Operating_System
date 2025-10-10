@@ -95,7 +95,7 @@ extern uint32_t SystemCoreClock;
 #define SRAMSTART 0x20000000
 #define FLASHUSED (*(volatile uint32_t*)0x08000000)
 #define NUMPKG (*(volatile uint32_t*)0x08000004)
-#define PKGSTART (*(volatile uint32_t*)0x08000008) // alignment stuff i have enough flash to spare a few bytes
+#define STARTPKG (*(volatile uint32_t*)0x08000008) // alignment stuff i have enough flash to spare a few bytes
 
 // FLASH STUFF
 #define FLASH_KEYR (*(volatile uint32_t*)0x40023C04)

@@ -22,6 +22,11 @@
  * Although memory is unified on the M4 in the sense that the same opcodes access flash, ram, registers, etc,
 */
 
+unsigned char sectorDir = 10;
+
+#define swapDir() sectorDir = sectorDir == 10 ? 11 : 10
+#define bufDir ((sectorDir == 10) * 11 + (sectorDir == 11) * 10)
+
 const uint32_t flash_sector_offset[] = {
     0x00000,  // Sector 0 - 16 KB
     0x04000,  // Sector 1 - 16 KB
@@ -62,8 +67,8 @@ inline void writeWordToFlash(const uint32_t addr, const uint32_t val){
 inline void writeDataToFlash(const uint32_t addr, const uint32_t* val, const uint32_t wrSz){
 	FLASH_CR |= 1; // set programming bit(allow write to flash)
 	// now flash is open
-	for(uint32_t idx = 0; idx < wrSz; idx++){
-		(*(volatile uint32_t*)addr) = val[idx];
+	for(uint32_t idx = 0; idx < wrSz/4; idx++){
+		(*(volatile uint32_t*)(addr+idx)) = val[idx];
 		while (FLASH_SR & (1 << 16)); // wait for flash controller to write data
 	}
 	FLASH_CR &= ~1; // set programming bit(allow write to flash)
@@ -71,8 +76,8 @@ inline void writeDataToFlash(const uint32_t addr, const uint32_t* val, const uin
 
 inline void* writeFlashToRamBuffer(const uint32_t addr, const uint32_t wrSz){
 	void* ret = malloc(sizeof(uint32_t)*wrSz);
-	for(uint32_t o = 0; o < wrSz; o++){
-		((uint32_t*)ret)[o] = *(volatile uint32_t*)addr;
+	for(uint32_t o = 0; o < wrSz/4; o++){
+		((uint32_t*)ret)[o] = *(volatile uint32_t*)(addr+o);
 	}
 }
 
@@ -80,32 +85,84 @@ inline void writeDataToSector(const uint32_t addr, const uint8_t sector, const u
 	writeDataToFlash(addr + flash_sector_offset[sector], val, wrSz);
 }
 
-#pragma pack(4) // default pack
+#pragma pack(push,4) // default pack
 typedef struct {
 	char name; // for aligned access
 	uint32_t addr;
 	uint32_t sz;
 } flashPkg;
-#pragma pop
+#pragma pack(pop)
 
 inline void addFlashPkg(const uint32_t size, const uint8_t sector, const char name){
 	const uint32_t flashUsed = *(volatile uint32_t*)(FLASHUSED);
 	const uint32_t pkgsAllocated = *(volatile uint32_t*)(NUMPKG);
-	const uint32_t startAddr = flash_sector_offset[10] + flashUsed;
-	uint32_t* buf = writeFlashToRamBuffer(FLASHUSED, 2 + pkgsAllocated * sizeof(flashPkg));
+	const uint32_t startAddr = flash_sector_offset[sectorDir] + flashUsed;
+	uint32_t* buf = writeFlashToRamBuffer(STARTPKG, pkgsAllocated * sizeof(flashPkg));
 	// clear sector to increment numPkg and flashUsed
 	prepareSector(0); // clear it wohoo
 	// set flash used and numpkg
 	writeWordToFlash(FLASHUSED, flashUsed + size);
 	writeWordToFlash(NUMPKG, pkgsAllocated + 1);
-	writeDataToFlash(FLASHUSED + 2, buf + 2, pkgsAllocated * sizeof(flashPkg));
+	writeDataToFlash(STARTPKG, buf, pkgsAllocated * sizeof(flashPkg));
 	// all written :)
 	// write new one
 	const flashPkg add = {name, startAddr, size};
-	writeDataToFlash(FLASHUSED + 2 + pkgsAllocated * sizeof(flashPkg), &add, sizeof(flashPkg));
+	writeDataToFlash(STARTPKG + pkgsAllocated * sizeof(flashPkg), (uint32_t*)&add, sizeof(flashPkg));
+	free(buf);
 	// should all be written
 }
 
 inline flashPkg retrievePkg(const char name){
-	const flashPkg* pkgs = (volatile flashPkg*)
+	int np = *(volatile uint32_t*)NUMPKG;
+	flashPkg* pkgs = (flashPkg*)STARTPKG;
+	for(; pkgs->name != name; pkgs++, np--){
+		if(np == -1){
+			const flashPkg ret = {'~', 0, 0};
+			return ret;
+		}
+	}
+	return *pkgs;
+}
+
+inline void removePkg(const char name){
+	int np = *(volatile uint32_t*)NUMPKG;
+	const int npb = np; // save for later
+	if(np == 0){
+		return;
+	}
+	uint32_t flashUsed = *(volatile uint32_t*)FLASHUSED;
+	flashPkg* pkgs = (flashPkg*)STARTPKG;
+	for(; pkgs->name != name; pkgs++, np--){
+		if(np == -1){
+			return;
+		}
+	}
+	// found pkg, have access to np and pkg*
+
+	// remove from pkg metadata
+	// dont reduce flashUsed as it is onyl reduced when compressing
+	uint32_t* buf = writeFlashToRamBuffer(STARTPKG, pkgsAllocated * sizeof(flashPkg));
+	prepareSector(0);
+	writeWordToFlash(FLASHUSED, flashUsed);
+	writeWordToFlash(NUMPKG, npb-1);
+	writeDataToFlash(STARTPKG, buf, sizeof(flashPkg) * np);
+	writeDataToFlash(STARTPKG + sizeof(flashPkg) * np + sizeof(flashPkg), (npb-np-1) * sizeof(flashPkg));
+}
+
+inline void compressPkgs(){
+	uint32_t flashUsed = *(volatile uint32_t*)FLASHUSED;
+	uint32_t numPkg = *(volatile uint32_t*)NUMPKG;
+	flashPkg* pkgs = writeFlashToRamBuffer(STARTPKG, sizeof(flashPkg) * numPkg);
+	prepareSector(0); // sadly gotta rewrite
+	writeWordToFlash(NUMPKG, numPkg);
+	uint32_t offset = 0; // total memory actually used by files
+	prepareSector(bufDir);
+	// compress by re-writing files to other sector,
+	for(int np = numPkg; np != -1; pkgs++, np--){
+		// start loc is offset
+		offset += pkgs->size;
+		flashPkg tmp = {pkgs->name, offset + flash_sector_offset[sectorDir], pkgs->size};
+		writeDataToFlash(STARTPKG + sizeof(flashPkg) * np, (uint32_t*)&tmp, sizeof(flashPkg));
+	}
+
 }
