@@ -141,16 +141,15 @@ inline void removePkg(const char name){
 
 	// remove from pkg metadata
 	// dont reduce flashUsed as it is onyl reduced when compressing
-	uint32_t* buf = writeFlashToRamBuffer(STARTPKG, pkgsAllocated * sizeof(flashPkg));
+	uint32_t* buf = writeFlashToRamBuffer(STARTPKG, np * sizeof(flashPkg));
 	prepareSector(0);
 	writeWordToFlash(FLASHUSED, flashUsed);
 	writeWordToFlash(NUMPKG, npb-1);
 	writeDataToFlash(STARTPKG, buf, sizeof(flashPkg) * np);
-	writeDataToFlash(STARTPKG + sizeof(flashPkg) * np + sizeof(flashPkg), (npb-np-1) * sizeof(flashPkg));
+	writeDataToFlash(STARTPKG + sizeof(flashPkg) * np + sizeof(flashPkg), (uint32_t*)((flashPkg*)buf + npb), (npb-np-1) * sizeof(flashPkg));
 }
 
 inline void compressPkgs(){
-	uint32_t flashUsed = *(volatile uint32_t*)FLASHUSED;
 	uint32_t numPkg = *(volatile uint32_t*)NUMPKG;
 	flashPkg* pkgs = writeFlashToRamBuffer(STARTPKG, sizeof(flashPkg) * numPkg);
 	prepareSector(0); // sadly gotta rewrite
@@ -160,9 +159,10 @@ inline void compressPkgs(){
 	// compress by re-writing files to other sector,
 	for(int np = numPkg; np != -1; pkgs++, np--){
 		// start loc is offset
-		offset += pkgs->size;
-		flashPkg tmp = {pkgs->name, offset + flash_sector_offset[sectorDir], pkgs->size};
+		offset += pkgs->sz;
+		flashPkg tmp = {pkgs->name, offset + flash_sector_offset[sectorDir], pkgs->sz};
 		writeDataToFlash(STARTPKG + sizeof(flashPkg) * np, (uint32_t*)&tmp, sizeof(flashPkg));
+		writeDataToFlash(flash_sector_offset[bufDir] + offset, (uint32_t*)pkgs, pkgs->sz);
 	}
-
+	writeWordToFlash(FLASHUSED, offset);
 }

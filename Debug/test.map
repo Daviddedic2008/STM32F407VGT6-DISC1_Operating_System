@@ -274,15 +274,15 @@ Discarded input sections
  .bss           0x00000000        0x0 CMakeFiles/opsys.dir/Sources/lcd/font.c.obj
  .data          0x00000000        0x0 CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.obj
  .text          0x00000000        0x0 CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
- .data          0x00000000        0x0 CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
+ .data          0x00000000        0x1 CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
  .bss           0x00000000        0x0 CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
  .rodata        0x00000000       0x30 CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
- .debug_info    0x00000000       0xb7 CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
- .debug_abbrev  0x00000000       0x61 CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
+ .debug_info    0x00000000       0xc7 CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
+ .debug_abbrev  0x00000000       0x62 CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
  .debug_aranges
                 0x00000000       0x18 CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
  .debug_line    0x00000000      0x24f CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
- .debug_str     0x00000000      0x1b7 CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
+ .debug_str     0x00000000      0x1c1 CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
  .comment       0x00000000       0x44 CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
  .ARM.attributes
                 0x00000000       0x2e CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
