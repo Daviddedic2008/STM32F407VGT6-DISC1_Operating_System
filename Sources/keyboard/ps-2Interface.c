@@ -148,7 +148,7 @@ char recieveChar(){
 }
 
 char attemptRecieve(){
-	if(CHECK_CLK()){
+	if(!CHECK_CLK()){
 		return -1;
 	}
 	return recieveChar();

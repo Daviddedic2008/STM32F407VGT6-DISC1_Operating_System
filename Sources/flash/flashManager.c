@@ -1,5 +1,6 @@
 #include "../general/mcuHeader.h"
 #include "asmRoutines.h"
+#include "flashManager.h"
 #include <stdlib.h>
 
 #define SETSECTOR(sector) FLASH_CR &= ~(0xF << 3); /*clear sector bits 3-6*/ FLASH_CR |= (sector << 3)
@@ -84,14 +85,6 @@ inline void* writeFlashToRamBuffer(const uint32_t addr, const uint32_t wrSz){
 inline void writeDataToSector(const uint32_t addr, const uint8_t sector, const uint32_t* val, const uint32_t wrSz){
 	writeDataToFlash(addr + flash_sector_offset[sector], val, wrSz);
 }
-
-#pragma pack(push,4) // default pack
-typedef struct {
-	char name; // for aligned access
-	uint32_t addr;
-	uint32_t sz;
-} flashPkg;
-#pragma pack(pop)
 
 inline void addFlashPkg(const uint32_t size, const uint8_t sector, const char name){
 	const uint32_t flashUsed = *(volatile uint32_t*)(FLASHUSED);
