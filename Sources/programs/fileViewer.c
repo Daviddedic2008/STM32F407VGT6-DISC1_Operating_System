@@ -13,14 +13,14 @@ void displayFileTxt(const char name){
 	for(; add < p.addr + sz1; add++){
 		putChar(*(volatile char*)(add));
 	}
-	while(attemptRecieve == -1){
+	while(attemptRecieve() == -1){
 		;
 	}
 	clearLCD();
 	for(; add < p.addr + sz2; add++){
 		putChar(*(volatile char*)(add));
 	}
-	while(attemptRecieve == -1){
+	while(attemptRecieve() == -1){
 		;
 	}
 	beginTerminal();
