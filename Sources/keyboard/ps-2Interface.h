@@ -25,5 +25,5 @@
 #define READ_PS2_DATA() ((*((volatile uint32_t*)GPIOB_IDR) /*temp port g, change later*/ >> KBRD_DATA_PIN) & 1)
 #define CHECK_CLK() (*((volatile uint32_t*)EXTI_PR) & (1 << KBRD_CLK_PIN)) // check if clock pin is a falling edge
 
-char attemptRecieve();
+int attemptRecieve();
 #endif /* SOURCES_PS_2INTERFACE_H_ */

@@ -14,6 +14,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/opsys.dir/Sources/main.c.obj.d"
   "CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj"
   "CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj.d"
+  "CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj"
+  "CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj.d"
   "CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj"
   "CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj.d"
   "CMakeFiles/opsys.dir/Sources/syscalls.c.obj"

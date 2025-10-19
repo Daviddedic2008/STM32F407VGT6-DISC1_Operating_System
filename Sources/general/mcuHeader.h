@@ -41,7 +41,7 @@ extern uint32_t SystemCoreClock;
 #define GPIOG_IDR   0x40021810
 #define GPIOG_ODR   0x40021814
 
-// otyper for config push pull inputs(actively drives high instead of draining current slowly)
+// otyper for config push pull outputs(actively drives high instead of draining current slowly)
 #define GPIOA_OTYPER  0x40020004
 #define GPIOB_OTYPER  0x40020404
 #define GPIOC_OTYPER  0x40020804
@@ -51,6 +51,16 @@ extern uint32_t SystemCoreClock;
 #define GPIOG_OTYPER  0x40021804
 #define GPIOH_OTYPER  0x40021C04
 #define GPIOI_OTYPER  0x40022004
+
+#define GPIOA_PUPDR  0x4002000C
+#define GPIOB_PUPDR  0x4002040C
+#define GPIOC_PUPDR  0x4002080C
+#define GPIOD_PUPDR  0x40020C0C
+#define GPIOE_PUPDR  0x4002100C
+#define GPIOF_PUPDR  0x4002140C
+#define GPIOG_PUPDR  0x4002180C
+#define GPIOH_PUPDR  0x40021C0C
+#define GPIOI_PUPDR  0x4002200C
 
 // exti line stuff
 
@@ -85,7 +95,9 @@ extern uint32_t SystemCoreClock;
 #define WRITE_UINT16_PORT(port, uint) (*(volatile uint32_t*)port) & uint
 
 // set pin to push-pull (clear bit)
-#define SET_PUSH_PULL(reg_addr, pin) (*(volatile unsigned int*)(reg_addr) &= ~(1 << (pin)))
+#define SET_PUSH_PULL(reg_addr, pin) \
+    (*(volatile uint32_t*)(reg_addr) &= ~(3 << ((pin) * 2))); \
+    (*(volatile uint32_t*)(reg_addr) |=  (1 << ((pin) * 2)))
 // set pin to open-drain (set bit)
 #define SET_OPEN_DRAIN(reg_addr, pin) (*(volatile unsigned int*)(reg_addr) |= (1 << (pin)))
 

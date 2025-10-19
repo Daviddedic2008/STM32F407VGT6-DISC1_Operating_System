@@ -8,6 +8,7 @@
 #include "../lcd/screenDriver.h"
 #include "../keyboard/ps-2Interface.h"
 #include "terminal.h"
+#include "../general/mcuHeader.h"
 
 void startupScreen(){
 	changeColor(0xF000);
@@ -37,5 +38,5 @@ void startupScreen(){
 	while(attemptRecieve() == -1){
 		;
 	}
-	//beginTerminal();
+	beginTerminal();
 }

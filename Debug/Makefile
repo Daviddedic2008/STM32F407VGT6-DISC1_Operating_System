@@ -305,6 +305,30 @@ Sources/programs/bootScreen.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.s
 .PHONY : Sources/programs/bootScreen.c.s
 
+Sources/programs/fileViewer.obj: Sources/programs/fileViewer.c.obj
+.PHONY : Sources/programs/fileViewer.obj
+
+# target to build an object file
+Sources/programs/fileViewer.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj
+.PHONY : Sources/programs/fileViewer.c.obj
+
+Sources/programs/fileViewer.i: Sources/programs/fileViewer.c.i
+.PHONY : Sources/programs/fileViewer.i
+
+# target to preprocess a source file
+Sources/programs/fileViewer.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.i
+.PHONY : Sources/programs/fileViewer.c.i
+
+Sources/programs/fileViewer.s: Sources/programs/fileViewer.c.s
+.PHONY : Sources/programs/fileViewer.s
+
+# target to generate assembly for a file
+Sources/programs/fileViewer.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.s
+.PHONY : Sources/programs/fileViewer.c.s
+
 Sources/programs/terminal.obj: Sources/programs/terminal.c.obj
 .PHONY : Sources/programs/terminal.obj
 
@@ -416,6 +440,9 @@ help:
 	@echo "... Sources/programs/bootScreen.obj"
 	@echo "... Sources/programs/bootScreen.i"
 	@echo "... Sources/programs/bootScreen.s"
+	@echo "... Sources/programs/fileViewer.obj"
+	@echo "... Sources/programs/fileViewer.i"
+	@echo "... Sources/programs/fileViewer.s"
 	@echo "... Sources/programs/terminal.obj"
 	@echo "... Sources/programs/terminal.i"
 	@echo "... Sources/programs/terminal.s"

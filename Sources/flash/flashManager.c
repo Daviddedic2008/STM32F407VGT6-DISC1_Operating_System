@@ -57,7 +57,7 @@ inline void prepareSector(const unsigned char sector){
 	FLASH_CR &= ~(1 << 1); // clear sector erase bit
 }
 
-inline void writeWordToFlash(const uint32_t addr, const uint32_t val){
+void writeWordToFlash(const uint32_t addr, const uint32_t val){
 	FLASH_CR |= 1; // set programming bit(allow write to flash)
 	// now flash is open
 	(*(volatile uint32_t*)addr) = val;
@@ -65,7 +65,7 @@ inline void writeWordToFlash(const uint32_t addr, const uint32_t val){
 	FLASH_CR &= ~1; // clear programming bit(disallow write to flash)
 }
 
-inline void writeDataToFlash(const uint32_t addr, const uint32_t* val, const uint32_t wrSz){
+void writeDataToFlash(const uint32_t addr, const uint32_t* val, const uint32_t wrSz){
 	FLASH_CR |= 1; // set programming bit(allow write to flash)
 	// now flash is open
 	for(uint32_t idx = 0; idx < wrSz/4; idx++){
@@ -75,18 +75,19 @@ inline void writeDataToFlash(const uint32_t addr, const uint32_t* val, const uin
 	FLASH_CR &= ~1; // set programming bit(allow write to flash)
 }
 
-inline void* writeFlashToRamBuffer(const uint32_t addr, const uint32_t wrSz){
+void* writeFlashToRamBuffer(const uint32_t addr, const uint32_t wrSz){
 	void* ret = malloc(sizeof(uint32_t)*wrSz);
 	for(uint32_t o = 0; o < wrSz/4; o++){
 		((uint32_t*)ret)[o] = *(volatile uint32_t*)(addr+o);
 	}
+	return ret;
 }
 
-inline void writeDataToSector(const uint32_t addr, const uint8_t sector, const uint32_t* val, const uint32_t wrSz){
+void writeDataToSector(const uint32_t addr, const uint8_t sector, const uint32_t* val, const uint32_t wrSz){
 	writeDataToFlash(addr + flash_sector_offset[sector], val, wrSz);
 }
 
-inline void addFlashPkg(const uint32_t size, const uint8_t sector, const char name){
+void addFlashPkg(const uint32_t size, const uint8_t sector, const char name){
 	const uint32_t flashUsed = *(volatile uint32_t*)(FLASHUSED);
 	const uint32_t pkgsAllocated = *(volatile uint32_t*)(NUMPKG);
 	const uint32_t startAddr = flash_sector_offset[sectorDir] + flashUsed;
@@ -105,7 +106,7 @@ inline void addFlashPkg(const uint32_t size, const uint8_t sector, const char na
 	// should all be written
 }
 
-inline flashPkg retrievePkg(const char name){
+flashPkg retrievePkg(const char name){
 	int np = *(volatile uint32_t*)NUMPKG;
 	flashPkg* pkgs = (flashPkg*)STARTPKG;
 	for(; pkgs->name != name; pkgs++, np--){
@@ -117,7 +118,7 @@ inline flashPkg retrievePkg(const char name){
 	return *pkgs;
 }
 
-inline void removePkg(const char name){
+void removePkg(const char name){
 	int np = *(volatile uint32_t*)NUMPKG;
 	const int npb = np; // save for later
 	if(np == 0){
@@ -142,7 +143,7 @@ inline void removePkg(const char name){
 	writeDataToFlash(STARTPKG + sizeof(flashPkg) * np + sizeof(flashPkg), (uint32_t*)((flashPkg*)buf + npb), (npb-np-1) * sizeof(flashPkg));
 }
 
-inline void compressPkgs(){
+void compressPkgs(){
 	uint32_t numPkg = *(volatile uint32_t*)NUMPKG;
 	flashPkg* pkgs = writeFlashToRamBuffer(STARTPKG, sizeof(flashPkg) * numPkg);
 	prepareSector(0); // sadly gotta rewrite

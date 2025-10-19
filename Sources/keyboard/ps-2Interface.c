@@ -147,7 +147,7 @@ char recieveChar(){
 	return convertKeycode(recieveKeycode());
 }
 
-char attemptRecieve(){
+int attemptRecieve(){
 	if(!CHECK_CLK()){
 		return -1;
 	}
