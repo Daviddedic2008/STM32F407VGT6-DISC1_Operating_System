@@ -27,6 +27,7 @@
 #include "general/mcuHeader.h"
 #include "programs/bootScreen.h"
 #include "programs/terminal.h"
+#include "flash/flashManager.h"
 
 int main(void)
 {
@@ -36,12 +37,17 @@ int main(void)
 	// main loop for OS
 	LCD_INIT();
 	clearLCD();
+	changeColor(0xFFFF);
 
 	//putString("Hello! This is an OS for the\nSTM32F407VGT6-DISC1.\n\n\nIt is completely BARE METAL,  no libraries or external\n headers ;)\n\n\nIt contains:a screen driver(for elegoo 2.8in tft lcd),ps-2 keyboard driver,and a system for storing/writing/running programs :)", 250);
 
 	// test
-	startupScreen();
+	addFlashPkg('a', 10);
+	//flashPkg r = retrievePkg('a');
+	putChar('a');
+	//startupScreen();
 	//beginTerminal();
+
 	while(1){
 		//speakerCycle();
 	}

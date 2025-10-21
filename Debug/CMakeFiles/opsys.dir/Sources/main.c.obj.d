@@ -12,4 +12,5 @@ CMakeFiles/opsys.dir/Sources/main.c.obj: \
  C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/general/mcuHeader.h \
  C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/programs/bootScreen.h \
  C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/programs/../general/mcuHeader.h \
- C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/programs/terminal.h
+ C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/programs/terminal.h \
+ C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/flash/flashManager.h

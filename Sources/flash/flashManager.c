@@ -43,12 +43,12 @@ const uint32_t flash_sector_offset[] = {
     0xE0000   // Sector 11 - 128 KB
 };
 
-inline void unlockFlash(){
+void unlockFlash(){
 	FLASH_KEYR = 0x45670123;
 	FLASH_KEYR = 0xCDEF89AB; // idk what this is for tbh
 }
 
-inline void prepareSector(const unsigned char sector){
+void prepareSector(const unsigned char sector){
 	// clears sector and sets it to the write domain
 	// must be done before each write
 	SETSECTORERASE();
@@ -77,6 +77,7 @@ void writeDataToFlash(const uint32_t addr, const uint32_t* val, const uint32_t w
 
 void* writeFlashToRamBuffer(const uint32_t addr, const uint32_t wrSz){
 	void* ret = malloc(sizeof(uint32_t)*wrSz);
+	return ret;
 	for(uint32_t o = 0; o < wrSz/4; o++){
 		((uint32_t*)ret)[o] = *(volatile uint32_t*)(addr+o);
 	}
@@ -87,11 +88,12 @@ void writeDataToSector(const uint32_t addr, const uint8_t sector, const uint32_t
 	writeDataToFlash(addr + flash_sector_offset[sector], val, wrSz);
 }
 
-void addFlashPkg(const uint32_t size, const uint8_t sector, const char name){
+void addFlashPkg(const uint32_t size, const char name){
 	const uint32_t flashUsed = *(volatile uint32_t*)(FLASHUSED);
 	const uint32_t pkgsAllocated = *(volatile uint32_t*)(NUMPKG);
 	const uint32_t startAddr = flash_sector_offset[sectorDir] + flashUsed;
 	uint32_t* buf = writeFlashToRamBuffer(STARTPKG, pkgsAllocated * sizeof(flashPkg));
+
 	// clear sector to increment numPkg and flashUsed
 	prepareSector(0); // clear it wohoo
 	// set flash used and numpkg
