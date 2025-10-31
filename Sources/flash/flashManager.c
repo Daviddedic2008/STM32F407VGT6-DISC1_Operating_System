@@ -75,7 +75,7 @@ void writeDataToFlash(const uint32_t addr, const uint32_t* val, const uint32_t w
 	FLASH_CR |= 1; // set programming bit(allow write to flash)
 	// now flash is open
 	for(uint32_t idx = 0; idx < wrSz/4; idx++){
-		(*(volatile uint32_t*)(addr+idx)) = val[idx];
+		(*((volatile uint32_t*)(addr)+idx)) = val[idx]; // FIXED FIX OTHER ONES
 		while (FLASH_SR & (1 << 16)); // wait for flash controller to write data
 	}
 	FLASH_CR &= ~1; // set programming bit(allow write to flash)
