@@ -1,7 +1,7 @@
 #include "../general/mcuHeader.h"
 #include "asmRoutines.h"
 #include "flashManager.h"
-#include <stdlib.h>
+#include "../general/allocator.h"
 
 #define SETSECTOR(sector) FLASH_CR &= ~(0xF << 3); /*clear sector bits 3-6*/ FLASH_CR |= (sector << 3)
 #define SETSECTORERASE() FLASH_CR |= 2 //
@@ -65,6 +65,12 @@ void writeWordToFlash(const uint32_t addr, const uint32_t val){
 	FLASH_CR &= ~1; // clear programming bit(disallow write to flash)
 }
 
+void resetFlash(){
+	prepareSector(0);
+	writeWordToFlash(NUMPKG, 10);
+	writeWordToFlash(FLASHUSED, 0);
+}
+
 void writeDataToFlash(const uint32_t addr, const uint32_t* val, const uint32_t wrSz){
 	FLASH_CR |= 1; // set programming bit(allow write to flash)
 	// now flash is open
@@ -76,8 +82,7 @@ void writeDataToFlash(const uint32_t addr, const uint32_t* val, const uint32_t w
 }
 
 void* writeFlashToRamBuffer(const uint32_t addr, const uint32_t wrSz){
-	void* ret = malloc(sizeof(uint32_t)*wrSz);
-	return ret;
+	void* ret = alloc(sizeof(uint32_t)*wrSz);
 	for(uint32_t o = 0; o < wrSz/4; o++){
 		((uint32_t*)ret)[o] = *(volatile uint32_t*)(addr+o);
 	}
@@ -93,7 +98,6 @@ void addFlashPkg(const uint32_t size, const char name){
 	const uint32_t pkgsAllocated = *(volatile uint32_t*)(NUMPKG);
 	const uint32_t startAddr = flash_sector_offset[sectorDir] + flashUsed;
 	uint32_t* buf = writeFlashToRamBuffer(STARTPKG, pkgsAllocated * sizeof(flashPkg));
-
 	// clear sector to increment numPkg and flashUsed
 	prepareSector(0); // clear it wohoo
 	// set flash used and numpkg
@@ -104,7 +108,7 @@ void addFlashPkg(const uint32_t size, const char name){
 	// write new one
 	const flashPkg add = {name, startAddr, size};
 	writeDataToFlash(STARTPKG + pkgsAllocated * sizeof(flashPkg), (uint32_t*)&add, sizeof(flashPkg));
-	free(buf);
+	discard(buf);
 	// should all be written
 }
 

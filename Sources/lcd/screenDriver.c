@@ -213,4 +213,21 @@ void putString(const char* str, const uint16_t length){
 	}
 }
 
+void printNum(uint16_t num){
+    if (num == 0) {
+        putChar('0');
+        return;
+    }
 
+    uint32_t p = 1;
+    uint32_t n = num;
+    while (n >= 10) {
+        p *= 10;
+        n /= 10;
+    }
+
+    while (p > 0) {
+        putChar('0' + (num / p) % 10);
+        p /= 10;
+    }
+}

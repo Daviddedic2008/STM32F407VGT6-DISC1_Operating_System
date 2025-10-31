@@ -161,6 +161,30 @@ Sources/flash/flashManager.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/flash/flashManager.c.s
 .PHONY : Sources/flash/flashManager.c.s
 
+Sources/general/allocator.obj: Sources/general/allocator.c.obj
+.PHONY : Sources/general/allocator.obj
+
+# target to build an object file
+Sources/general/allocator.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/general/allocator.c.obj
+.PHONY : Sources/general/allocator.c.obj
+
+Sources/general/allocator.i: Sources/general/allocator.c.i
+.PHONY : Sources/general/allocator.i
+
+# target to preprocess a source file
+Sources/general/allocator.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/general/allocator.c.i
+.PHONY : Sources/general/allocator.c.i
+
+Sources/general/allocator.s: Sources/general/allocator.c.s
+.PHONY : Sources/general/allocator.s
+
+# target to generate assembly for a file
+Sources/general/allocator.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/general/allocator.c.s
+.PHONY : Sources/general/allocator.c.s
+
 Sources/general/mcuHeader.obj: Sources/general/mcuHeader.c.obj
 .PHONY : Sources/general/mcuHeader.obj
 
@@ -377,30 +401,6 @@ Sources/syscalls.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/syscalls.c.s
 .PHONY : Sources/syscalls.c.s
 
-Sources/sysmem.obj: Sources/sysmem.c.obj
-.PHONY : Sources/sysmem.obj
-
-# target to build an object file
-Sources/sysmem.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/sysmem.c.obj
-.PHONY : Sources/sysmem.c.obj
-
-Sources/sysmem.i: Sources/sysmem.c.i
-.PHONY : Sources/sysmem.i
-
-# target to preprocess a source file
-Sources/sysmem.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/sysmem.c.i
-.PHONY : Sources/sysmem.c.i
-
-Sources/sysmem.s: Sources/sysmem.c.s
-.PHONY : Sources/sysmem.s
-
-# target to generate assembly for a file
-Sources/sysmem.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/sysmem.c.s
-.PHONY : Sources/sysmem.c.s
-
 Startup/startup_stm32f407vgtx.obj: Startup/startup_stm32f407vgtx.s.obj
 .PHONY : Startup/startup_stm32f407vgtx.obj
 
@@ -422,6 +422,9 @@ help:
 	@echo "... Sources/flash/flashManager.obj"
 	@echo "... Sources/flash/flashManager.i"
 	@echo "... Sources/flash/flashManager.s"
+	@echo "... Sources/general/allocator.obj"
+	@echo "... Sources/general/allocator.i"
+	@echo "... Sources/general/allocator.s"
 	@echo "... Sources/general/mcuHeader.obj"
 	@echo "... Sources/general/mcuHeader.i"
 	@echo "... Sources/general/mcuHeader.s"
@@ -449,9 +452,6 @@ help:
 	@echo "... Sources/syscalls.obj"
 	@echo "... Sources/syscalls.i"
 	@echo "... Sources/syscalls.s"
-	@echo "... Sources/sysmem.obj"
-	@echo "... Sources/sysmem.i"
-	@echo "... Sources/sysmem.s"
 	@echo "... Startup/startup_stm32f407vgtx.obj"
 .PHONY : help
 

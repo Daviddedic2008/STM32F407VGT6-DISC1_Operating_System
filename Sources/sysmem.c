@@ -61,7 +61,6 @@ void *_sbrk(ptrdiff_t incr)
 
   /* Initialize heap end at first call */
   if (NULL == __sbrk_heap_end)
-  {
     __sbrk_heap_end = &_end;
   }
 

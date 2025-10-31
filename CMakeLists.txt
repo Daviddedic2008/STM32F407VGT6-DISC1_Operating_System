@@ -59,10 +59,8 @@ set (PROJECT_SOURCES
 	Sources/programs/terminal.c
 	Sources/programs/fileViewer.c
 	Sources/keyboard/ps-2Interface.c
+	Sources/general/allocator.c
 	Sources/syscalls.c
-	Sources/sysmem.c
-
-
 	)
 
 set (PROJECT_DEFINES

@@ -18,6 +18,7 @@ void moveCursor(const uint8_t x, const uint8_t y);
 void changeColor(const uint16_t c);
 void changeBackdrop(const uint16_t c);
 unsigned char getRow();
+void printNum(uint16_t num);
 
 
 #endif /* SOURCES_SCREENDRIVER_H_ */

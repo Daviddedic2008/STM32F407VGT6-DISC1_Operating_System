@@ -20,6 +20,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/flash/flashManager.c" "CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj.d"
+  "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/general/allocator.c" "CMakeFiles/opsys.dir/Sources/general/allocator.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/general/allocator.c.obj.d"
   "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/general/mcuHeader.c" "CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.obj.d"
   "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/keyboard/ps-2Interface.c" "CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj.d"
   "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/lcd/font.c" "CMakeFiles/opsys.dir/Sources/lcd/font.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/lcd/font.c.obj.d"
@@ -29,7 +30,6 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/programs/fileViewer.c" "CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj.d"
   "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/programs/terminal.c" "CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj.d"
   "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/syscalls.c" "CMakeFiles/opsys.dir/Sources/syscalls.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/syscalls.c.obj.d"
-  "C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/sysmem.c" "CMakeFiles/opsys.dir/Sources/sysmem.c.obj" "gcc" "CMakeFiles/opsys.dir/Sources/sysmem.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
