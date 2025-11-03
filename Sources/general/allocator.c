@@ -28,7 +28,6 @@ void* alloc(const uint32_t sz){
 	// no defrag simple implementation
 	uint32_t found = 0;
 	uint16_t loc = 0;
-	printNum(sz);
 	while(found < sz && loc < MAX){
 		if((sz - found) > (8*4)){
 			if(checkBlock(loc)){

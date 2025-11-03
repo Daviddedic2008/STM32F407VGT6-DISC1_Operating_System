@@ -213,7 +213,7 @@ void putString(const char* str, const uint16_t length){
 	}
 }
 
-void printNum(uint16_t num){
+void printNum(uint32_t num){
     if (num == 0) {
         putChar('0');
         return;

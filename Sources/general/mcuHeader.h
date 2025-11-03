@@ -105,9 +105,9 @@ extern uint32_t SystemCoreClock;
 #define FLASHEND 0x80FFFFF
 #define SRAMEND 2001FFFF
 #define SRAMSTART 0x20000000
-#define FLASHUSED (*(volatile uint32_t*)0x08000000)
-#define NUMPKG (*(volatile uint32_t*)0x08000004)
-#define STARTPKG (*(volatile uint32_t*)0x08000008) // alignment stuff i have enough flash to spare a few bytes
+#define FLASHUSED 0x08000000
+#define NUMPKG 0x08000004
+#define STARTPKG 0x08000008 // alignment stuff i have enough flash to spare a few bytes
 
 // FLASH STUFF
 #define FLASH_KEYR (*(volatile uint32_t*)0x40023C04)
@@ -121,6 +121,12 @@ extern uint32_t SystemCoreClock;
 #define RCC_APB2ENR      (*(volatile uint32_t *)(RCC_BASE + 0x44))
 
 #define FLASH_ACR        (*(volatile uint32_t *)0x40023C00)
+
+// irq toggle
+#define __disable_irq()  __asm volatile("cpsid i" ::: "memory")
+#define __enable_irq()   __asm volatile("cpsie i" ::: "memory")
+
+
 
 
 void SystemInit(void); // clocky stuff

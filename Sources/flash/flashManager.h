@@ -28,4 +28,6 @@ void removePkg(const char name);
 
 void compressPkgs();
 
+void setPsize();
+
 #endif /* SOURCES_FLASH_FLASHMANAGER_H_ */

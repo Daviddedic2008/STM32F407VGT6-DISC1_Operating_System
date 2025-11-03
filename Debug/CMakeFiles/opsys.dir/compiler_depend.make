@@ -11,6 +11,8 @@ CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj: C:/Users/david/STM32CubeI
   C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/lib/gcc/arm-none-eabi/13.3.1/include/stdint.h \
   C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/general/allocator.h \
   C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/general/mcuHeader.h \
+  C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/lcd/font.h \
+  C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/lcd/screenDriver.h \
   C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/flash/asmRoutines.h \
   C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/flash/flashManager.h
 
@@ -205,6 +207,12 @@ C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/general/allocator.h:
 
 C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/general/mcuHeader.h:
 
+C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/lcd/font.h:
+
+C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/arm-none-eabi/include/sys/lock.h:
+
+C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/lcd/screenDriver.h:
+
 C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/flash/asmRoutines.h:
 
 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/arm-none-eabi/include/machine/_time.h:
@@ -212,12 +220,6 @@ C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.external
 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/arm-none-eabi/include/alloca.h:
 
 C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/general/allocator.c:
-
-C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/lcd/font.h:
-
-C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/arm-none-eabi/include/sys/lock.h:
-
-C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/lcd/screenDriver.h:
 
 C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/general/mcuHeader.c:
 

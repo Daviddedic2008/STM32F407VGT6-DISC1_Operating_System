@@ -1,12 +1,14 @@
 #include "../general/mcuHeader.h"
 #include "asmRoutines.h"
 #include "flashManager.h"
+#include "../lcd/screenDriver.h"
 #include "../general/allocator.h"
 
 #define SETSECTOR(sector) FLASH_CR &= ~(0xF << 3); /*clear sector bits 3-6*/ FLASH_CR |= (sector << 3)
 #define SETSECTORERASE() FLASH_CR |= 2 //
 #define BUFFERSECTOR 11
 #define LOCKFLASH() FLASH_CR |= (1 << 31)
+#define WRITEERROR() (FLASH_SR & ((1 << 2) | (1 << 4)))
 
 #define START_FLASH 0x08000000
 
@@ -22,6 +24,13 @@
  * My controller for flash isnt the best :)
  * Although memory is unified on the M4 in the sense that the same opcodes access flash, ram, registers, etc,
 */
+/*
+ * NOTES TO SELF TO REMEMBER
+ * flash programming requires that you first specify the size of each write in the pwrite bits(setPwrite())
+ * only have to unlock flash once at the beginning of the program
+ * disable interrupts while writing just in case debugger decides to act up(not important for final build)
+ * this short flash controller uses 32 bit writes, so adresses have to be aligned to that!!!!
+ */
 
 unsigned char sectorDir = 10;
 
@@ -48,41 +57,59 @@ void unlockFlash(){
 	FLASH_KEYR = 0xCDEF89AB; // idk what this is for tbh
 }
 
+void setPsize(){
+	// 32 bit write size, must be clarified for flash controller to recognize 32 bit writes
+	// write 0b10 into [9:8} of flash_cr without changing rest
+	uint32_t ogcr = FLASH_CR;
+	// (3<<8) is used to clear WHOLE psize mask, not just the msb(9)
+	FLASH_CR = (ogcr & ~(3 << 8)) | (2 << 8);
+}
+
 void prepareSector(const unsigned char sector){
 	// clears sector and sets it to the write domain
 	// must be done before each write
 	SETSECTORERASE();
 	SETSECTOR(sector);
-	while (FLASH_SR & (1 << 16)); // wait for flash controller to erase sector
+	FLASH_CR |= (1 << 16); // send start signal to begin erase(almost forgot this oops)
+	int i = 0;
+	while (FLASH_SR & (1 << 16)){i++;} // wait for flash controller to erase sector
 	FLASH_CR &= ~(1 << 1); // clear sector erase bit
+	// check and clear end of operation op
+	if(FLASH_SR & 1){
+		FLASH_SR = 1;
+	}
 }
 
 void writeWordToFlash(const uint32_t addr, const uint32_t val){
+	__disable_irq();
 	FLASH_CR |= 1; // set programming bit(allow write to flash)
 	// now flash is open
 	(*(volatile uint32_t*)addr) = val;
-	while (FLASH_SR & (1 << 16)); // wait for flash controller to write data
+	while (FLASH_SR & (1 << 16));// wait for flash controller to write val
 	FLASH_CR &= ~1; // clear programming bit(disallow write to flash)
+	__enable_irq();
 }
 
 void resetFlash(){
 	prepareSector(0);
-	writeWordToFlash(NUMPKG, 10);
+	writeWordToFlash(NUMPKG, 0);
 	writeWordToFlash(FLASHUSED, 0);
 }
 
 void writeDataToFlash(const uint32_t addr, const uint32_t* val, const uint32_t wrSz){
+	__disable_irq();
 	FLASH_CR |= 1; // set programming bit(allow write to flash)
 	// now flash is open
 	for(uint32_t idx = 0; idx < wrSz/4; idx++){
-		(*((volatile uint32_t*)(addr)+idx)) = val[idx]; // FIXED FIX OTHER ONES
+		(*((volatile uint32_t*)(addr)+idx)) = val[idx];
 		while (FLASH_SR & (1 << 16)); // wait for flash controller to write data
 	}
 	FLASH_CR &= ~1; // set programming bit(allow write to flash)
+	__enable_irq();
 }
 
 void* writeFlashToRamBuffer(const uint32_t addr, const uint32_t wrSz){
-	void* ret = alloc(sizeof(uint32_t)*wrSz);
+	void* ret = alloc(wrSz);
 	for(uint32_t o = 0; o < wrSz/4; o++){
 		((uint32_t*)ret)[o] = *(volatile uint32_t*)(addr+o);
 	}
