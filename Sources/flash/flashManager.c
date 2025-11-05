@@ -130,7 +130,9 @@ void addFlashPkg(const uint32_t size, const char name){
 	// set flash used and numpkg
 	writeWordToFlash(FLASHUSED, flashUsed + size);
 	writeWordToFlash(NUMPKG, pkgsAllocated + 1);
-	writeDataToFlash(STARTPKG, buf, pkgsAllocated * sizeof(flashPkg));
+	if(pkgsAllocated != 0){
+		writeDataToFlash(STARTPKG, buf, pkgsAllocated * sizeof(flashPkg));
+	}
 	// all written :)
 	// write new one
 	const flashPkg add = {name, startAddr, size};

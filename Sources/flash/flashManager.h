@@ -8,6 +8,13 @@
 #ifndef SOURCES_FLASH_FLASHMANAGER_H_
 #define SOURCES_FLASH_FLASHMANAGER_H_
 #include <stdint.h>
+
+#define writeToPkgUint32(pkg, loc, val) *(volatile uint32_t*)(pkg.addr+loc) = val
+#define writeToPkgUint8(pkg, loc, val) *(volatile uint8_t*)(pkg.addr+loc) = val
+
+#define readFromPkgUint32(pkg, loc, val) (*(volatile uint32_t*)(pkg.addr+loc))
+#define readFromPkgUint8(pkg, loc, val) (*(volatile uint8_t*)(pkg.addr+loc))
+
 #pragma pack(push,4) // default pack
 typedef struct {
 	char name; // for aligned access
