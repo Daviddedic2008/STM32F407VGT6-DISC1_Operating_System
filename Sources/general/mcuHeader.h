@@ -126,8 +126,8 @@ extern uint32_t SystemCoreClock;
 #define __disable_irq()  __asm volatile("cpsid i" ::: "memory")
 #define __enable_irq()   __asm volatile("cpsie i" ::: "memory")
 
-
-
+// std file sizes
+#define STD_TXT_SZ 0x2800 // 10 kb
 
 void SystemInit(void); // clocky stuff
 

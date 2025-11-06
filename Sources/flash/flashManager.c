@@ -123,7 +123,7 @@ void writeDataToSector(const uint32_t addr, const uint8_t sector, const uint32_t
 void addFlashPkg(const uint32_t size, const char name){
 	const uint32_t flashUsed = *(volatile uint32_t*)(FLASHUSED);
 	const uint32_t pkgsAllocated = *(volatile uint32_t*)(NUMPKG);
-	const uint32_t startAddr = flash_sector_offset[sectorDir] + flashUsed;
+	const uint32_t startAddr = flashUsed;
 	uint32_t* buf = writeFlashToRamBuffer(STARTPKG, pkgsAllocated * sizeof(flashPkg));
 	// clear sector to increment numPkg and flashUsed
 	prepareSector(0); // clear it wohoo
@@ -194,4 +194,9 @@ void compressPkgs(){
 		writeDataToFlash(flash_sector_offset[bufDir] + offset, (uint32_t*)pkgs, pkgs->sz);
 	}
 	writeWordToFlash(FLASHUSED, offset);
+}
+
+void writeToFileSpace(const char filename, const uint32_t* data){
+	const flashPkg p = retrievePkg(filename);
+	writeDataToSector(p.addr, 11, data, p.sz);
 }

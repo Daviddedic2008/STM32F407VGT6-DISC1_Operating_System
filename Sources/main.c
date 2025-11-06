@@ -46,9 +46,10 @@ int main(void)
 	//putString("Hello! This is an OS for the\nSTM32F407VGT6-DISC1.\n\n\nIt is completely BARE METAL,  no libraries or external\n headers ;)\n\n\nIt contains:a screen driver(for elegoo 2.8in tft lcd),ps-2 keyboard driver,and a system for storing/writing/running programs :)", 250);
 
 	// test
-	addFlashPkg(8, 'a');
-	//flashPkg r = retrievePkg('a');
-	putChar('a');
+	addFlashPkg(STD_TXT_SZ, 'a');
+	addFlashPkg(STD_TXT_SZ, 'b');
+	flashPkg r = retrievePkg('b');
+	printNum(r.addr);
 	//startupScreen();
 	//beginTerminal();
 

@@ -37,4 +37,6 @@ void compressPkgs();
 
 void setPsize();
 
+void writeToFileSpace(const char filename, const uint32_t* data);
+
 #endif /* SOURCES_FLASH_FLASHMANAGER_H_ */
