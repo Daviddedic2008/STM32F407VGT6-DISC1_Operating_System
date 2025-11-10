@@ -103,11 +103,20 @@ extern uint32_t SystemCoreClock;
 
 // CONSTS BASED ON CORTEX
 #define FLASHEND 0x80FFFFF
+#define FLASHSTART 0x8000000
 #define SRAMEND 2001FFFF
 #define SRAMSTART 0x20000000
-#define FLASHUSED 0x08000000
-#define NUMPKG 0x08000004
-#define STARTPKG 0x08000008 // alignment stuff i have enough flash to spare a few bytes
+#define FLASHUSED 0x08000004
+#define NUMPKG 0x08000008
+#define STARTPKG 0x0800000C // alignment stuff i have enough flash to spare a few bytes
+#define MAINSECTOR 0x08000000 // sector in use. other one is buffer
+
+// sector #'s that the flash file system will use. Both have to be the same size, preferably 128KB or larger
+#define bd1 10
+#define bd2 11
+
+// max number of flash pkgs user can allocate. Flexible, can be up to however much you want
+#define MAX_PKG 128
 
 // FLASH STUFF
 #define FLASH_KEYR (*(volatile uint32_t*)0x40023C04)

@@ -85,6 +85,7 @@ CMakeFiles/opsys.dir/Sources/main.c.obj
  C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/lcd/screenDriver.h
  C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/general/mcuHeader.h
  C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/programs/bootScreen.h
+ C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/programs/fileViewer.h
  C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/programs/terminal.h
 
 CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj
@@ -118,6 +119,7 @@ CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj
  C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/keyboard/ps-2Interface.h
  C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/lcd/font.h
  C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/lcd/screenDriver.h
+ C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/programs/fileViewer.h
  C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Sources/programs/terminal.h
 
 CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj

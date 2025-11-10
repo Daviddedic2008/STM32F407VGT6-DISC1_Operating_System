@@ -29,6 +29,7 @@
 #include "programs/terminal.h"
 #include "flash/flashManager.h"
 #include "general/allocator.h"
+#include "programs/fileViewer.h"
 
 int main(void)
 {
@@ -42,17 +43,19 @@ int main(void)
 	LCD_INIT();
 	clearLCD();
 	changeColor(0xFFFF);
-	resetFlash();
+	//resetFlash();
+	allocMetadataBuf();
 	//putString("Hello! This is an OS for the\nSTM32F407VGT6-DISC1.\n\n\nIt is completely BARE METAL,  no libraries or external\n headers ;)\n\n\nIt contains:a screen driver(for elegoo 2.8in tft lcd),ps-2 keyboard driver,and a system for storing/writing/running programs :)", 250);
 
 	// test
-	addFlashPkg(STD_TXT_SZ, 'a');
-	addFlashPkg(STD_TXT_SZ, 'b');
-	flashPkg r = retrievePkg('b');
-	printNum(r.addr);
+	//addFlashPkg(64*3, 'a');
+	//printNum(*((volatile uint32_t*)FLASHUSED));
+	//const char* wr = "aaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\n";
+	//writeToPkg('a', (uint32_t*)wr);
+	displayFileTxt('a');
 	//startupScreen();
 	//beginTerminal();
-
+	//saveMetaBuffer();
 	while(1){
 		//speakerCycle();
 	}

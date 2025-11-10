@@ -9,9 +9,9 @@
 
 #define TAKEN 1
 #define FREE 0
-#define MAX 10000
+#define MAX 15000
 
-uint32_t heap[MAX]; // 40KB bytes of heap, used for loading files and OS mem allocations
+uint32_t heap[MAX]; // 60KB bytes of heap, used for loading files and OS mem allocations
 uint8_t reserved[MAX/8]; // each bit for one uint32
 
 #define reserveWord(word) reserved[word / 8] |= (1 << (word % 8))
@@ -53,8 +53,18 @@ void* alloc(const uint32_t sz){
 	return (void*)(heap + loc);
 }
 
-void discard(void* ptr){
+void discard(const void* ptr){
 	for(uint16_t i = 0; i < MAX; i++){
 		reserved[i] = 0; // free all for now
 	}
+}
+
+void memcopy(void* src, void* dest, const uint32_t sz){
+    uint32_t b4 = sz & ~3; // largest multiple of 4 <= sz
+    for (uint32_t i = 0; i < b4; i += 4){
+        *((uint32_t*)((uint8_t*)dest + i)) = *((uint32_t*)((uint8_t*)src + i));
+    }
+    for (uint32_t i = b4; i < sz; i++){
+        *((uint8_t*)dest + i) = *((uint8_t*)src + i);
+    }
 }

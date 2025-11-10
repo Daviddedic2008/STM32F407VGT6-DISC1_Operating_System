@@ -8,9 +8,11 @@
 #ifndef SOURCES_PROGRAMS_ALLOCATOR_H_
 #define SOURCES_PROGRAMS_ALLOCATOR_H_
 
-void discard(void* ptr);
+void discard(const void* ptr);
 
 void* alloc(const uint32_t sz);
+
+void memcopy(void* src, void* dest, const uint32_t sz);
 
 void initHeap();
 

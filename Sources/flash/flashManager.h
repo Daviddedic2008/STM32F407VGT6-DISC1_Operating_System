@@ -37,6 +37,12 @@ void compressPkgs();
 
 void setPsize();
 
-void writeToFileSpace(const char filename, const uint32_t* data);
+volatile void* readDataSafe(const uint16_t addr);
+
+void writeToPkg(const char c, const uint32_t* ptr);
+
+void allocMetadataBuf();
+
+void saveMetaBuffer();
 
 #endif /* SOURCES_FLASH_FLASHMANAGER_H_ */
