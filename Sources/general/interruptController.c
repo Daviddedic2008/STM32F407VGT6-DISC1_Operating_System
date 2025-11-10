@@ -10,4 +10,8 @@
  *   		*lots of helper functions
  */
 
+#include "interruptController.h"
 
+void enableFallingEdge(const unsigned char pin){
+
+}

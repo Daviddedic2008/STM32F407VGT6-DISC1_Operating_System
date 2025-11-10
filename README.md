@@ -32,13 +32,16 @@ This is a very lightweight bare-metal OS for the STM32F407VGT6(no libraries or e
     
     Connect the piezoelectric speaker using GPIOD_0
   ## Build
-    The project requires ZERO external headers. Everything from the startup code to specific io register memory locations is in the project.
+    The project requires ZERO external headers. Everything from the startup code 
+    to specific io register memory locations is in the project.
     You can either:
     a.) Use STM32CubeIDE to open the project, and then simply clone the repo and press upload/run
     b.) Build using CMake, and upload via custom upload commands(still working on generating them, will be here soon)
 
   # Issues
-    The project still requires the debugger to be flashed onto the cortex. This is very annoying, and the debugger does auto-reset flash memory making the whole OS pointless. You can either tweak the debug launch file or wait until I figure out some general upload commands and put them here. Sorry!
+    The project still requires the debugger to be flashed onto the cortex. 
+    I have some custom upload commands but am unsure if they work on other
+    systems.
   # Fun Demos!
   Everything here is just fun little demos I recorded:
 

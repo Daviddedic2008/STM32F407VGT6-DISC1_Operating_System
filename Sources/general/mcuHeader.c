@@ -46,7 +46,7 @@ void SystemInit(void) {
 }
 
 void delay_ms(uint32_t ms) {
-    uint32_t cycles = ms * (SystemCoreClock / 1000);
+    uint32_t cycles = ms * (SystemCoreClock / 2000); // guessing empty while cycle is around 2 ops(maybe 3?)
     while (cycles--) {
         //__asm__("nop");
     }
