@@ -85,6 +85,7 @@ extern uint32_t SystemCoreClock;
 #define NVIC_ICER0 0xE000E180 // disable interrupts by writing 1
 #define NVIC_ISPR0 0xE000E200 // set interrupts to pending
 #define NVIC_IABR0 0xE000E300 //
+#define NVIC_ICPR0 0xE000E280
 
 // this one has 60 regs, from 0-59
 #define NVIC_IPR0 0xE000E400 // interrupt priority(largely unused in my rtos)
@@ -137,6 +138,10 @@ extern uint32_t SystemCoreClock;
 #define RCC_APB2ENR      (*(volatile uint32_t *)(RCC_BASE + 0x44))
 
 #define FLASH_ACR        (*(volatile uint32_t *)0x40023C00)
+
+#define SCB_VTOR      (*(volatile uint32_t*)0xE000ED08U) // holds ram address of irq vector table
+
+#define NUMVECTORS 98 // 16 system interrupts plus external lines
 
 // irq toggle
 #define __disable_irq()  __asm volatile("cpsid i" ::: "memory")
