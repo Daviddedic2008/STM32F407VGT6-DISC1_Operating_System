@@ -29,9 +29,9 @@ void userHandler(void);
 
 void dispatcher(){
 	// receive interrupt and clear
+	userHandler(); // call user handler
 	// make sure we clear pin 6 interrupt
 	EXTI_PR |= *((volatile uint32_t*)EXTI_PR) & (1 << 6); // set 1 to pending
-	userHandler(); // call user handler
 }
 
 void enableFallingEdgeB6(void(*fp)(void)){
