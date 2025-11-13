@@ -46,10 +46,7 @@ void beginTerminal(){
 	putString(s1, 94);
 	putChar('>');
 	while(1){
-		char c;
-		while((c = attemptRecieve()) == -1){
-			; // idle
-		}
+		char c = idleUntilNextChar();
 		ln[getRow()] = c;
 		putChar(c);
 		if(c == '\n'){

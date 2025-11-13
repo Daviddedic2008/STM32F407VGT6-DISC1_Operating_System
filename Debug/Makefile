@@ -185,6 +185,30 @@ Sources/general/allocator.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/general/allocator.c.s
 .PHONY : Sources/general/allocator.c.s
 
+Sources/general/interruptController.obj: Sources/general/interruptController.c.obj
+.PHONY : Sources/general/interruptController.obj
+
+# target to build an object file
+Sources/general/interruptController.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/general/interruptController.c.obj
+.PHONY : Sources/general/interruptController.c.obj
+
+Sources/general/interruptController.i: Sources/general/interruptController.c.i
+.PHONY : Sources/general/interruptController.i
+
+# target to preprocess a source file
+Sources/general/interruptController.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/general/interruptController.c.i
+.PHONY : Sources/general/interruptController.c.i
+
+Sources/general/interruptController.s: Sources/general/interruptController.c.s
+.PHONY : Sources/general/interruptController.s
+
+# target to generate assembly for a file
+Sources/general/interruptController.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/Sources/general/interruptController.c.s
+.PHONY : Sources/general/interruptController.c.s
+
 Sources/general/mcuHeader.obj: Sources/general/mcuHeader.c.obj
 .PHONY : Sources/general/mcuHeader.obj
 
@@ -425,6 +449,9 @@ help:
 	@echo "... Sources/general/allocator.obj"
 	@echo "... Sources/general/allocator.i"
 	@echo "... Sources/general/allocator.s"
+	@echo "... Sources/general/interruptController.obj"
+	@echo "... Sources/general/interruptController.i"
+	@echo "... Sources/general/interruptController.s"
 	@echo "... Sources/general/mcuHeader.obj"
 	@echo "... Sources/general/mcuHeader.i"
 	@echo "... Sources/general/mcuHeader.s"

@@ -21,7 +21,9 @@ char readNewChar();
 
 void idleUntilPress();
 
-void readLastChar();
+char readLastChar();
+
+char idleUntilNextChar();
 
 void initKeyboardInterface();
 

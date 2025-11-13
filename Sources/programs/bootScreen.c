@@ -35,8 +35,6 @@ void startupScreen(){
 	playTone(4000, 100);
 	changeColor(0xFFFF);
 	putString("\n\n\n\n   Press any key to start!    ", 34);
-	while(attemptRecieve() == -1){
-		;
-	}
+	idleUntilPress();
 	beginTerminal();
 }

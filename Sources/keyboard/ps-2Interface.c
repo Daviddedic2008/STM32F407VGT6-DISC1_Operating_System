@@ -11,6 +11,11 @@
 const char ascii_unshifted[128] = { 0 };
 const char ascii_shifted[128]   = { 0 };
 
+#define R 0x74
+#define L 0x6B
+#define U 0x75
+#define D 0x72
+
 void init_ascii_maps(void)
 {
     ((char *)ascii_unshifted)[0x1C] = 'a';
@@ -99,12 +104,11 @@ void init_ascii_maps(void)
 unsigned char currentShift = 0; // how many bits were read
 unsigned char currentScanCode = 0;
 unsigned char lastFullScanCode = 0xFF; // cleared
-unsigned char charRead = 0; // prevent double reads
 unsigned char shiftToggle = 0;
 
 void interruptHandler(void){
 	// read current data bit
-	currentScanCode |= (((*(volatile uint32_t*)GPIOB_IDR) & (1 << 7)) >> 7) << shift; // shift must be non negative
+	currentScanCode |= (((*(volatile uint32_t*)GPIOB_IDR) & (1 << 7)) >> 7) << currentShift; // shift must be non negative
 	currentShift++;
 	if(currentShift == 8) {currentShift = 0; lastFullScanCode = currentScanCode; if(lastFullScanCode == 0x12){shiftToggle = !shiftToggle;}}
 }
@@ -128,7 +132,18 @@ void idleUntilPress(){
 	while(currentShift == 0){;}
 }
 
-void readLastChar(){
+char readLastChar(){
+	return convertScanCode(lastFullScanCode);
+}
+
+char idleUntilNextChar(){
+	lastFullScanCode = 0xFF;
+	while(lastFullScanCode == 0xFF){;}
+	if(lastFullScanCode == 0xE0){ // if its an arrow prefix
+		lastFullScanCode = 0xFF;
+		while(lastFullScanCode == 0xFF){;} // wait for second byte
+		return lastFullScanCode; // return raw arrow scan code
+	}
 	return convertScanCode(lastFullScanCode);
 }
 

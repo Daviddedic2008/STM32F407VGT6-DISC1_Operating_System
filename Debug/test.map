@@ -289,15 +289,15 @@ Discarded input sections
  .debug_str     0x00000000       0x96 CMakeFiles/opsys.dir/Sources/flash/asmRoutines.S.obj
  .ARM.attributes
                 0x00000000       0x20 CMakeFiles/opsys.dir/Sources/flash/asmRoutines.S.obj
- .text          0x00000000       0xd4 CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj
+ .text          0x00000000       0xcc CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj
  .data          0x00000000        0x0 CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj
  .bss           0x00000000        0x0 CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj
  .rodata        0x00000000      0x30b CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj
- .debug_info    0x00000000      0x1ae CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj
- .debug_abbrev  0x00000000       0xbe CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj
+ .debug_info    0x00000000      0x1a9 CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj
+ .debug_abbrev  0x00000000       0xa9 CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj
  .debug_aranges
                 0x00000000       0x20 CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj
- .debug_line    0x00000000      0x3c5 CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj
+ .debug_line    0x00000000      0x3b3 CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj
  .debug_str     0x00000000      0x234 CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj
  .comment       0x00000000       0x44 CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj
  .debug_frame   0x00000000       0x34 CMakeFiles/opsys.dir/Sources/programs/bootScreen.c.obj
@@ -311,29 +311,16 @@ Discarded input sections
  .debug_abbrev  0x00000000      0x131 CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj
  .debug_aranges
                 0x00000000       0x20 CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj
- .debug_line    0x00000000      0x3e5 CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj
- .debug_str     0x00000000      0x231 CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj
+ .debug_line    0x00000000      0x3d7 CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj
+ .debug_str     0x00000000      0x234 CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj
  .comment       0x00000000       0x44 CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj
  .debug_frame   0x00000000       0x9c CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj
  .ARM.attributes
                 0x00000000       0x2e CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj
  .data          0x00000000        0x0 CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj
  .bss           0x00000000        0x0 CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj
- .text          0x00000000      0x4d8 CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
- .data          0x00000000        0x0 CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
- .bss           0x00000000        0x1 CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
- .rodata        0x00000000      0x100 CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
- .debug_info    0x00000000      0x1c6 CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
- .debug_abbrev  0x00000000      0x11d CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
- .debug_aranges
-                0x00000000       0x20 CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
- .debug_line    0x00000000      0x503 CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
- .debug_str     0x00000000      0x236 CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
- .comment       0x00000000       0x44 CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
- .debug_frame   0x00000000       0xd4 CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
- .ARM.attributes
-                0x00000000       0x2e CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
  .data          0x00000000        0x0 CMakeFiles/opsys.dir/Sources/general/allocator.c.obj
+ .data          0x00000000        0x0 CMakeFiles/opsys.dir/Sources/general/interruptController.c.obj
  .text          0x00000000      0x204 CMakeFiles/opsys.dir/Sources/syscalls.c.obj
  .data          0x00000000        0x4 CMakeFiles/opsys.dir/Sources/syscalls.c.obj
  .bss           0x00000000        0x4 CMakeFiles/opsys.dir/Sources/syscalls.c.obj
@@ -412,6 +399,7 @@ LOAD CMakeFiles/opsys.dir/Sources/programs/terminal.c.obj
 LOAD CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj
 LOAD CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
 LOAD CMakeFiles/opsys.dir/Sources/general/allocator.c.obj
+LOAD CMakeFiles/opsys.dir/Sources/general/interruptController.c.obj
 LOAD CMakeFiles/opsys.dir/Sources/syscalls.c.obj
 START GROUP
 LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp\libgcc.a
@@ -441,7 +429,7 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
                 0x08004000                g_pfnVectors
                 0x08004188                        . = ALIGN (0x4)
 
-.text           0x08004188     0x1748
+.text           0x08004188     0x1cfc
                 0x08004188                        . = ALIGN (0x4)
  *(.text)
  .text          0x08004188       0x40 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crtbegin.o
@@ -485,212 +473,231 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
                 0x080051c0                removePkg
                 0x08005254                compressPkgs
                 0x08005310                saveMetaBuffer
- .text          0x08005378       0xa0 CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj
+ .text          0x08005378       0xac CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj
                 0x08005378                displayFileTxt
-                0x08005400                displayFilePicture
-                0x0800540c                displayFileAsm
- .text          0x08005418      0x404 CMakeFiles/opsys.dir/Sources/general/allocator.c.obj
-                0x080054c8                initHeap
-                0x0800555c                alloc
-                0x080056a0                discard
-                0x08005798                memcopy
+                0x0800540c                displayFilePicture
+                0x08005418                displayFileAsm
+ .text          0x08005424      0x478 CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
+                0x08005424                init_ascii_maps
+                0x0800573c                interruptHandler
+                0x080057b8                convertScanCode
+                0x080057f0                readNewChar
+                0x08005824                idleUntilPress
+                0x08005848                readLastChar
+                0x08005860                idleUntilNextChar
+                0x08005888                initKeyboardInterface
+ .text          0x0800589c      0x404 CMakeFiles/opsys.dir/Sources/general/allocator.c.obj
+                0x0800594c                initHeap
+                0x080059e0                alloc
+                0x08005b24                discard
+                0x08005c1c                memcopy
+ .text          0x08005ca0      0x130 CMakeFiles/opsys.dir/Sources/general/interruptController.c.obj
+                0x08005ca0                writeHandlerToTable
+                0x08005cfc                dispatcher
+                0x08005d28                enableFallingEdgeB6
  *(.text*)
  .text.__libc_init_array
-                0x0800581c       0x48 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-init.o)
-                0x0800581c                __libc_init_array
+                0x08005dd0       0x48 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-init.o)
+                0x08005dd0                __libc_init_array
  .text.Reset_Handler
-                0x08005864       0x50 CMakeFiles/opsys.dir/Startup/startup_stm32f407vgtx.s.obj
-                0x08005864                Reset_Handler
+                0x08005e18       0x50 CMakeFiles/opsys.dir/Startup/startup_stm32f407vgtx.s.obj
+                0x08005e18                Reset_Handler
  .text.Default_Handler
-                0x080058b4        0x2 CMakeFiles/opsys.dir/Startup/startup_stm32f407vgtx.s.obj
-                0x080058b4                RTC_Alarm_IRQHandler
-                0x080058b4                HASH_RNG_IRQHandler
-                0x080058b4                EXTI2_IRQHandler
-                0x080058b4                TIM8_CC_IRQHandler
-                0x080058b4                DebugMon_Handler
-                0x080058b4                TIM1_CC_IRQHandler
-                0x080058b4                DMA2_Stream5_IRQHandler
-                0x080058b4                HardFault_Handler
-                0x080058b4                DMA1_Stream5_IRQHandler
-                0x080058b4                SysTick_Handler
-                0x080058b4                PVD_IRQHandler
-                0x080058b4                SDIO_IRQHandler
-                0x080058b4                TAMP_STAMP_IRQHandler
-                0x080058b4                PendSV_Handler
-                0x080058b4                NMI_Handler
-                0x080058b4                CAN2_RX1_IRQHandler
-                0x080058b4                EXTI3_IRQHandler
-                0x080058b4                TIM8_TRG_COM_TIM14_IRQHandler
-                0x080058b4                TIM1_UP_TIM10_IRQHandler
-                0x080058b4                TIM8_UP_TIM13_IRQHandler
-                0x080058b4                I2C3_ER_IRQHandler
-                0x080058b4                EXTI0_IRQHandler
-                0x080058b4                I2C2_EV_IRQHandler
-                0x080058b4                DMA1_Stream2_IRQHandler
-                0x080058b4                CAN1_RX0_IRQHandler
-                0x080058b4                FPU_IRQHandler
-                0x080058b4                OTG_HS_WKUP_IRQHandler
-                0x080058b4                UsageFault_Handler
-                0x080058b4                CAN2_SCE_IRQHandler
-                0x080058b4                DMA2_Stream2_IRQHandler
-                0x080058b4                SPI1_IRQHandler
-                0x080058b4                TIM6_DAC_IRQHandler
-                0x080058b4                TIM1_BRK_TIM9_IRQHandler
-                0x080058b4                DCMI_IRQHandler
-                0x080058b4                CAN2_RX0_IRQHandler
-                0x080058b4                DMA2_Stream3_IRQHandler
-                0x080058b4                USART6_IRQHandler
-                0x080058b4                USART3_IRQHandler
-                0x080058b4                CRYP_IRQHandler
-                0x080058b4                CAN1_RX1_IRQHandler
-                0x080058b4                UART5_IRQHandler
-                0x080058b4                DMA2_Stream0_IRQHandler
-                0x080058b4                TIM4_IRQHandler
-                0x080058b4                I2C1_EV_IRQHandler
-                0x080058b4                DMA1_Stream6_IRQHandler
-                0x080058b4                DMA1_Stream1_IRQHandler
-                0x080058b4                UART4_IRQHandler
-                0x080058b4                TIM3_IRQHandler
-                0x080058b4                RCC_IRQHandler
-                0x080058b4                TIM8_BRK_TIM12_IRQHandler
-                0x080058b4                Default_Handler
-                0x080058b4                EXTI15_10_IRQHandler
-                0x080058b4                ADC_IRQHandler
-                0x080058b4                DMA1_Stream7_IRQHandler
-                0x080058b4                TIM7_IRQHandler
-                0x080058b4                CAN2_TX_IRQHandler
-                0x080058b4                TIM5_IRQHandler
-                0x080058b4                DMA2_Stream7_IRQHandler
-                0x080058b4                I2C3_EV_IRQHandler
-                0x080058b4                EXTI9_5_IRQHandler
-                0x080058b4                RTC_WKUP_IRQHandler
-                0x080058b4                ETH_WKUP_IRQHandler
-                0x080058b4                SPI2_IRQHandler
-                0x080058b4                OTG_HS_EP1_IN_IRQHandler
-                0x080058b4                MemManage_Handler
-                0x080058b4                DMA1_Stream0_IRQHandler
-                0x080058b4                CAN1_TX_IRQHandler
-                0x080058b4                SVC_Handler
-                0x080058b4                EXTI4_IRQHandler
-                0x080058b4                FSMC_IRQHandler
-                0x080058b4                ETH_IRQHandler
-                0x080058b4                OTG_HS_EP1_OUT_IRQHandler
-                0x080058b4                WWDG_IRQHandler
-                0x080058b4                TIM2_IRQHandler
-                0x080058b4                OTG_FS_WKUP_IRQHandler
-                0x080058b4                TIM1_TRG_COM_TIM11_IRQHandler
-                0x080058b4                OTG_HS_IRQHandler
-                0x080058b4                EXTI1_IRQHandler
-                0x080058b4                USART2_IRQHandler
-                0x080058b4                I2C2_ER_IRQHandler
-                0x080058b4                DMA2_Stream1_IRQHandler
-                0x080058b4                CAN1_SCE_IRQHandler
-                0x080058b4                DMA2_Stream4_IRQHandler
-                0x080058b4                BusFault_Handler
-                0x080058b4                USART1_IRQHandler
-                0x080058b4                OTG_FS_IRQHandler
-                0x080058b4                SPI3_IRQHandler
-                0x080058b4                DMA1_Stream4_IRQHandler
-                0x080058b4                I2C1_ER_IRQHandler
-                0x080058b4                DMA2_Stream6_IRQHandler
-                0x080058b4                DMA1_Stream3_IRQHandler
+                0x08005e68        0x2 CMakeFiles/opsys.dir/Startup/startup_stm32f407vgtx.s.obj
+                0x08005e68                RTC_Alarm_IRQHandler
+                0x08005e68                HASH_RNG_IRQHandler
+                0x08005e68                EXTI2_IRQHandler
+                0x08005e68                TIM8_CC_IRQHandler
+                0x08005e68                DebugMon_Handler
+                0x08005e68                TIM1_CC_IRQHandler
+                0x08005e68                DMA2_Stream5_IRQHandler
+                0x08005e68                HardFault_Handler
+                0x08005e68                DMA1_Stream5_IRQHandler
+                0x08005e68                SysTick_Handler
+                0x08005e68                PVD_IRQHandler
+                0x08005e68                SDIO_IRQHandler
+                0x08005e68                TAMP_STAMP_IRQHandler
+                0x08005e68                PendSV_Handler
+                0x08005e68                NMI_Handler
+                0x08005e68                CAN2_RX1_IRQHandler
+                0x08005e68                EXTI3_IRQHandler
+                0x08005e68                TIM8_TRG_COM_TIM14_IRQHandler
+                0x08005e68                TIM1_UP_TIM10_IRQHandler
+                0x08005e68                TIM8_UP_TIM13_IRQHandler
+                0x08005e68                I2C3_ER_IRQHandler
+                0x08005e68                EXTI0_IRQHandler
+                0x08005e68                I2C2_EV_IRQHandler
+                0x08005e68                DMA1_Stream2_IRQHandler
+                0x08005e68                CAN1_RX0_IRQHandler
+                0x08005e68                FPU_IRQHandler
+                0x08005e68                OTG_HS_WKUP_IRQHandler
+                0x08005e68                UsageFault_Handler
+                0x08005e68                CAN2_SCE_IRQHandler
+                0x08005e68                DMA2_Stream2_IRQHandler
+                0x08005e68                SPI1_IRQHandler
+                0x08005e68                TIM6_DAC_IRQHandler
+                0x08005e68                TIM1_BRK_TIM9_IRQHandler
+                0x08005e68                DCMI_IRQHandler
+                0x08005e68                CAN2_RX0_IRQHandler
+                0x08005e68                DMA2_Stream3_IRQHandler
+                0x08005e68                USART6_IRQHandler
+                0x08005e68                USART3_IRQHandler
+                0x08005e68                CRYP_IRQHandler
+                0x08005e68                CAN1_RX1_IRQHandler
+                0x08005e68                UART5_IRQHandler
+                0x08005e68                DMA2_Stream0_IRQHandler
+                0x08005e68                TIM4_IRQHandler
+                0x08005e68                I2C1_EV_IRQHandler
+                0x08005e68                DMA1_Stream6_IRQHandler
+                0x08005e68                DMA1_Stream1_IRQHandler
+                0x08005e68                UART4_IRQHandler
+                0x08005e68                TIM3_IRQHandler
+                0x08005e68                RCC_IRQHandler
+                0x08005e68                TIM8_BRK_TIM12_IRQHandler
+                0x08005e68                Default_Handler
+                0x08005e68                EXTI15_10_IRQHandler
+                0x08005e68                ADC_IRQHandler
+                0x08005e68                DMA1_Stream7_IRQHandler
+                0x08005e68                TIM7_IRQHandler
+                0x08005e68                CAN2_TX_IRQHandler
+                0x08005e68                TIM5_IRQHandler
+                0x08005e68                DMA2_Stream7_IRQHandler
+                0x08005e68                I2C3_EV_IRQHandler
+                0x08005e68                EXTI9_5_IRQHandler
+                0x08005e68                RTC_WKUP_IRQHandler
+                0x08005e68                ETH_WKUP_IRQHandler
+                0x08005e68                SPI2_IRQHandler
+                0x08005e68                OTG_HS_EP1_IN_IRQHandler
+                0x08005e68                MemManage_Handler
+                0x08005e68                DMA1_Stream0_IRQHandler
+                0x08005e68                CAN1_TX_IRQHandler
+                0x08005e68                SVC_Handler
+                0x08005e68                EXTI4_IRQHandler
+                0x08005e68                FSMC_IRQHandler
+                0x08005e68                ETH_IRQHandler
+                0x08005e68                OTG_HS_EP1_OUT_IRQHandler
+                0x08005e68                WWDG_IRQHandler
+                0x08005e68                TIM2_IRQHandler
+                0x08005e68                OTG_FS_WKUP_IRQHandler
+                0x08005e68                TIM1_TRG_COM_TIM11_IRQHandler
+                0x08005e68                OTG_HS_IRQHandler
+                0x08005e68                EXTI1_IRQHandler
+                0x08005e68                USART2_IRQHandler
+                0x08005e68                I2C2_ER_IRQHandler
+                0x08005e68                DMA2_Stream1_IRQHandler
+                0x08005e68                CAN1_SCE_IRQHandler
+                0x08005e68                DMA2_Stream4_IRQHandler
+                0x08005e68                BusFault_Handler
+                0x08005e68                USART1_IRQHandler
+                0x08005e68                OTG_FS_IRQHandler
+                0x08005e68                SPI3_IRQHandler
+                0x08005e68                DMA1_Stream4_IRQHandler
+                0x08005e68                I2C1_ER_IRQHandler
+                0x08005e68                DMA2_Stream6_IRQHandler
+                0x08005e68                DMA1_Stream3_IRQHandler
  *(.glue_7)
- .glue_7        0x080058b6        0x0 linker stubs
+ .glue_7        0x08005e6a        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x080058b6        0x0 linker stubs
+ .glue_7t       0x08005e6a        0x0 linker stubs
  *(.eh_frame)
- *fill*         0x080058b6        0x2 
- .eh_frame      0x080058b8        0x0 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crtbegin.o
+ *fill*         0x08005e6a        0x2 
+ .eh_frame      0x08005e6c        0x0 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crtbegin.o
  *(.init)
- .init          0x080058b8        0x4 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crti.o
-                0x080058b8                _init
- .init          0x080058bc        0x8 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crtn.o
+ .init          0x08005e6c        0x4 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crti.o
+                0x08005e6c                _init
+ .init          0x08005e70        0x8 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crtn.o
  *(.fini)
- .fini          0x080058c4        0x4 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crti.o
-                0x080058c4                _fini
- .fini          0x080058c8        0x8 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crtn.o
-                0x080058d0                        . = ALIGN (0x4)
-                0x080058d0                        _etext = .
+ .fini          0x08005e78        0x4 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crti.o
+                0x08005e78                _fini
+ .fini          0x08005e7c        0x8 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crtn.o
+                0x08005e84                        . = ALIGN (0x4)
+                0x08005e84                        _etext = .
 
-.vfp11_veneer   0x080058d0        0x0
- .vfp11_veneer  0x080058d0        0x0 linker stubs
+.vfp11_veneer   0x08005e84        0x0
+ .vfp11_veneer  0x08005e84        0x0 linker stubs
 
-.v4_bx          0x080058d0        0x0
- .v4_bx         0x080058d0        0x0 linker stubs
+.v4_bx          0x08005e84        0x0
+ .v4_bx         0x08005e84        0x0 linker stubs
 
-.iplt           0x080058d0        0x0
- .iplt          0x080058d0        0x0 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crtbegin.o
+.iplt           0x08005e84        0x0
+ .iplt          0x08005e84        0x0 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crtbegin.o
 
-.rodata         0x080058d0      0x4b0
-                0x080058d0                        . = ALIGN (0x4)
+.rodata         0x08005e84      0x5b0
+                0x08005e84                        . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x080058d0       0x1f CMakeFiles/opsys.dir/Sources/lcd/screenDriver.c.obj
- *fill*         0x080058ef        0x1 
- .rodata        0x080058f0      0x400 CMakeFiles/opsys.dir/Sources/lcd/font.c.obj
-                0x080058f0                font8x8_basic
- .rodata        0x08005cf0       0x30 CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
-                0x08005cf0                flash_sector_offset
- .rodata        0x08005d20       0x5f CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj
+ .rodata        0x08005e84       0x1f CMakeFiles/opsys.dir/Sources/lcd/screenDriver.c.obj
+ *fill*         0x08005ea3        0x1 
+ .rodata        0x08005ea4      0x400 CMakeFiles/opsys.dir/Sources/lcd/font.c.obj
+                0x08005ea4                font8x8_basic
+ .rodata        0x080062a4       0x30 CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
+                0x080062a4                flash_sector_offset
+ .rodata        0x080062d4       0x5f CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj
+ *fill*         0x08006333        0x1 
+ .rodata        0x08006334      0x100 CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
+                0x08006334                ascii_unshifted
+                0x080063b4                ascii_shifted
  *(.rodata*)
-                0x08005d80                        . = ALIGN (0x4)
- *fill*         0x08005d7f        0x1 
+                0x08006434                        . = ALIGN (0x4)
 
-.ARM.extab      0x08005d80        0x0
-                0x08005d80                        . = ALIGN (0x4)
+.ARM.extab      0x08006434        0x0
+                0x08006434                        . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x08005d80                        . = ALIGN (0x4)
+                0x08006434                        . = ALIGN (0x4)
 
-.ARM            0x08005d80        0x0
-                0x08005d80                        . = ALIGN (0x4)
-                0x08005d80                        __exidx_start = .
+.ARM            0x08006434        0x0
+                0x08006434                        . = ALIGN (0x4)
+                0x08006434                        __exidx_start = .
  *(.ARM.exidx*)
-                0x08005d80                        __exidx_end = .
-                0x08005d80                        . = ALIGN (0x4)
+                0x08006434                        __exidx_end = .
+                0x08006434                        . = ALIGN (0x4)
 
-.preinit_array  0x08005d80        0x0
-                0x08005d80                        . = ALIGN (0x4)
-                0x08005d80                        PROVIDE (__preinit_array_start = .)
+.preinit_array  0x08006434        0x0
+                0x08006434                        . = ALIGN (0x4)
+                0x08006434                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x08005d80                        PROVIDE (__preinit_array_end = .)
-                0x08005d80                        . = ALIGN (0x4)
+                0x08006434                        PROVIDE (__preinit_array_end = .)
+                0x08006434                        . = ALIGN (0x4)
 
-.init_array     0x08005d80        0x4
-                0x08005d80                        . = ALIGN (0x4)
-                0x08005d80                        PROVIDE (__init_array_start = .)
+.init_array     0x08006434        0x4
+                0x08006434                        . = ALIGN (0x4)
+                0x08006434                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x08005d80        0x4 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crtbegin.o
-                0x08005d84                        PROVIDE (__init_array_end = .)
-                0x08005d84                        . = ALIGN (0x4)
+ .init_array    0x08006434        0x4 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crtbegin.o
+                0x08006438                        PROVIDE (__init_array_end = .)
+                0x08006438                        . = ALIGN (0x4)
 
-.fini_array     0x08005d84        0x4
-                0x08005d84                        . = ALIGN (0x4)
+.fini_array     0x08006438        0x4
+                0x08006438                        . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x08005d84        0x4 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crtbegin.o
+ .fini_array    0x08006438        0x4 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x08005d88                        . = ALIGN (0x4)
-                0x08005d88                        _sidata = LOADADDR (.data)
+                0x0800643c                        . = ALIGN (0x4)
+                0x0800643c                        _sidata = LOADADDR (.data)
 
-.rel.dyn        0x08005d88        0x0
- .rel.iplt      0x08005d88        0x0 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crtbegin.o
+.rel.dyn        0x0800643c        0x0
+ .rel.iplt      0x0800643c        0x0 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crtbegin.o
 
-.data           0x20000000        0x0 load address 0x08005d88
+.data           0x20000000        0x4 load address 0x0800643c
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        _sdata = .
  *(.data)
+ .data          0x20000000        0x1 CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
+                0x20000000                lastFullScanCode
  *(.data*)
  *(.RamFunc)
  *(.RamFunc*)
-                0x20000000                        . = ALIGN (0x4)
-                0x20000000                        _edata = .
-                0x08005d88                        _siccmram = LOADADDR (.ccmram)
+                0x20000004                        . = ALIGN (0x4)
+ *fill*         0x20000001        0x3 
+                0x20000004                        _edata = .
+                0x08006440                        _siccmram = LOADADDR (.ccmram)
 
-.igot.plt       0x20000000        0x0 load address 0x08005d88
- .igot.plt      0x20000000        0x0 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crtbegin.o
+.igot.plt       0x20000004        0x0 load address 0x08006440
+ .igot.plt      0x20000004        0x0 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crtbegin.o
 
-.ccmram         0x10000000        0x0 load address 0x08005d88
+.ccmram         0x10000000        0x0 load address 0x08006440
                 0x10000000                        . = ALIGN (0x4)
                 0x10000000                        _sccmram = .
  *(.ccmram)
@@ -699,41 +706,51 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
                 0x10000000                        _eccmram = .
                 0x10000000                        . = ALIGN (0x4)
 
-.bss            0x20000000     0xf2e0
-                0x20000000                        _sbss = .
-                0x20000000                        __bss_start__ = _sbss
+.bss            0x20000080     0xf48c
+                0x20000080                        _sbss = .
+                0x20000080                        __bss_start__ = _sbss
  *(.bss)
- .bss           0x20000000       0x1c C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crtbegin.o
- .bss           0x2000001c        0x6 CMakeFiles/opsys.dir/Sources/lcd/screenDriver.c.obj
-                0x2000001c                row
-                0x2000001d                col
-                0x2000001e                color
-                0x20000020                backdrop
- *fill*         0x20000022        0x2 
- .bss           0x20000024        0x4 CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.obj
-                0x20000024                SystemCoreClock
- .bss           0x20000028       0x10 CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
-                0x20000028                sectorDir
-                0x2000002c                pkgMetaBuf
-                0x20000030                numPkg
-                0x20000034                flashUsed
- .bss           0x20000038     0xf2a8 CMakeFiles/opsys.dir/Sources/general/allocator.c.obj
+ .bss           0x20000080       0x1c C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crtbegin.o
+ .bss           0x2000009c        0x6 CMakeFiles/opsys.dir/Sources/lcd/screenDriver.c.obj
+                0x2000009c                row
+                0x2000009d                col
+                0x2000009e                color
+                0x200000a0                backdrop
+ *fill*         0x200000a2        0x2 
+ .bss           0x200000a4        0x4 CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.obj
+                0x200000a4                SystemCoreClock
+ .bss           0x200000a8       0x10 CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
+                0x200000a8                sectorDir
+                0x200000ac                pkgMetaBuf
+                0x200000b0                numPkg
+                0x200000b4                flashUsed
+ .bss           0x200000b8        0x3 CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
+                0x200000b8                currentShift
+                0x200000b9                currentScanCode
+                0x200000ba                shiftToggle
+ *fill*         0x200000bb        0x1 
+ .bss           0x200000bc     0xf2a8 CMakeFiles/opsys.dir/Sources/general/allocator.c.obj
+ *fill*         0x2000f364       0x1c 
+ .bss           0x2000f380      0x18c CMakeFiles/opsys.dir/Sources/general/interruptController.c.obj
+                0x2000f380                ramVectorTable
+                0x2000f508                userHandler
  *(.bss*)
  *(COMMON)
-                0x2000f2e0                        . = ALIGN (0x4)
-                0x2000f2e0                        _ebss = .
-                0x2000f2e0                        __bss_end__ = _ebss
+                0x2000f50c                        . = ALIGN (0x4)
+                0x2000f50c                        _ebss = .
+                0x2000f50c                        __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x2000f2e0      0x800
-                0x2000f2e0                        . = ALIGN (0x8)
-                0x2000f2e0                        PROVIDE (end = .)
+                0x2000f50c      0x804
+                0x2000f510                        . = ALIGN (0x8)
+ *fill*         0x2000f50c        0x4 
+                0x2000f510                        PROVIDE (end = .)
                 [!provide]                        PROVIDE (_end = .)
-                0x2000f6e0                        . = (. + _Min_Heap_Size)
- *fill*         0x2000f2e0      0x400 
-                0x2000fae0                        . = (. + _Min_Stack_Size)
- *fill*         0x2000f6e0      0x400 
-                0x2000fae0                        . = ALIGN (0x8)
+                0x2000f910                        . = (. + _Min_Heap_Size)
+ *fill*         0x2000f510      0x400 
+                0x2000fd10                        . = (. + _Min_Stack_Size)
+ *fill*         0x2000f910      0x400 
+                0x2000fd10                        . = ALIGN (0x8)
 
 /DISCARD/
  libc.a(*)
@@ -764,60 +781,72 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .ARM.attributes
                 0x00000181       0x2e CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj
  .ARM.attributes
-                0x000001af       0x2e CMakeFiles/opsys.dir/Sources/general/allocator.c.obj
+                0x000001af       0x2e CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
  .ARM.attributes
-                0x000001dd       0x1e C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crtn.o
+                0x000001dd       0x2e CMakeFiles/opsys.dir/Sources/general/allocator.c.obj
+ .ARM.attributes
+                0x0000020b       0x2e CMakeFiles/opsys.dir/Sources/general/interruptController.c.obj
+ .ARM.attributes
+                0x00000239       0x1e C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp/crtn.o
 OUTPUT(opsys.elf elf32-littlearm)
 LOAD linker stubs
 LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc.a
 LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libm.a
 LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m/nofp\libgcc.a
 
-.debug_frame    0x00000000      0x718
+.debug_frame    0x00000000      0x8a0
  .debug_frame   0x00000000       0x2c C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc_nano.a(libc_a-init.o)
  .debug_frame   0x0000002c       0x2c CMakeFiles/opsys.dir/Sources/main.c.obj
  .debug_frame   0x00000058      0x1d0 CMakeFiles/opsys.dir/Sources/lcd/screenDriver.c.obj
  .debug_frame   0x00000228       0xe8 CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.obj
  .debug_frame   0x00000310      0x274 CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
  .debug_frame   0x00000584       0x74 CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj
- .debug_frame   0x000005f8      0x120 CMakeFiles/opsys.dir/Sources/general/allocator.c.obj
+ .debug_frame   0x000005f8      0x110 CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
+ .debug_frame   0x00000708      0x120 CMakeFiles/opsys.dir/Sources/general/allocator.c.obj
+ .debug_frame   0x00000828       0x78 CMakeFiles/opsys.dir/Sources/general/interruptController.c.obj
 
-.debug_line     0x00000000     0x1ccd
+.debug_line     0x00000000     0x2596
  .debug_line    0x00000000       0x7b CMakeFiles/opsys.dir/Startup/startup_stm32f407vgtx.s.obj
  .debug_line    0x0000007b      0x3ba CMakeFiles/opsys.dir/Sources/main.c.obj
  .debug_line    0x00000435      0x544 CMakeFiles/opsys.dir/Sources/lcd/screenDriver.c.obj
  .debug_line    0x00000979       0x70 CMakeFiles/opsys.dir/Sources/lcd/font.c.obj
  .debug_line    0x000009e9      0x3e5 CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.obj
  .debug_line    0x00000dce      0x6b1 CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
- .debug_line    0x0000147f      0x367 CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj
- .debug_line    0x000017e6      0x4e7 CMakeFiles/opsys.dir/Sources/general/allocator.c.obj
+ .debug_line    0x0000147f      0x3cc CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj
+ .debug_line    0x0000184b      0x557 CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
+ .debug_line    0x00001da2      0x4e7 CMakeFiles/opsys.dir/Sources/general/allocator.c.obj
+ .debug_line    0x00002289      0x30d CMakeFiles/opsys.dir/Sources/general/interruptController.c.obj
 
 .debug_line_str
                 0x00000000       0x8c
  .debug_line_str
                 0x00000000       0x8c CMakeFiles/opsys.dir/Startup/startup_stm32f407vgtx.s.obj
 
-.debug_info     0x00000000     0x1386
+.debug_info     0x00000000     0x16d8
  .debug_info    0x00000000       0x30 CMakeFiles/opsys.dir/Startup/startup_stm32f407vgtx.s.obj
  .debug_info    0x00000030      0x131 CMakeFiles/opsys.dir/Sources/main.c.obj
  .debug_info    0x00000161      0x431 CMakeFiles/opsys.dir/Sources/lcd/screenDriver.c.obj
  .debug_info    0x00000592       0x67 CMakeFiles/opsys.dir/Sources/lcd/font.c.obj
  .debug_info    0x000005f9      0x1e3 CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.obj
  .debug_info    0x000007dc      0x576 CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
- .debug_info    0x00000d52      0x1eb CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj
- .debug_info    0x00000f3d      0x449 CMakeFiles/opsys.dir/Sources/general/allocator.c.obj
+ .debug_info    0x00000d52      0x1f7 CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj
+ .debug_info    0x00000f49      0x1e9 CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
+ .debug_info    0x00001132      0x449 CMakeFiles/opsys.dir/Sources/general/allocator.c.obj
+ .debug_info    0x0000157b      0x15d CMakeFiles/opsys.dir/Sources/general/interruptController.c.obj
 
-.debug_abbrev   0x00000000      0x889
+.debug_abbrev   0x00000000      0xaee
  .debug_abbrev  0x00000000       0x24 CMakeFiles/opsys.dir/Startup/startup_stm32f407vgtx.s.obj
  .debug_abbrev  0x00000024       0xa4 CMakeFiles/opsys.dir/Sources/main.c.obj
  .debug_abbrev  0x000000c8      0x1a4 CMakeFiles/opsys.dir/Sources/lcd/screenDriver.c.obj
  .debug_abbrev  0x0000026c       0x56 CMakeFiles/opsys.dir/Sources/lcd/font.c.obj
  .debug_abbrev  0x000002c2      0x12c CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.obj
  .debug_abbrev  0x000003ee      0x20b CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
- .debug_abbrev  0x000005f9      0x124 CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj
- .debug_abbrev  0x0000071d      0x16c CMakeFiles/opsys.dir/Sources/general/allocator.c.obj
+ .debug_abbrev  0x000005f9      0x125 CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj
+ .debug_abbrev  0x0000071e      0x150 CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
+ .debug_abbrev  0x0000086e      0x16c CMakeFiles/opsys.dir/Sources/general/allocator.c.obj
+ .debug_abbrev  0x000009da      0x114 CMakeFiles/opsys.dir/Sources/general/interruptController.c.obj
 
-.debug_aranges  0x00000000      0x100
+.debug_aranges  0x00000000      0x140
  .debug_aranges
                 0x00000000       0x28 CMakeFiles/opsys.dir/Startup/startup_stm32f407vgtx.s.obj
  .debug_aranges
@@ -833,18 +862,24 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_aranges
                 0x000000c0       0x20 CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj
  .debug_aranges
-                0x000000e0       0x20 CMakeFiles/opsys.dir/Sources/general/allocator.c.obj
+                0x000000e0       0x20 CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
+ .debug_aranges
+                0x00000100       0x20 CMakeFiles/opsys.dir/Sources/general/allocator.c.obj
+ .debug_aranges
+                0x00000120       0x20 CMakeFiles/opsys.dir/Sources/general/interruptController.c.obj
 
-.debug_str      0x00000000      0x734
- .debug_str     0x00000000      0x734 CMakeFiles/opsys.dir/Startup/startup_stm32f407vgtx.s.obj
+.debug_str      0x00000000      0x91b
+ .debug_str     0x00000000      0x91b CMakeFiles/opsys.dir/Startup/startup_stm32f407vgtx.s.obj
                                  0xa8 (size before relaxing)
- .debug_str     0x00000734      0x1fc CMakeFiles/opsys.dir/Sources/main.c.obj
- .debug_str     0x00000734      0x28c CMakeFiles/opsys.dir/Sources/lcd/screenDriver.c.obj
- .debug_str     0x00000734      0x110 CMakeFiles/opsys.dir/Sources/lcd/font.c.obj
- .debug_str     0x00000734      0x203 CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.obj
- .debug_str     0x00000734      0x339 CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
- .debug_str     0x00000734      0x241 CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj
- .debug_str     0x00000734      0x27d CMakeFiles/opsys.dir/Sources/general/allocator.c.obj
+ .debug_str     0x0000091b      0x1fc CMakeFiles/opsys.dir/Sources/main.c.obj
+ .debug_str     0x0000091b      0x28c CMakeFiles/opsys.dir/Sources/lcd/screenDriver.c.obj
+ .debug_str     0x0000091b      0x110 CMakeFiles/opsys.dir/Sources/lcd/font.c.obj
+ .debug_str     0x0000091b      0x203 CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.obj
+ .debug_str     0x0000091b      0x339 CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
+ .debug_str     0x0000091b      0x250 CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj
+ .debug_str     0x0000091b      0x288 CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
+ .debug_str     0x0000091b      0x27d CMakeFiles/opsys.dir/Sources/general/allocator.c.obj
+ .debug_str     0x0000091b      0x1fc CMakeFiles/opsys.dir/Sources/general/interruptController.c.obj
 
 .debug_rnglists
                 0x00000000       0x19
@@ -859,4 +894,6 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .comment       0x00000043       0x44 CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.obj
  .comment       0x00000043       0x44 CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj
  .comment       0x00000043       0x44 CMakeFiles/opsys.dir/Sources/programs/fileViewer.c.obj
+ .comment       0x00000043       0x44 CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj
  .comment       0x00000043       0x44 CMakeFiles/opsys.dir/Sources/general/allocator.c.obj
+ .comment       0x00000043       0x44 CMakeFiles/opsys.dir/Sources/general/interruptController.c.obj

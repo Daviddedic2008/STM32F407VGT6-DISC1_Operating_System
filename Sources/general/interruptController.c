@@ -25,13 +25,13 @@ void writeHandlerToTable(const uint32_t irq, void(*fp)(void)){
 	__enable_irq();
 }
 
-void userHandler(void);
+void (*userHandler)(void);
 
 void dispatcher(){
 	// receive interrupt and clear
 	userHandler(); // call user handler
 	// make sure we clear pin 6 interrupt
-	EXTI_PR |= *((volatile uint32_t*)EXTI_PR) & (1 << 6); // set 1 to pending
+	(*(volatile uint32_t*)EXTI_PR) |= *((volatile uint32_t*)(*(volatile uint32_t*)EXTI_PR)) & (1 << 6); // set 1 to pending
 }
 
 void enableFallingEdgeB6(void(*fp)(void)){
@@ -44,7 +44,7 @@ void enableFallingEdgeB6(void(*fp)(void)){
     *(volatile uint32_t*)EXTI_RTSR &= ~(1 << 6); // disable rising edge
     *(volatile uint32_t*)EXTI_FTSR |=  (1 << 6); // enable falling edge
     *(volatile uint32_t*)EXTI_PR =  (1 << 6); // clear pending register by writing 1
-    writeHandlerToRamTable(23, dispatcher); // write general handler that will call user handler
+    writeHandlerToTable(23, dispatcher); // write general handler that will call user handler
     *(volatile uint32_t*)NVIC_ICPR0 |= (1 << 23); // set pending bit
     *(volatile uint32_t*)NVIC_ISER0 |= (1 << 23); // set enable bit
 }

@@ -85,12 +85,12 @@ clean: CMakeFiles/opsys.dir/clean
 CMakeFiles/opsys.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Built target opsys"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 "Built target opsys"
 .PHONY : CMakeFiles/opsys.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/opsys.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Debug/CMakeFiles 14
+	$(CMAKE_COMMAND) -E cmake_progress_start C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Debug/CMakeFiles 15
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/opsys.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Debug/CMakeFiles 0
 .PHONY : CMakeFiles/opsys.dir/rule
@@ -102,7 +102,7 @@ opsys: CMakeFiles/opsys.dir/rule
 # codegen rule for target.
 CMakeFiles/opsys.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opsys.dir/build.make CMakeFiles/opsys.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Finished codegen for target opsys"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:/Users/david/STM32CubeIDE/workspace_1.19.0/opsys/Debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 "Finished codegen for target opsys"
 .PHONY : CMakeFiles/opsys.dir/codegen
 
 # clean rule for target.

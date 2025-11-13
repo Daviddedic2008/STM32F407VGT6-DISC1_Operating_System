@@ -60,6 +60,7 @@ set (PROJECT_SOURCES
 	Sources/programs/fileViewer.c
 	Sources/keyboard/ps-2Interface.c
 	Sources/general/allocator.c
+	Sources/general/interruptController.c
 	Sources/syscalls.c
 	)
 

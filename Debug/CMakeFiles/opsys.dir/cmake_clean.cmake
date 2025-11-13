@@ -4,6 +4,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/opsys.dir/Sources/flash/flashManager.c.obj.d"
   "CMakeFiles/opsys.dir/Sources/general/allocator.c.obj"
   "CMakeFiles/opsys.dir/Sources/general/allocator.c.obj.d"
+  "CMakeFiles/opsys.dir/Sources/general/interruptController.c.obj"
+  "CMakeFiles/opsys.dir/Sources/general/interruptController.c.obj.d"
   "CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.obj"
   "CMakeFiles/opsys.dir/Sources/general/mcuHeader.c.obj.d"
   "CMakeFiles/opsys.dir/Sources/keyboard/ps-2Interface.c.obj"
