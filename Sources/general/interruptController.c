@@ -34,7 +34,7 @@ void dispatcher(){
 	userHandler(); // call user handler
 }
 
-void enableFallingEdgeB6(const unsigned char pin, void(*fp)(void)){
+void enableFallingEdgeB6(void(*fp)(void)){
 	// set exti line for B6 to make it trigger on falling edge. load handler into proper vector table entry
 	userHandler = fp; // save user handler to call in dispatcher
 

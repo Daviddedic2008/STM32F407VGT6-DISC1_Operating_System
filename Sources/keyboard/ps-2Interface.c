@@ -5,12 +5,13 @@
  *      Author: david
  */
 #include "ps-2Interface.h"
+#include "../general/interruptController.h"
 
-/* full 128-byte arrays (initialized to 0), then populate the mapped entries */
+// full 128-byte arrays (initialized to 0), then populate the mapped entries
 const char ascii_unshifted[128] = { 0 };
 const char ascii_shifted[128]   = { 0 };
 
-static void init_ascii_maps(void)
+void init_ascii_maps(void)
 {
     ((char *)ascii_unshifted)[0x1C] = 'a';
     ((char *)ascii_unshifted)[0x32] = 'b';
@@ -94,62 +95,44 @@ static void init_ascii_maps(void)
     ((char *)ascii_shifted)[0x66] = '\b';
 }
 
-/* Call init_ascii_maps() once before using the tables (e.g., at system init). */
-unsigned char toggles = 0;
-// bit 0 : shift
-// bit 1 : caps lock
-// bit 2 : break active
+#define KEYUP 0xF0 // scan code for charUp prefix, this means to ignore next send
+unsigned char currentShift = 0; // how many bits were read
+unsigned char currentScanCode = 0;
+unsigned char lastFullScanCode = 0xFF; // cleared
+unsigned char charRead = 0; // prevent double reads
+unsigned char shiftToggle = 0;
 
-void initEXTI(){
-	ENABLE_PORT_B();
-	ENABLE_FALLING_EDGE(6);
-	init_ascii_maps();
+void interruptHandler(void){
+	// read current data bit
+	currentScanCode |= (((*(volatile uint32_t*)GPIOB_IDR) & (1 << 7)) >> 7) << shift; // shift must be non negative
+	currentShift++;
+	if(currentShift == 8) {currentShift = 0; lastFullScanCode = currentScanCode; if(lastFullScanCode == 0x12){shiftToggle = !shiftToggle;}}
 }
 
-char recieveKeycode(){
-	char keycode = 0; // fill bit by bit, send when 8 bits sent
-	// assuming first start bit has been sent
-	for(uint8_t bitsRead = 0; bitsRead < 8; bitsRead++){
-		while(CHECK_CLK()){
-			;
-		}
-		CLEAR_EXTI_FLAG(6); // wait for next drop, dont re-sample
-		keycode |= (READ_PS2_DATA()) << bitsRead;
+char convertScanCode(const unsigned char sc){
+	if(shiftToggle){
+		return ascii_shifted[sc];
 	}
-	for(uint8_t bitsRead = 0; bitsRead < 2; bitsRead++){
-		while(CHECK_CLK()){
-			;
-		}
-	}
-	return keycode;
+	return ascii_unshifted[sc];
 }
 
-char convertKeycode(const char keycode){
-	if(keycode == 0xF0){
-		toggles |= (1 << 2); // set break
-		return -1; // null
-	}
-	if(keycode == 0x12 || keycode == 0x59){
-		toggles = (~((toggles >> 2) & 1) & 1) | (toggles & ~1); // if break, release shift. if not, set shift
-	}
-	if((toggles >> 2) & 1){
-		toggles &= ~(1 << 2); // clear break if set
-		return -1; // if break, just return the rest is useless
-	}
-	if(toggles & 1){
-		// if shift, return shifted
-		return ascii_shifted[(unsigned char)keycode];
-	}
-	return ascii_unshifted[(unsigned char)keycode]; // last possibility
+char readNewChar(){
+	if(lastFullScanCode == 0xFF){return -1;} // return null char
+	const unsigned char lfc = lastFullScanCode;
+	lastFullScanCode = 0xFF; // clear
+	return convertScanCode(lfc); // read with saved code
 }
 
-char recieveChar(){
-	return convertKeycode(recieveKeycode());
+void idleUntilPress(){
+	currentShift = 0;
+	while(currentShift == 0){;}
 }
 
-int attemptRecieve(){
-	if(!CHECK_CLK()){
-		return -1;
-	}
-	return recieveChar();
+void readLastChar(){
+	return convertScanCode(lastFullScanCode);
 }
+
+void initKeyboardInterface(){
+	enableFallingEdgeB6(interruptHandler);
+}
+

@@ -8,8 +8,6 @@
 #ifndef SOURCES_KEYBOARD_INTERRUPTCONTROLLER_H_
 #define SOURCES_KEYBOARD_INTERRUPTCONTROLLER_H_
 
-void enableFallingEdge(const unsigned char pin);
-
-void setHandlerAddress(void(*fp)(void));
+void enableFallingEdgeB6(void(*fp)(void));
 
 #endif /* SOURCES_KEYBOARD_INTERRUPTCONTROLLER_H_ */
