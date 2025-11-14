@@ -29,8 +29,8 @@ void editFileTxt(const char name){
 	moveCursor(0,0);
 	const char* s1 = "+----------------------------+\n|          TXT EDIT          |\n+----------------------------+\n\n";
 	putString(s1, 94);
-	flashPkg p = retrievePkg(name);
-	uint16_t off = 0;
+	//flashPkg p = retrievePkg(name);
+	//uint16_t off = 0;
 
 }
 

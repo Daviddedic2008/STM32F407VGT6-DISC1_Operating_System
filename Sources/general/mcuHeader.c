@@ -66,6 +66,7 @@ void pinout(){
 	RCC_AHB1ENR |= (1 << 4);  // GPIOE
 	RCC_AHB1ENR |= (1 << 5);  // GPIOF
 	RCC_AHB1ENR |= (1 << 6);  // GPIOG
+	RCC_APB2ENR |= (1 << 14); // enable SYSCFG clock
 	for(int i = 0; i < 8; i++){
 		SET_OUTPUT_PIN(GPIOA_MODER, i);
 		SET_PUSH_PULL(GPIOC_PUPDR, i);
@@ -79,12 +80,13 @@ void pinout(){
 	SET_OUTPUT_PIN(GPIOC_MODER, 5);
 	SET_PUSH_PULL(GPIOC_PUPDR, 5);
 	// exti line for falling-edge for ps2
-	SET_INPUT_PIN(GPIOB_MODER, 6);
-	SET_PUSH_PULL(GPIOB_PUPDR, 6);
-	SET_INPUT_PIN(GPIOB_MODER, 7);
-	SET_PUSH_PULL(GPIOB_PUPDR, 7);
+	SET_INPUT_PIN(GPIOD_MODER, 6);
+	SET_PUSH_PULL(GPIOD_PUPDR, 6);
+	SET_INPUT_PIN(GPIOD_MODER, 7);
+	SET_PUSH_PULL(GPIOD_PUPDR, 7);
 
 	SET_OUTPUT_PIN(GPIOD_MODER, 0); // speaker
+	delay_ms(100);
 }
 
 void playTone(const uint32_t hz, const uint32_t duration_ms){

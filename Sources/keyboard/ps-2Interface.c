@@ -6,6 +6,7 @@
  */
 #include "ps-2Interface.h"
 #include "../general/interruptController.h"
+#include "../lcd/screenDriver.h"
 
 // full 128-byte arrays (initialized to 0), then populate the mapped entries
 const char ascii_unshifted[128] = { 0 };
@@ -101,16 +102,45 @@ void init_ascii_maps(void)
 }
 
 #define KEYUP 0xF0 // scan code for charUp prefix, this means to ignore next send
-unsigned char currentShift = 0; // how many bits were read
-unsigned char currentScanCode = 0;
-unsigned char lastFullScanCode = 0xFF; // cleared
-unsigned char shiftToggle = 0;
+
+volatile unsigned char bitPhase = 0;
+volatile unsigned char currentScanCode = 0;
+volatile unsigned char lastFullScanCode = 0xFF;
+volatile unsigned char shiftToggle = 0;
 
 void interruptHandler(void){
-	// read current data bit
-	currentScanCode |= (((*(volatile uint32_t*)GPIOB_IDR) & (1 << 7)) >> 7) << currentShift; // shift must be non negative
-	currentShift++;
-	if(currentShift == 8) {currentShift = 0; lastFullScanCode = currentScanCode; if(lastFullScanCode == 0x12){shiftToggle = !shiftToggle;}}
+    unsigned char bit = READ_PIN(GPIOD_IDR, 7) ? 1 : 0;
+    //printNum(bit);
+    switch (bitPhase) {
+        case 0: // Wait for start bit (should be 0)
+            if (bit == 0) {
+                currentScanCode = 0;
+                bitPhase = 1;
+            }
+            break;
+
+        case 1: case 2: case 3: case 4:
+        case 5: case 6: case 7: case 8:
+            currentScanCode |= (bit << (bitPhase - 1)); // LSB first
+            bitPhase++;
+            break;
+
+        case 9: // Parity bit — ignore
+            bitPhase++;
+            break;
+
+        case 10: // Stop bit — complete frame
+            lastFullScanCode = currentScanCode;
+            if (lastFullScanCode == 0x12) {
+                shiftToggle = !shiftToggle;
+            }
+            bitPhase = 0;
+            break;
+
+        default:
+            bitPhase = 0; // reset on error
+            break;
+    }
 }
 
 char convertScanCode(const unsigned char sc){
@@ -128,8 +158,8 @@ char readNewChar(){
 }
 
 void idleUntilPress(){
-	currentShift = 0;
-	while(currentShift == 0){;}
+	bitPhase = 0;
+	while(bitPhase == 0){;}
 }
 
 char readLastChar(){
@@ -144,10 +174,13 @@ char idleUntilNextChar(){
 		while(lastFullScanCode == 0xFF){;} // wait for second byte
 		return lastFullScanCode; // return raw arrow scan code
 	}
+	//printNum(lastFullScanCode);
+	//putChar('\n');
 	return convertScanCode(lastFullScanCode);
 }
 
 void initKeyboardInterface(){
-	enableFallingEdgeB6(interruptHandler);
+	enableFallingEdgeD6(interruptHandler);
+	init_ascii_maps();
 }
 

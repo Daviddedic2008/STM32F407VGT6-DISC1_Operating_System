@@ -30,6 +30,7 @@
 #include "flash/flashManager.h"
 #include "general/allocator.h"
 #include "programs/fileViewer.h"
+#include "keyboard/ps-2Interface.h"
 
 int main(void)
 {
@@ -45,6 +46,7 @@ int main(void)
 	changeColor(0xFFFF);
 	//resetFlash();
 	allocMetadataBuf();
+	initKeyboardInterface();
 	//putString("Hello! This is an OS for the\nSTM32F407VGT6-DISC1.\n\n\nIt is completely BARE METAL,  no libraries or external\n headers ;)\n\n\nIt contains:a screen driver(for elegoo 2.8in tft lcd),ps-2 keyboard driver,and a system for storing/writing/running programs :)", 250);
 
 	// test
@@ -52,8 +54,8 @@ int main(void)
 	//printNum(*((volatile uint32_t*)FLASHUSED));
 	//const char* wr = "bbbaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\n";
 	//writeToPkg('a', (uint32_t*)wr);
-	displayFileTxt('a');
-	//startupScreen();
+	//displayFileTxt('a');
+	startupScreen();
 	//beginTerminal();
 	//saveMetaBuffer();
 	while(1){
