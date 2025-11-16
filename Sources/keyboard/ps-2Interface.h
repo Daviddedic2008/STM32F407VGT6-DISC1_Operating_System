@@ -17,7 +17,7 @@
 #define SOURCES_PS_2INTERFACE_H_
 #include "../general/mcuHeader.h"
 
-char readNewChar();
+unsigned char updateCharState();
 
 void idleUntilPress();
 

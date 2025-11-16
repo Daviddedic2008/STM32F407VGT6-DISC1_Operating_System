@@ -62,4 +62,5 @@ void enableFallingEdgeD6(void(*fp)(void)){
 	*(volatile uint32_t*)NVIC_ISER0 |= (1 << 23);
 
 	__enable_irq();
+	delay_ms(50);
 }
