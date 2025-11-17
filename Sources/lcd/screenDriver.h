@@ -19,7 +19,9 @@ void changeColor(const uint16_t c);
 void changeBackdrop(const uint16_t c);
 unsigned char getRow();
 void printNum(uint32_t num);
+void clearBuf();
 
+extern uint8_t underline;
 
 #endif /* SOURCES_SCREENDRIVER_H_ */
 

@@ -47,14 +47,18 @@ _Min_Stack_Size = 0x400; /* required amount of stack */
 MEMORY
 {
   CCMRAM    (xrw)    : ORIGIN = 0x10000000,   LENGTH = 64K
-  RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 128K
+  RAM    (xrw)    : ORIGIN = 0x20000200,   LENGTH = 128K-0x200 /*reserve some for vtor table*/
+  VECTORS (xrw) : ORIGIN = 0x20000000, LENGTH = 0x200
   FLASH    (rx)    : ORIGIN = 0x8004000,   LENGTH = 960K /*reserve sectors 0, 10, 11 for OS, should be enough i think*/
 }
 
 /* Sections */
 SECTIONS
 {
-
+  .ram_vector_table (NOLOAD) : ALIGN(128)
+	{
+	  KEEP(*(.ram_vector_table))
+	} > VECTORS
   /* The startup code into "FLASH" Rom type memory */
   .isr_vector :
   {

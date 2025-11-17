@@ -32,4 +32,6 @@ char idleUntilNextChar();
 
 void initKeyboardInterface();
 
+extern uint8_t arrows;
+
 #endif /* SOURCES_PS_2INTERFACE_H_ */

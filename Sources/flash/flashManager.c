@@ -28,9 +28,8 @@
  * NOTES TO SELF TO REMEMBER
  * flash programming requires that you first specify the size of each write in the pwrite bits(setPwrite())
  * only have to unlock flash once at the beginning of the program
- * disable interrupts while writing just in case debugger decides to act up(not important for final build)
+ * disable interrupts while writing just in case something decides to act up(not important for final build)
  * this short flash controller uses 32 bit writes, so adresses have to be aligned to that!!!!
- * flash addr 0(0x800....0) CANNOT BE WRITTEN TO! Is it write-protected or something? actually not sure about this one..
  */
 
 unsigned char sectorDir;

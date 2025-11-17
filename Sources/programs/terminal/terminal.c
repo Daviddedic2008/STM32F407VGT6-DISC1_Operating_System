@@ -38,6 +38,7 @@ static inline void runCmd(){
 }
 
 void beginTerminal(){
+	underline = 1;
 	changeColor(0x0AA0);
 	changeBackdrop(0x0000);
 	clearLCD();

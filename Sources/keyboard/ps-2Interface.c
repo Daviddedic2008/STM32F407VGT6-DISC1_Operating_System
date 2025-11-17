@@ -8,6 +8,8 @@
 #include "../general/interruptController.h"
 #include "../lcd/screenDriver.h"
 
+uint8_t arrows = 0; // are arrows enabled
+
 // full 128 byte lookup arrays
 
 // unshifted ASCII for PS/2 Set 2 (US layout)
@@ -144,7 +146,6 @@ volatile unsigned char shiftToggle = 0;
 
 void interruptHandler(void){
     unsigned char bit = READ_PIN(GPIOD_IDR, 7) ? 1 : 0;
-    //printNum(bit);
     switch (bitPhase) {
         case 0: // Wait for start bit (should be 0)
             if (bit == 0) {
@@ -217,6 +218,9 @@ char idleUntilNextChar(){
 			continue;
 		}
 		if(sc == 0xE0){
+			if(!arrows){
+				saw_break = 1;
+			}
 			continue;
 		}
 		if (saw_break) {

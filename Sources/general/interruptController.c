@@ -14,7 +14,8 @@
 #include "mcuHeader.h"
 #include "../lcd/screenDriver.h"
 
-__attribute__((aligned(128))) uint32_t ramVectorTable[NUMVECTORS]; // align to the minimum 128 bytes
+__attribute__((section(".ram_vector_table"), aligned(128)))
+volatile uint32_t ramVectorTable[NUMVECTORS];
 
 void writeHandlerToTable(const uint32_t irq, void(*fp)(void)){
 	// rewrite from old ram table to new table

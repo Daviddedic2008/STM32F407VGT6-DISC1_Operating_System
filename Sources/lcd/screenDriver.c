@@ -2,7 +2,7 @@
 #include "../general/mcuHeader.h"
 #include "font.h"
 
-unsigned char row = 0; unsigned char col = 0;
+unsigned char row = 0; unsigned char col = 0; unsigned char pr = 0; unsigned char pc = 0;
 // row 0-29 col 0-39
 
 #define colToPx(col) (col*8)
@@ -27,7 +27,9 @@ unsigned char row = 0; unsigned char col = 0;
  */
 
 uint16_t color;
+uint8_t underline = 0;
 uint16_t backdrop = 0;
+char screenBuf[30][40];
 
 static inline void WRITE_LCD_BUS(const unsigned char data, const unsigned char command){
 	// LCD_RS bit set for command, clear for data
@@ -127,7 +129,16 @@ void LCD_INIT(){
 	WRITE_LCD_BUS(0x29, COMMAND);  // Display ON
 }
 
+void clearBuf(){
+	for(uint8_t x = 0; x < 30; x++){
+		for(uint8_t y = 0; y < 40; y++){
+			screenBuf[x][y] = 0;
+		}
+	}
+}
+
 void clearLCD(){
+	clearBuf();
 	WRITE_LCD_BUS(0x2a, COMMAND);
 	WRITE_LCD_BUS(0, DATA);
 	WRITE_LCD_BUS(0, DATA);
@@ -152,7 +163,7 @@ void moveCursor(const uint8_t x, const uint8_t y){
 	col = x; row = y;
 }
 
-void dispc(const unsigned int x, const unsigned int y, const char c){
+void dispc(const unsigned int x, const unsigned int y, const char c, const uint8_t u){
 	const unsigned int x2 = x + 7;
 	const unsigned int y2 = y + 7;
 	WRITE_LCD_BUS(0x2a, COMMAND);
@@ -170,7 +181,7 @@ void dispc(const unsigned int x, const unsigned int y, const char c){
 	WRITE_LCD_BUS(0x2c, COMMAND);
 	for(unsigned char r = 0; r < 8; r++){
 		for(unsigned char offset = 0; offset < 8; offset++){
-			if(font8x8_basic[(unsigned char)c][r] & (1 << offset)){
+			if((font8x8_basic[(unsigned char)c][r] & (1 << offset)) || (u && (offset + r*8 >= 7*8))){
 				WRITE_LCD_BUS(color >> 8, DATA); WRITE_LCD_BUS(color & 0xFF, DATA); continue;
 			}
 			WRITE_LCD_BUS(backdrop >> 8, DATA); WRITE_LCD_BUS(backdrop & 0xFF, DATA);
@@ -178,14 +189,27 @@ void dispc(const unsigned int x, const unsigned int y, const char c){
 	}
 }
 
-void textCoordChar(const char c, const unsigned int x, const unsigned int y){
-	dispc(colToPx(x), rowToPy(y), c);
+void textCoordChar(const char c, const unsigned int x, const unsigned int y, const uint8_t u){
+	dispc(colToPx(x), rowToPy(y), c, u);
+	screenBuf[x][y] = c;
 }
 
 void putChar(const char c){
-	if(c == '\n' || c == 252){
+	if(underline){
+		textCoordChar(screenBuf[pc][pr], pc, pr, 0);
+	}
+	if(c == '\n' || (c == 252)){
 		// down arrow or newline
-		goto inc;
+		pc = col;
+		pr = row;
+		if(row < 39){
+			col = 0;
+			row += 1;
+		}
+		if(underline){
+			textCoordChar(screenBuf[col][row], col, row, 1);
+		}
+		return;
 	}
 	if(c == '\b' && (col + row) != 0){
 		col--;
@@ -193,15 +217,34 @@ void putChar(const char c){
 			col = 29;
 			row -=1;
 		}
-		textCoordChar(' ', col, row);
+		pc = col;
+		pr = row;
+		textCoordChar(' ', col, row, underline);
+
+		screenBuf[col][row] = ' ';
 		return;
 	}
 	if(c == 255){
 		// right arrow
-		goto skipc;
+		pc = col;
+		pr = row;
+		col++;
+		if(col == 30){
+			col = 0;
+			row++;
+		}
+		if(row >= 39){
+			row = 39;
+		}
+		if(underline){
+			textCoordChar(screenBuf[pc][pr], pc, pr, 1);
+		}
+		return;
 	}
 	if(c == 254){
 		// left arrow
+		pr = row;
+		pc = col;
 		col--;
 		if(col < 0){
 			col = 29;
@@ -210,6 +253,9 @@ void putChar(const char c){
 				row = 0;
 				col = 0;
 			}
+		}
+		if(underline){
+			textCoordChar(screenBuf[pc][pr], pc, pr, 1);
 		}
 		return;
 	}
@@ -222,12 +268,12 @@ void putChar(const char c){
 			return;
 		}
 	}
-	//pulse_speaker();
-	textCoordChar(c, col, row);
-	skipc:;
+	textCoordChar(c, col, row, underline);
+	screenBuf[col][row] = c;
+	pc = col;
+	pr = row;
 	col++;
 	if(col != 30){return;}
-	inc:;
 	if(row < 39){
 		col = 0;
 		row += 1;

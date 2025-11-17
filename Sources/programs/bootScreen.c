@@ -11,6 +11,7 @@
 #include "../general/mcuHeader.h"
 
 void startupScreen(){
+	underline = 0;
 	changeColor(0xF000);
 	changeBackdrop(0xA00A);
 	clearLCD();
