@@ -18,11 +18,8 @@ void moveCursor(const uint8_t x, const uint8_t y);
 void changeColor(const uint16_t c);
 void changeBackdrop(const uint16_t c);
 unsigned char getRow();
-unsigned char getCol();
 void printNum(uint32_t num);
-char* accessScreenBuf();
 
-extern unsigned char underlined;
 
 #endif /* SOURCES_SCREENDRIVER_H_ */
 

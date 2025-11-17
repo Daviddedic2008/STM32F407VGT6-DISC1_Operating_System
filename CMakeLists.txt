@@ -57,7 +57,6 @@ set (PROJECT_SOURCES
 	Sources/flash/asmRoutines.S
 	Sources/programs/bootScreen.c
 	Sources/programs/terminal/terminal.c
-	Sources/programs/terminal/tokenizer.c
 	Sources/programs/fileViewer.c
 	Sources/keyboard/ps-2Interface.c
 	Sources/general/allocator.c

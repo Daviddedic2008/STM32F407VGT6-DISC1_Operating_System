@@ -55,7 +55,7 @@ int main(void)
 	//const char* wr = "bbbaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\naaaaaaa\n";
 	//writeToPkg('a', (uint32_t*)wr);
 	//displayFileTxt('a');
-	//startupScreen();
+	startupScreen();
 	//beginTerminal();
 	//saveMetaBuffer();
 	while(1){
