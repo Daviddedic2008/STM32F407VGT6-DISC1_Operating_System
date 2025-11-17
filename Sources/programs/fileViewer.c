@@ -1,4 +1,5 @@
 #include "../flash/flashManager.h"
+#include "../general/allocator.h"
 #include "../lcd/screenDriver.h"
 #include "../keyboard/ps-2Interface.h"
 #include "fileViewer.h"
@@ -25,14 +26,8 @@ void displayFileTxt(const char name){
 	}
 }
 
-void editFileTxt(const char name){
-	clearLCD();
-	moveCursor(0,0);
-	const char* s1 = "+----------------------------+\n|          TXT EDIT          |\n+----------------------------+\n\n";
-	putString(s1, 94);
-	//flashPkg p = retrievePkg(name);
-	//uint16_t off = 0;
-
+void editFileTxt(const char name, const uint8_t pg){
+;
 }
 
 void displayFilePicture(){

@@ -3,6 +3,7 @@
 #include "font.h"
 
 unsigned char row = 0; unsigned char col = 0;
+unsigned char underlined = 0;
 
 char screenBuf[30][40];
 // row 0-29 col 0-39
@@ -31,6 +32,10 @@ char screenBuf[30][40];
 uint16_t color;
 uint16_t backdrop = 0;
 
+char* accessScreenBuf(){
+	return (char*)(&screenBuf[0][0]);
+}
+
 static inline void WRITE_LCD_BUS(const unsigned char data, const unsigned char command){
 	// LCD_RS bit set for command, clear for data
 	if(command == COMMAND){
@@ -57,6 +62,10 @@ void changeBackdrop(const uint16_t c){
 
 unsigned char getRow(){
 	return row;
+}
+
+unsigned char getCol(){
+	return col;
 }
 
 void LCD_INIT(){
@@ -154,13 +163,9 @@ void moveCursor(const uint8_t x, const uint8_t y){
 	col = x; row = y;
 }
 
-void dispc(const unsigned int x, const unsigned int y, const char c){
-	dispc_b(x,y,c,underline);
-}
-
 void dispc_b(const unsigned int x, const unsigned int y, const char c, unsigned char u){
 	if(u){
-		const unsigned int xp, yp;
+		unsigned int xp, yp;
 		if(x == 0){
 			if(y == 0){
 				goto skpunderline;
@@ -170,7 +175,7 @@ void dispc_b(const unsigned int x, const unsigned int y, const char c, unsigned 
 		}
 		yp = y;
 		xp = x-8;
-		dispc(xp, yp, screenBuf[xp/8][yp/8], 0);
+		dispc_b(xp, yp, screenBuf[xp/8][yp/8], 0);
 		skpunderline:;
 	}
 	const unsigned int x2 = x + 7;
@@ -196,6 +201,10 @@ void dispc_b(const unsigned int x, const unsigned int y, const char c, unsigned 
 			WRITE_LCD_BUS(backdrop >> 8, DATA); WRITE_LCD_BUS(backdrop & 0xFF, DATA);
 		}
 	}
+}
+
+void dispc(const unsigned int x, const unsigned int y, const char c){
+	dispc_b(x,y,c,underlined);
 }
 
 void textCoordChar(const char c, const unsigned int x, const unsigned int y){

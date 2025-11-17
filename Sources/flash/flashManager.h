@@ -39,7 +39,9 @@ void setPsize();
 
 volatile void* readDataSafe(const uint16_t addr);
 
-void writeToPkg(const char c, const uint32_t* ptr);
+void writeToPkg(const char c, const uint32_t* ptr, const uint32_t startOffset, const uint32_t sz);
+
+void* writeFlashToRamBuffer(const uint32_t addr, const uint32_t wrSz);
 
 void allocMetadataBuf();
 

@@ -145,6 +145,7 @@ volatile unsigned char shiftToggle = 0;
 void interruptHandler(void){
     unsigned char bit = READ_PIN(GPIOD_IDR, 7) ? 1 : 0;
     //printNum(bit);
+    pulse_speaker();
     switch (bitPhase) {
         case 0: // Wait for start bit (should be 0)
             if (bit == 0) {

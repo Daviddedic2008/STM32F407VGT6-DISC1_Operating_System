@@ -7,6 +7,7 @@
 
 #ifndef SOURCES_PROGRAMS_ALLOCATOR_H_
 #define SOURCES_PROGRAMS_ALLOCATOR_H_
+#include <stdint.h>
 
 void discard(const void* ptr);
 
