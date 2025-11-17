@@ -3,6 +3,8 @@
 #include "font.h"
 
 unsigned char row = 0; unsigned char col = 0;
+
+char screenBuf[30][40];
 // row 0-29 col 0-39
 
 #define colToPx(col) (col*8)
@@ -153,6 +155,24 @@ void moveCursor(const uint8_t x, const uint8_t y){
 }
 
 void dispc(const unsigned int x, const unsigned int y, const char c){
+	dispc_b(x,y,c,underline);
+}
+
+void dispc_b(const unsigned int x, const unsigned int y, const char c, unsigned char u){
+	if(u){
+		const unsigned int xp, yp;
+		if(x == 0){
+			if(y == 0){
+				goto skpunderline;
+			}
+			yp = y-8;
+			xp = 240-8;
+		}
+		yp = y;
+		xp = x-8;
+		dispc(xp, yp, screenBuf[xp/8][yp/8], 0);
+		skpunderline:;
+	}
 	const unsigned int x2 = x + 7;
 	const unsigned int y2 = y + 7;
 	WRITE_LCD_BUS(0x2a, COMMAND);
@@ -170,7 +190,7 @@ void dispc(const unsigned int x, const unsigned int y, const char c){
 	WRITE_LCD_BUS(0x2c, COMMAND);
 	for(unsigned char r = 0; r < 8; r++){
 		for(unsigned char offset = 0; offset < 8; offset++){
-			if(font8x8_basic[(unsigned char)c][r] & (1 << offset)){
+			if((font8x8_basic[(unsigned char)c][r] & (1 << offset)) || ((r*8 + offset >= 7*8) && u)){
 				WRITE_LCD_BUS(color >> 8, DATA); WRITE_LCD_BUS(color & 0xFF, DATA); continue;
 			}
 			WRITE_LCD_BUS(backdrop >> 8, DATA); WRITE_LCD_BUS(backdrop & 0xFF, DATA);
@@ -183,8 +203,8 @@ void textCoordChar(const char c, const unsigned int x, const unsigned int y){
 }
 
 void putChar(const char c){
-	if(c == '\n' || c == 252){
-		// down arrow or newline
+	if(c == '\n'){
+		//newline
 		goto inc;
 	}
 	if(c == '\b' && (col + row) != 0){
@@ -193,12 +213,22 @@ void putChar(const char c){
 			col = 29;
 			row -=1;
 		}
+		screenBuf[col][row] = ' ';
 		textCoordChar(' ', col, row);
 		return;
 	}
 	if(c == 255){
 		// right arrow
 		goto skipc;
+	}
+	if(c == 252){
+		// down arrow
+		row++;
+		if(row == 40){
+			row = 39;
+			col = 29;
+		}
+		return;
 	}
 	if(c == 254){
 		// left arrow
@@ -219,10 +249,11 @@ void putChar(const char c){
 		if(row < 0){
 			row = 0;
 			col = 0;
-			return;
 		}
+		return;
 	}
 	//pulse_speaker();
+	screenBuf[col][row] = c;
 	textCoordChar(c, col, row);
 	skipc:;
 	col++;

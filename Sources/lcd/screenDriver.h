@@ -20,6 +20,7 @@ void changeBackdrop(const uint16_t c);
 unsigned char getRow();
 void printNum(uint32_t num);
 
+unsigned char underlined = 0;
 
 #endif /* SOURCES_SCREENDRIVER_H_ */
 

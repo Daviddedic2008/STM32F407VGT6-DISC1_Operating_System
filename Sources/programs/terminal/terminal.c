@@ -38,6 +38,7 @@ static inline void runCmd(){
 }
 
 void beginTerminal(){
+	underlined = 0;
 	changeColor(0x0AA0);
 	changeBackdrop(0x0000);
 	clearLCD();
@@ -46,10 +47,12 @@ void beginTerminal(){
 	putString(s1, 94);
 	putChar('>');
 	while(1){
+		underlined = 1;
 		char c = idleUntilNextChar();
 		ln[getRow()] = c;
 		putChar(c);
 		if(c == '\n'){
+			underlined = 0;
 			runCmd();
 			putChar('>');
 			clearLn();

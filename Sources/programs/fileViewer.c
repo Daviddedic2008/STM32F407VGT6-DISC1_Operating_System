@@ -5,6 +5,7 @@
 #include "terminal/terminal.h"
 
 void displayFileTxt(const char name){
+	underlined = 0;
 	clearLCD();
 	moveCursor(0,0);
 	const char* s1 = "+----------------------------+\n|          TXT VIEW          |\n+----------------------------+\n\n";
