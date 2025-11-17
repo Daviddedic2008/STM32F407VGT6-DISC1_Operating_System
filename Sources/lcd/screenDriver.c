@@ -183,7 +183,8 @@ void textCoordChar(const char c, const unsigned int x, const unsigned int y){
 }
 
 void putChar(const char c){
-	if(c == '\n'){
+	if(c == '\n' || c == 252){
+		// down arrow or newline
 		goto inc;
 	}
 	if(c == '\b' && (col + row) != 0){
@@ -195,8 +196,35 @@ void putChar(const char c){
 		textCoordChar(' ', col, row);
 		return;
 	}
+	if(c == 255){
+		// right arrow
+		goto skipc;
+	}
+	if(c == 254){
+		// left arrow
+		col--;
+		if(col < 0){
+			col = 29;
+			row--;
+			if(row < 0){
+				row = 0;
+				col = 0;
+			}
+		}
+		return;
+	}
+	if(c == 253){
+		// up arrow
+		row--;
+		if(row < 0){
+			row = 0;
+			col = 0;
+			return;
+		}
+	}
 	//pulse_speaker();
 	textCoordChar(c, col, row);
+	skipc:;
 	col++;
 	if(col != 30){return;}
 	inc:;

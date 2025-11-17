@@ -43,8 +43,6 @@ void enableFallingEdgeD6(void(*fp)(void)){
 	// set first 4 bits to 0b0011 to set it to port D
 	*((volatile uint32_t*)SYSCFG_EXTICR2) &= ~(0xF << 8); // clear EXTI6 mapping
 	*((volatile uint32_t*)SYSCFG_EXTICR2) |=  (0x3 << 8); // map PD6
-	printNum(*((volatile uint32_t*)SYSCFG_EXTICR2));
-	putChar('\n');
 	// clear pending EXTI6
 
 	*(volatile uint32_t*)EXTI_PR = (1 << 6);

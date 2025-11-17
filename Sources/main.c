@@ -26,7 +26,7 @@
 #include "lcd/screenDriver.h"
 #include "general/mcuHeader.h"
 #include "programs/bootScreen.h"
-#include "programs/terminal.h"
+#include "programs/terminal/terminal.h"
 #include "flash/flashManager.h"
 #include "general/allocator.h"
 #include "programs/fileViewer.h"

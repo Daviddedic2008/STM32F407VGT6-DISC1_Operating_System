@@ -7,7 +7,7 @@
 #include "bootScreen.h"
 #include "../lcd/screenDriver.h"
 #include "../keyboard/ps-2Interface.h"
-#include "terminal.h"
+#include "terminal/terminal.h"
 #include "../general/mcuHeader.h"
 
 void startupScreen(){

@@ -2,7 +2,7 @@
 #include "../lcd/screenDriver.h"
 #include "../keyboard/ps-2Interface.h"
 #include "fileViewer.h"
-#include "terminal.h"
+#include "terminal/terminal.h"
 
 void displayFileTxt(const char name){
 	clearLCD();

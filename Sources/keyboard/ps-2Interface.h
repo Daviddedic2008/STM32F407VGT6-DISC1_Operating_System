@@ -17,6 +17,11 @@
 #define SOURCES_PS_2INTERFACE_H_
 #include "../general/mcuHeader.h"
 
+#define R -1
+#define L -2
+#define U -3
+#define D -4
+
 unsigned char updateCharState();
 
 void idleUntilPress();

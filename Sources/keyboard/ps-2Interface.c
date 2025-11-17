@@ -63,9 +63,15 @@ const char ascii_unshifted[128] = {
     [0x5B] = ']',
     [0x5D] = '\\',  // iSO extra key (may be absent on ANSI)
     [0x66] = '\b',  // backspace
+	[0x75] = -3, // up arrow
+	[0x72] = -4, // down arrow
+	[0x6B] = -2, // left arrow
+	[0x74] = -1, // right arrow
     [0x0D] = '\t',  // tab
     [0x0E] = '`',   // backtick
 };
+
+// u 75 d 72 l 6B r 74
 
 // shifted ASCII for PS/2 Set 2 (US layout)
 const char ascii_shifted[128] = {
@@ -120,6 +126,10 @@ const char ascii_shifted[128] = {
     [0x5B] = '}',
     [0x5D] = '|',   // ISO extra key (may be absent on ANSI)
     [0x66] = '\b',  // backspace
+	[0x75] = -3, // up arrow
+	[0x72] = -4, // down arrow
+	[0x6B] = -2, // left arrow
+	[0x74] = -1, // right arrow
     [0x0D] = '\t',  // tab
     [0x0E] = '~',   // tilde
 };
@@ -130,6 +140,7 @@ volatile unsigned char bitPhase = 0;
 volatile unsigned char currentScanCode = 0;
 volatile unsigned char lastFullScanCode = 0xFF;
 volatile unsigned char shiftToggle = 0;
+
 
 void interruptHandler(void){
     unsigned char bit = READ_PIN(GPIOD_IDR, 7) ? 1 : 0;
@@ -203,6 +214,9 @@ char idleUntilNextChar(){
 		sc = updateScanCode();
 		if (sc == 0xF0) {
 			saw_break = 1;
+			continue;
+		}
+		if(sc == 0xE0){
 			continue;
 		}
 		if (saw_break) {
