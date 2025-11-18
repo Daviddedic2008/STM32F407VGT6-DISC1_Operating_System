@@ -14,6 +14,7 @@ void putChar(const char c);
 void putString(const char* str, const uint16_t length);
 void LCD_INIT();
 void clearLCD();
+void clearLCD_b();
 void moveCursor(const uint8_t x, const uint8_t y);
 void changeColor(const uint16_t c);
 void changeBackdrop(const uint16_t c);
@@ -22,6 +23,7 @@ void printNum(uint32_t num);
 void clearBuf();
 
 extern uint8_t underline;
+extern char screenBuf[30][40];
 
 #endif /* SOURCES_SCREENDRIVER_H_ */
 

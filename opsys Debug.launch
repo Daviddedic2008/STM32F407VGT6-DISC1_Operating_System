@@ -1,3 +1,5 @@
+<!-- debug file doesnt need to be modified. I tinkered with it, but it wont erasae flash either way -->
+
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="com.st.stm32cube.ide.mcu.debug.launch.launchConfigurationType">
     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.launch.access_port_id" value="0"/>

@@ -39,7 +39,7 @@ void setPsize();
 
 volatile void* readDataSafe(const uint16_t addr);
 
-void writeToPkg(const char c, const uint32_t* ptr);
+void writeToPkg(const flashPkg p, const uint32_t* ptr, const uint32_t offset, const uint32_t sz);
 
 void allocMetadataBuf();
 

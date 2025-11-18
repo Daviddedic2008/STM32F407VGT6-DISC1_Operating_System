@@ -137,8 +137,7 @@ void clearBuf(){
 	}
 }
 
-void clearLCD(){
-	clearBuf();
+void clearLCD_b(){
 	WRITE_LCD_BUS(0x2a, COMMAND);
 	WRITE_LCD_BUS(0, DATA);
 	WRITE_LCD_BUS(0, DATA);
@@ -157,6 +156,11 @@ void clearLCD(){
 			WRITE_LCD_BUS(backdrop >> 8, DATA); WRITE_LCD_BUS(backdrop & 0xFF, DATA);
 		}
 	}
+}
+
+void clearLCD(){
+	clearBuf();
+	clearLCD_b();
 }
 
 void moveCursor(const uint8_t x, const uint8_t y){

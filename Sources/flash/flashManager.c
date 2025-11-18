@@ -136,12 +136,11 @@ void allocMetadataBuf(){
 	sectorDir = *((volatile uint32_t*)MAINSECTOR);
 }
 
-void writeToPkg(const char c, const uint32_t* ptr){
-	const flashPkg p = retrievePkg(c);
+void writeToPkg(const flashPkg p, const uint32_t* ptr, const uint32_t offset, const uint32_t sz){
 	prepareSector(bufDir);
 	for(uint16_t off = 0; off < flashUsed; off+=4){
 		uint32_t wrWord;
-		if(off >= p.addr && off < (p.addr + p.sz)){
+		if(off >= p.addr+offset && off < (p.addr + sz + offset) && off < (p.addr+p.sz)){
 			wrWord = ptr[(off-p.addr)/4];
 		}
 		else{
