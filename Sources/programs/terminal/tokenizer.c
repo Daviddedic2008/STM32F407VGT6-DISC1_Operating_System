@@ -9,37 +9,14 @@
 #include "../../general/allocator.h"
 #include <stdint.h>
 
-enum tokens{
-	NEW,
-	QUIT,
-	OPEN,
-	EDIT,
-	RESET
-};
-
-#define NUMTOKENS 5 // change to add more ig
-
-const char* tokenStrs[5] = {
-		"new",
-		"quit",
-		"open",
-		"edit",
-		"reset"
-};
-
-typedef struct{
-	char* str;
-	unsigned char len;
-}token;
-
 /*
  * each possible op token will have a caller function that takes its arguments string as an input
  * called from here when a token arg pair is detected
  */
 
-void (*callers[5])(token);
+void (*callers[5])(args);
 
-void assignCaller(void (*caller)(token), uint8_t idx){
+void assignCaller(void (*caller)(args), uint8_t idx){
 	callers[idx] = caller;
 }
 
@@ -87,4 +64,14 @@ void executeSrc(){
 	}
 }
 
+void freeToken(token t){
+	discard(t.str);
+}
 
+void getArgs()
+
+void freeArgs(args a){
+	for(uint8_t i = 0; i < a.numParams; i++){
+		discard(a.params[i].str);
+	}
+}
