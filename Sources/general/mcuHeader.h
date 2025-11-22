@@ -140,6 +140,8 @@ extern uint32_t SystemCoreClock;
 #define FLASH_ACR        (*(volatile uint32_t *)0x40023C00)
 
 #define SCB_VTOR      (*(volatile uint32_t*)0xE000ED08U) // holds ram address of irq vector table
+#define SBI_ICSR (*(volatile uint32_t*)0xE000ED04)
+#define SCB_ISR (*(volatile uint32_t*)0xE000ED00)
 
 #define NUMVECTORS 98 // 16 system interrupts plus external lines
 
